@@ -1,0 +1,22 @@
+extends ../../layouts/main
+
+block variables
+  - let title = 'Главная страница'
+  - let description = 'Toxin - сервис онлайн бронирования номеров'
+
+block header
+  include ../../includes/header/header.pug
+block main
+  main.main
+
+    block aside-left
+      include ../../includes/aside-left/aside-left.pug
+
+    block content
+     .content
+
+    block aside-right
+      include ../../includes/aside-right/aside-right.pug
+
+block footer
+  include ../../includes/footer/footer.pug

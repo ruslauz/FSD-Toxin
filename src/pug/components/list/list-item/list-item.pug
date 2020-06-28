@@ -1,0 +1,11 @@
+mixin list-item(item)
+  case item.type
+    when "li"
+      li(class = item.class)
+        block
+    when "dt"
+      dt(class = item.class)
+        block
+    when "dd"
+      dd(class = item.class)
+        block         

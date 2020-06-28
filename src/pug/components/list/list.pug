@@ -1,0 +1,13 @@
+include ./list-item/list-item
+
+mixin list(list)
+  case list.type
+    when "ul"
+      ul(class = list.class)
+        block
+    when "ol"
+      ol(class = list.class)
+        block
+    when "dl"
+      dl(class = list.class)
+        block

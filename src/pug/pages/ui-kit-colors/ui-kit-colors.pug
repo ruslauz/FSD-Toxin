@@ -1,0 +1,46 @@
+extends ../../layouts/main
+
+include ../../components/list/list
+
+block variables
+  - const title = 'UI Kit Colors'
+  - const description = 'UI Kit Colors'
+  - 
+    const colors = [
+    {pattern: "ds-100", term: "Dark Shade 100%", descr: "#1F2041"},
+    {pattern: "ds-75", term: "Dark Shade 75%", descr: "#1F2041"},
+    {pattern: "ds-50", term: "Dark Shade 50%", descr: "#1F2041"},
+    {pattern: "ds-25", term: "Dark Shade 25%", descr: "#1F2041"},
+    {pattern: "ds-5", term: "Dark Shade 5%", descr: "#1F2041"},
+    {pattern: "purple", term: "Purple", descr: "#BC9CFF"},
+    {pattern: "green", term: "Green", descr: "#6FCF97"},
+    ]
+  - 
+    const types = [
+    {term: 'H1', descr: 'This one is the sub-section or widget title'},
+    {term: 'H2', descr: 'Next one is the item title inside widgets'},
+    {term: 'H3', descr: 'This is a label or CTA text'},
+    {term: 'body', descr: 'This is the body text which is used for most of the design, like paragraphs, lists, etc.'},
+    ]
+
+block main
+  main.main
+    block content
+      .content
+        img.main-logo(src="./images/svg/ui-kit-logo.svg", alt="logo")
+        +list({type: 'ul', class: 'colors'})
+          for color in colors
+            +list-item({type: 'li', class: 'colors_item'})
+              div(class = 'colors__pattern_' + color.pattern)
+              .colors__text-block
+                +list({type: 'dl', class: 'descr-list'})
+                  +list-item({type: 'dt', class: 'descr-list__term'})
+                    |#{color.term}
+                  +list-item({type: 'dd', class: 'descr-list__descr'})
+                    |#{color.descr}
+        +list({type: 'dl', class: 'types'})
+          for type in types
+                  +list-item({type: 'dt', class: 'descr-list__term'})
+                    |#{type.term}
+                  +list-item({type: 'dd', class: 'descr-list__descr'})
+                    |#{type.descr}
