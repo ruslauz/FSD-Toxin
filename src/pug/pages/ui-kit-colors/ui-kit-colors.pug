@@ -17,17 +17,17 @@ block variables
     ]
   - 
     const types = [
-    {term: 'H1', descr: 'This one is the sub-section or widget title'},
-    {term: 'H2', descr: 'Next one is the item title inside widgets'},
-    {term: 'H3', descr: 'This is a label or CTA text'},
+    {term: 'h1', descr: 'This one is the sub-section or widget title'},
+    {term: 'h2', descr: 'Next one is the item title inside widgets'},
+    {term: 'h3', descr: 'This is a label or CTA text'},
     {term: 'body', descr: 'This is the body text which is used for most of the design, like paragraphs, lists, etc.'},
     ]
 
 block main
   main.main
+    img.main-logo(src="./images/svg/ui-kit-logo.svg", alt="logo")
     block content
       .content
-        img.main-logo(src="./images/svg/ui-kit-logo.svg", alt="logo")
         +list({type: 'ul', class: 'colors'})
           for color in colors
             +list-item({type: 'li', class: 'colors_item'})
@@ -40,7 +40,7 @@ block main
                     |#{color.descr}
         +list({type: 'dl', class: 'types'})
           for type in types
-                  +list-item({type: 'dt', class: 'descr-list__term'})
+                  +list-item({type: 'dt', class: type.term})
                     |#{type.term}
-                  +list-item({type: 'dd', class: 'descr-list__descr'})
+                  +list-item({type: 'dd', class: type.term})
                     |#{type.descr}
