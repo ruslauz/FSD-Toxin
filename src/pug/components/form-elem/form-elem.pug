@@ -1,0 +1,66 @@
+include ../input/input
+include ../button/button
+
+mixin form-elem(options)
+  if !options
+    - options = {}
+  case options.type
+    when 'email'
+    when 'text'
+      .form-element
+        .form-element__heading
+          h3.h3.form-element__title #{options.title}
+          if options.text
+            span.form-elementt__text #{options.text}
+        +input({type: `${options.type}`, class: `${options.class}`, placeholder: `${options.placeholder}`})
+    when 'dropdown-single'
+      .dropdown
+        h3.h3.input__title #{options.title}
+        +button({
+          type: 'dropdown',
+          buttonText: `${options.buttonText}`
+        })
+    when 'dropdown-group'
+      .dropdown
+        .dropdown__buttons
+          .dropdown__button
+            h3.h3.input__title #{options.title}
+            +button({
+              type: 'dropdown',
+              buttonText: `${options.buttonText1}`
+            })
+          .dropdown__button
+            h3.h3.input__title #{options.title}
+            +button({
+              type: 'dropdown',
+              buttonText: `${options.buttonText2}`
+            })
+    when 'subscription'
+      .subscription
+        +input({
+          type: 'text',
+          class: 'subscription-input subscription__input',
+          placeholder: 'Email'
+        })
+        +button({
+          type: 'arrow-forward'
+        })
+    when 'checkbox-buttons'
+    when 'radio-buttons'
+    when 'toggle'
+      .form-element
+        .form-element__heading
+          h3.h3.form-element__title #{options.title}
+        - for (item of options.data)
+          +input({type: `${options.type === 'checkbox-buttons' || options.type === 'toggle' ? 'checkbox' : 'radio'}`,
+            labelText: `${item.labelText}`,
+            isChecked: item.isChecked,
+            name: `${options.name}`})
+    when 'like'
+      .form-element
+        .form-element__heading
+          h3.h3.form-element__title #{options.title}
+        +button({
+          type: 'like'
+        })
+

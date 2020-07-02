@@ -1,0 +1,16 @@
+mixin input(options)
+  if !options
+    - options = {}
+  case options.type
+    when 'email'
+    when 'text'
+      input(type=`${options.type}` class=`${options.class}` placeholder=`${options.placeholder}`)
+    when 'radio'
+      label(class='label')
+        input(type=`${options.type}` class=`${options.type}`  name=`${options.name}` checked=options.isChecked)
+        | #{options.labelText}
+    when 'checkbox'
+      label(class='label')
+        input(type=`${options.type}` class=`${options.type}` checked=options.isChecked)
+        | #{options.labelText}
+    

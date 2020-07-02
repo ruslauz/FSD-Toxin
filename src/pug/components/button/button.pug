@@ -1,0 +1,12 @@
+mixin button(options)
+  if !options
+    - options = {}
+  case options.type
+    when 'dropdown'
+      button.button.dropdown-button(type = 'button' class = `${options.class || ''}`) #{options.buttonText}
+    when 'arrow-forward'
+      button.button.arrow-forward-button(type = 'submit' class = `${options.class || ''}`)
+    when 'like'
+      button.button.like-button(type = 'button' class = `${options.class || ''}`)
+        i.icon.material-icons favorite
+        span.likes-number #{likesNumber}
