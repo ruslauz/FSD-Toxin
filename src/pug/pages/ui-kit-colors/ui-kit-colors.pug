@@ -25,22 +25,22 @@ block variables
 
 block main
   main.main
-    img.main-logo(src="./images/svg/ui-kit-logo.svg", alt="logo")
+    img.main-logo.main-logo_ui-kit(src="./images/svg/ui-kit-logo.svg", alt="logo")
     block content
-      .content
+      .content.colors-and-types
         +list({type: 'ul', class: 'colors'})
           for color in colors
-            +list-item({type: 'li', class: 'colors_item'})
-              div(class = 'colors__pattern_' + color.pattern)
+            +list-item({type: 'li', class: 'colors__item'})
+              div(class = 'colors__pattern colors__pattern_' + color.pattern)
               .colors__text-block
-                +list({type: 'dl', class: 'descr-list'})
-                  +list-item({type: 'dt', class: 'descr-list__term'})
+                +list({type: 'dl', class: 'colors__descr-list'})
+                  +list-item({type: 'dt', class: 'colors__term'})
                     |#{color.term}
-                  +list-item({type: 'dd', class: 'descr-list__descr'})
+                  +list-item({type: 'dd', class: 'colors__descr'})
                     |#{color.descr}
         +list({type: 'dl', class: 'types'})
           for type in types
-                  +list-item({type: 'dt', class: type.term})
-                    |#{type.term}
-                  +list-item({type: 'dd', class: type.term})
-                    |#{type.descr}
+                +list-item({type: 'dt', class: `types__term types__term_${type.term}`})
+                  |#{type.term}
+                +list-item({type: 'dd', class: `types__descr types__descr_${type.term}`})
+                  |#{type.descr}

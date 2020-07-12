@@ -1,0 +1,126 @@
+@import '../../../scss/utils';
+
+.colors-and-types{
+  display: flex;
+  justify-content: space-between;
+  padding: 145px 191px 145px 150px;
+}
+.colors {
+  width: 100%;
+  max-width: 275px;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    
+    &:not(:last-child){
+      margin: 0 0 20px 0;
+    }
+  }
+
+  &__pattern {
+    width: 70px;
+    height: 70px;
+    border-radius: 6px;
+    margin: 0 40px 0 0;
+    
+    &_ds-100 {
+      background: $main;
+    }
+    
+    &_ds-75 {
+      background: $main75;
+    }
+
+    &_ds-50 {
+      background: $main50;
+    }
+
+    &_ds-25 {
+      background: $main25;
+    }
+
+    &_ds-5 {
+      background: $main5;
+    }
+
+    &_purple {
+      background: $purple;
+    }
+
+    &_green {
+      background: $green;
+    }
+  }
+
+  &__text-block {
+    font-size: $big;
+    line-height: 29px;
+    color: $main;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  &__term {
+    font-weight: bold;
+  }
+}
+
+.types {
+  display: grid;
+  grid-template-columns: max-content minmax(300px, 336px);
+  grid-template-rows: max-content max-content max-content max-content;
+  width: 100%;
+  max-width: 403px;
+  column-gap: 30px;
+  row-gap: 50px;
+
+  &__term {
+    text-align: right;
+    color: $main25;
+    text-transform: uppercase;
+
+    &_h1 {
+      font-size: $bigger;
+      line-height: 29px;
+    }
+
+    &_h2 {
+      font-size: $big;
+      line-height: 23px;
+    }
+
+    &_h3 {
+      font-size: $small;
+      line-height: 15px;
+    }
+
+    &_body {
+      font-size: $normal;
+      line-height: 24px;
+      text-transform: capitalize;
+    }
+  }
+
+  &__descr {
+    &_h1 {
+      @include h1;
+      font-family: $second-font;
+    }
+
+    &_h2 {
+      @include h2;
+      max-width: 282px;
+      font-family: $second-font;
+    }
+
+    &_h3 {
+      @include h3;
+      text-transform: uppercase;
+    }
+
+    &_body {
+      @include main-font;
+      max-width: 301px;
+    }
+  }
+}

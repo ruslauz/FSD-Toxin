@@ -1,0 +1,24 @@
+@import './vars';
+
+@mixin h1 {
+  font-weight: bold;
+  font-size: $bigger;
+  line-height: 30px;
+}
+
+@mixin h2 {
+  font-weight: bold;
+  font-size: $big;
+  line-height: 24px;
+}
+
+@mixin h3 {
+  font-weight: bold;
+  font-size: $small;
+  line-height: 15px;
+}
+
+@mixin main-font {
+  font-size: 14px;
+  line-height: 24px;
+}

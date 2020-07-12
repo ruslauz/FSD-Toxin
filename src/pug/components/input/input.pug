@@ -4,13 +4,33 @@ mixin input(options)
   case options.type
     when 'email'
     when 'text'
-      input(type=`${options.type}` class=`${options.class}` placeholder=`${options.placeholder}`)
+    when 'date'
+    when 'password'
+    when 'dropdown'
+    when 'date-dropdown'
+      label.label 
+        span.label__main-text #{options.labelText}
+        if options.additionalText 
+          span.label__additional-text #{options.additionalText}
+        input(type=`${options.type === 'dropdown' || options.type === 'date-dropdown' ? 'text' : options.type}` class=`${options.type}-input ${options.maskedInput ? 'js-masked-input' : ''}` placeholder=options.placeholder  || false value=options.value || false readonly=options.readonly)
+      if options.type === 'date-dropdown'
+        label.label 
+          span.label__main-text #{options.labelText}
+          input(type=`text` class=`${options.type}-input` placeholder=options.placeholder2  || false value=options.value2 || false readonly)
+      block
     when 'radio'
       label(class='label')
-        input(type=`${options.type}` class=`${options.type}`  name=`${options.name}` checked=options.isChecked)
+        input(type=`${options.type}` class=`${options.type} ${options.class || ''}`  name=`${options.name}` checked=options.isChecked)
         | #{options.labelText}
+        block
     when 'checkbox'
+    when 'rich-checkbox'
       label(class='label')
-        input(type=`${options.type}` class=`${options.type}` checked=options.isChecked)
-        | #{options.labelText}
+        input(type=`checkbox` class=`${options.type} ${options.class || ''}` checked=options.isChecked)
+        = options.labelText
+        if options.type === 'rich-checkbox'
+          span.rich-checkbox-text
+            span.rich-checkbox-text__title #{options.title}
+            span.rich-checkbox-text__description #{options.description}
+        block
     

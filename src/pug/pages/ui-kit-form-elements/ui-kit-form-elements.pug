@@ -1,10 +1,20 @@
 extends ../../layouts/main
 
 include ../../components/form-elem/form-elem
+include ../../components/input/input
+include ../../components/button/button
+include ../../components/rate/rate
+include ../../components/pagination/pagination
+include ../../components/fieldset/fieldset
+include ../../components/list/list
 
 block variables
   - const title = 'UI Kit Cards'
   - const description = 'UI Kit Cards'
+  - const radios = [{labelText: 'Мужчина', isChecked: true},{labelText: 'Женщина', isChecked: false}]
+  - const checkboxes = [{labelText: 'Можно курить', isChecked: false},{labelText: 'Можно с питомцами', isChecked: true},{labelText: 'Можно пригласить гостей (до 10 человек)', isChecked: true}]
+  - const rateButtons = [{},{}]
+  - const expandableList = [{labelText: 'Завтрак',isChecked: false},{labelText: 'Письменный стол',isChecked: true},{labelText: 'Стул для кормления',isChecked: true},{labelText: 'Кроватка',isChecked: true},{labelText: 'Телевизор',isChecked: false},{labelText: 'Шампунь',isChecked: false}]
 
 block main
   main.main
@@ -12,69 +22,156 @@ block main
     block content
       .content
         .inputs-and-buttons
-          +form-elem({
-            title: 'Text Field',
-            text: 'Default',
-            type: 'email',
-            class: 'text-input',
-            placeholder: 'Email',
-          })
-          +form-elem({
-            title: 'Text Field',
-            text: 'Hover / Focus',
-            type: 'email',
-            class: 'text-input text-input_hovered',
-            placeholder: 'This is pretty awesome',
-          })
-          +form-elem({
-            type: 'dropdown-single', 
-            title: 'Dropdown', 
-            buttonText: 'Cколько гостей'
-            })
-          +form-elem({
-            title: 'masked text field', 
-            text: 'Default', 
-            type: 'email', 
-            class: 'date-input js-date-input', 
-            placeholder: 'ДД.ММ.ГГГГ',
-          })
-          +form-elem({
-            type: 'dropdown-group', 
-            title1: 'date Dropdown', 
-            title2: 'date Dropdown', 
-            buttonText1: 'ДД.ММ.ГГГГ',
-            buttonText2: '19.08.2019',
-          })
-          +form-elem({
-            type: 'dropdown-single', 
-            title: 'filter date dropdown', 
-            buttonText: '19 авг - 23 авг'
-            })
-          +form-elem({
-            type: 'subscription'
-          })
-          +form-elem({
-            type: 'checkbox-buttons',
-            data: [
-              {labelText: 'Можно курить', isChecked: false},
-              {labelText: 'Можно с питомцами', isChecked: true},
-              {labelText: 'Можно пригласить гостей (до 10 человек)', isChecked: true}]
-          })
-          +form-elem({
-            type: 'radio-buttons',
-            name: 'sex',
-            data: [
-              {labelText: 'Мужчина', isChecked: true},
-              {labelText: 'Женщина', isChecked: false}
-              ]
-          })
-          +form-elem({
-            type: 'toggle',
-            data: [
-              {labelText: 'Получать спецпредложения', isChecked: true},
-              {labelText: 'Получать спецпредложения', isChecked: false}
-              ]
-          })
-          +form-elem({
-            type: 'like'
-          })
+          .inputs-and-buttons__item
+            +input({labelText: 'Text Field',additionalText: 'Default',type: 'email',placeholder: 'Email'})
+          
+          .inputs-and-buttons__item
+            +input({labelText: 'Text Field',additionalText: 'Hover / Focus',type: 'email',placeholder: 'This is pretty awesome'})
+            .dropdown-box
+
+          .inputs-and-buttons__item
+            +input({labelText: 'Dropdown',additionalText: 'Default',type: 'text',placeholder: 'Сколько гостей', readonly: true})
+
+          .inputs-and-buttons__item
+            +input({labelText: 'masked text field',additionalText: 'Default',type: 'text',placeholder: 'ДД.ММ.ГГГГ', maskedInput: true})
+          
+          .inputs-and-buttons__item
+            +input({labelText: 'date Dropdown', type: 'date-dropdown',placeholder: 'ДД.ММ.ГГГГ', value2: '19.08.2019', readonly: true})
+            .dropdown-box
+
+          .inputs-and-buttons__item
+            +input({labelText: 'filter date dropdown',type: 'dropdown',value: '19 авг - 23 авг', readonly: true})
+            .dropdown-box
+
+          .inputs-and-buttons__item
+            +input({labelText: 'subscription text field', type: 'text', placeholder: 'Email'})
+            +button({type: 'arrow-forward'})
+
+          .inputs-and-buttons__item
+            +fieldset({legend: 'checkbox-buttons'})
+              each checkbox in checkboxes
+                - let {labelText, isChecked} = checkbox
+                  +input({type: 'checkbox',labelText: `${labelText}`,isChecked: isChecked})
+
+          .inputs-and-buttons__item
+            +fieldset({legend: 'radio-buttons'})
+              each radio in radios
+                - let {labelText, isChecked} = radio
+                +input({type: 'radio',labelText: `${labelText}`,isChecked: isChecked,name: 'sex'}) 
+
+          .inputs-and-buttons__item
+            +fieldset({legend: 'toggle'})
+              +input({type: 'checkbox', labelText: 'Получать спецпредложения', isChecked: true, class:'toggle'})
+              +input({type: 'checkbox', labelText: 'Получать спецпредложения', isChecked: false, class:'toggle'})
+
+          .inputs-and-buttons__item
+            +fieldset({legend: 'like button'})
+              +button({type: 'like',likesNumber: 2})
+              +button({type: 'like',likesNumber: 12})
+          
+          .inputs-and-buttons__item
+            +fieldset({legend: 'rate button'})
+              +rate({rateNumber: 4, name: 'rate1'})
+              +rate({rateNumber: 5, name: 'rate2'})
+
+          .inputs-and-buttons__item
+            +fieldset({legend: 'Range Slider'})
+              .range
+
+          .inputs-and-buttons__item
+            +fieldset({legend: 'buttons'})
+              .buttons
+                +button({type: 'gradient', buttonText: 'CLICK ME'})
+                +button({type: 'gradient', buttonText: 'CLICK ME'})
+              .buttons
+                +button({type: 'white', buttonText: 'CLICK ME'})
+                +button({type: 'white', buttonText: 'CLICK ME'})
+              .buttons
+                +button({type: 'text', buttonText: 'CLICK ME'})
+                +button({type: 'text', buttonText: 'CLICK ME'})
+              .buttons
+                +button({type: 'form-submit', buttonText: 'перейти к оплате'})
+
+          .inputs-and-buttons__item
+            +fieldset({legend: 'pagination'})
+              +pagination({totalCount: 150, take: 10})
+        
+        .dropdowns
+          .dropdown
+            +input({labelText: 'Dropdown',additionalText: 'Default',type: 'dropdown',value: '2 спальни, 2 кровати...', readonly: true})
+            .dropdown-box
+          
+          .dropdown
+            +input({labelText: 'Dropdown',additionalText: 'Expanded',type: 'dropdown',value: '2 спальни, 2 кровати...', readonly: true})
+            .dropdown-box
+          
+          .dropdown
+            +input({labelText: 'Dropdown',type: 'dropdown',placeholder: 'Сколько гостей', readonly: true})
+            .dropdown-box
+          
+          .dropdown
+            +input({labelText: 'Dropdown',type: 'dropdown',value: '3 гостя', readonly: true})
+            .dropdown-box
+        
+        .lists
+          .list
+            +fieldset({legend: 'expandable checkbox list'})
+          
+          .list
+            +fieldset({legend: 'expandable checkbox list'})
+              each item in expandableList
+                - let {labelText, isChecked} = item
+                  +input({type: 'checkbox',labelText: `${labelText}`,isChecked: isChecked})
+
+
+          .list
+            +fieldset({legend: 'rich Checkbox Buttons'})
+              +input({type: 'rich-checkbox', title: 'Широкий коридор', description: 'Ширина коридоров в номере не менее 91 см.'})
+              +input({type: 'rich-checkbox', title: 'Помощник для инвалидов', description: 'На 1 этаже вас встретит специалист  и проводит до номера.'})
+
+          .list
+            h3.list__heading.heading.heading_level-3 bullet list
+            +list({type: 'ul'})
+              +list-item({type: 'li'})
+                | Нельзя с питомцами
+              +list-item({type: 'li'})
+                | Без вечеринок и мероприятий
+              +list-item({type: 'li'})
+                | Время прибытия — после 13:00, а выезд до 12:00
+
+        .misc
+          .misc__item
+            +list({type: 'ul'})
+              +list-item({type: 'li'})
+                .icon.material-icons location_city
+                +list({type: 'dl', class: 'description-list'})
+                  +list-item({type: 'dt'})
+                    | Комфорт
+                  +list-item({type: 'dd'})
+                    | Шумопоглощающие стены
+              +list-item({type: 'li'})
+                .icon.material-icons whatshot
+                +list({type: 'dl', class: 'description-list'})
+                  +list-item({type: 'dt'})
+                    | Удобство
+                  +list-item({type: 'dd'})
+                    | Окно в каждой из спален
+          .misc__item
+            .review
+              .review__head
+                .review__avatar
+                  img.review__img(alt='avatar')
+              .review__body
+                +button({type: 'like',likesNumber: 12})
+                p.review__text. 
+                  Обслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, каждый день новое блюдо и десерт как
+                  комплимент
+
+
+
+
+
+
+
+
+          

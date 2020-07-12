@@ -1,0 +1,7 @@
+mixin pagination(options)
+  if !options
+    - options = {}
+  .pagination
+    .pagination__body
+      .pages(data-total-count=`${options.totalCount || ''}` data-take=`${options.take || ''}`)
+    span.pagination__text 1 – 12 из 100+ вариантов аренды

@@ -85,6 +85,14 @@ module.exports = {
           }
         ]
       },
+      {
+        test: /\.(ttf|woff|woff2|eot)$/,
+        use: [
+          {
+            loader: 'file-loader',
+          }
+        ]
+      },
     ]
   },
 
@@ -95,8 +103,8 @@ module.exports = {
     }),
 
     new HtmlWebpackPlugin({
-      template: './src/pug/pages/ui-kit-cards/ui-kit-cards.pug',
-      filename: 'ui-kit-cards.html',
+      template: './src/pug/pages/ui-kit-form-elements/ui-kit-form-elements.pug',
+      filename: 'ui-kit-form-elements.html',
     }),
 
     new CleanWebpackPlugin(),
@@ -106,6 +114,10 @@ module.exports = {
         {
           from: path.resolve(__dirname, 'src/images'),
           to: path.resolve(__dirname, 'dist/images')
+        },
+        {
+          from: path.resolve(__dirname, 'src/fonts'),
+          to: path.resolve(__dirname, 'dist/fonts')
         }
       ]
     }),

@@ -1,4 +1,30 @@
-@import "./vars.scss";
-@import "./mixins.scss";
-@import "./fonts.scss";
-@import "./reset.scss";
+@import "./fonts";
+@import "./reset";
+@import "./utils";
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  @include main-font;
+}
+
+.heading {
+  @include h1;
+  font-family: $second-font;
+}
+.heading_level-2 {
+  @include h2;
+  font-family: $second-font;
+}
+.heading_level-3 {
+  @include h3;
+}
+
+.main-logo {
+
+  &_ui-kit {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+  }
+}
+

@@ -1,0 +1,11 @@
+.label{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  &__main-text, &__additional-text{
+    flex: 1 1 50%;
+  }
+  &__additional-text{
+    text-align: right;
+  }
+}

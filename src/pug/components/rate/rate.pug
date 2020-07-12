@@ -1,0 +1,11 @@
+include ../input/input
+
+mixin rate(options)
+  if !options
+   - options = {}
+  .rate
+    - for (let i = 1; i <= 5; i++)
+      if i === options.rateNumber
+        +input({type: 'radio', name: options.name, class: 'rate', isChecked: true})
+      else 
+        +input({type: 'radio', name: options.name, class: 'rate', isChecked: false})
