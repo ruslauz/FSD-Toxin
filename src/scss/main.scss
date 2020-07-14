@@ -17,6 +17,7 @@ body {
 }
 .heading_level-3 {
   @include h3;
+  font-family: $main-font;
 }
 
 .main-logo {

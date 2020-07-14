@@ -4,8 +4,8 @@ mixin rate(options)
   if !options
    - options = {}
   .rate
-    - for (let i = 1; i <= 5; i++)
+    - for (let i = 5; i > 0; i--)
       if i === options.rateNumber
-        +input({type: 'radio', name: options.name, class: 'rate', isChecked: true})
+        input(type='radio' name=options.name value=i class='radio rate__radio' checked)
       else 
-        +input({type: 'radio', name: options.name, class: 'rate', isChecked: false})
+        input(type='radio' name=options.name value=i class='radio rate__radio')

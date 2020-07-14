@@ -1,6 +1,7 @@
 // Scripts
-require.context('./src/', true, /\.js$/)
+require.context('./src/', true, /\.js$/);
 
 // Styles
-require('./src/scss/main.scss')
-require.context('./src/pug/', true, /\.scss$/)
+require('material-design-icons/iconfont/material-icons.css');
+require('./src/scss/main.scss');
+require.context('./src/pug/', true, /\.scss$/);

@@ -8,9 +8,9 @@ mixin button(options)
     when 'arrow-forward'
       button.button.arrow-forward-button(type = 'submit' class = `${options.class || ''}`)
     when 'like'
-      button.button.like-button(type = 'button' class = `${options.class || ''}`)
-        i.icon.material-icons favorite
-        span.likes-number #{options.likesNumber}
+      button.button.like-button(type = 'button' class = `${options.liked ? 'like-button_liked' : ''}`)
+        i.icon.like-button__icon.material-icons favorite
+        span.like-button__likes-number #{options.likesNumber}
     when 'gradient'
       button.button.gradient-button(type = 'button' class = `${options.class || ''}`) #{options.buttonText}
     when 'white'

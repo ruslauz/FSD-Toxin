@@ -1,0 +1,32 @@
+.main_form-elements {
+  padding: 140px 140px 130px;
+}
+.content{
+  &_form-elements{
+    // display: grid;
+    // grid-template-rows: 636px 262px 282px;
+  }
+}
+.inputs-and-buttons {
+  display: grid;
+  grid-template-columns: minmax(320px, 446px) minmax(320px, 392px) minmax(320px, auto);
+
+  &__item{
+    margin: 0 0 20px 0;
+
+  }
+}
+
+.like-buttons{
+  display: flex;
+}
+
+.rates{
+  display: flex;
+
+  & .rate:not(:last-child) {
+    margin: 0 20px 0 0;
+  }
+}
+
+
