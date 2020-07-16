@@ -8,12 +8,13 @@
 
   &__radio{
     height: 24px;
+    cursor: pointer;
     
     &:after{
       content: 'star_border';
       font-family: 'Material Icons';
       font-size: 24px;
-      background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
+      background: $purple-gradient;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }

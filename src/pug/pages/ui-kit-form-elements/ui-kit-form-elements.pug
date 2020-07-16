@@ -7,6 +7,7 @@ include ../../components/rate/rate
 include ../../components/pagination/pagination
 include ../../components/fieldset/fieldset
 include ../../components/list/list
+include ../../components/range/range
 
 block variables
   - const title = 'UI Kit Cards'
@@ -18,7 +19,8 @@ block variables
 
 block main
   main.main.main_form-elements
-    img.main-logo.main-logo_ui-kit(src="./images/svg/ui-kit-logo.svg", alt="logo")
+    .main-logo.main-logo_ui-kit(src="./images/svg/ui-kit-logo.svg", alt="logo")
+      include ../../../images/svg/ui-kit-logo.svg
     block content
       .content.content_form-elements
         .inputs-and-buttons
@@ -79,26 +81,27 @@ block main
                   +rate({rateNumber: 5, name: 'rate2'})
 
           .column-3
-            .inputs-and-buttons__item
-              +fieldset({legend: 'Range Slider'})
-                .range
+            .inputs-and-buttons__item.inputs-and-buttons__item_range-container
+              +range({title: 'Range Slider'})
 
             .inputs-and-buttons__item
               +fieldset({legend: 'buttons'})
                 .buttons
                   +button({type: 'gradient', buttonText: 'CLICK ME'})
-                  +button({type: 'gradient', buttonText: 'CLICK ME'})
+                  +button({type: 'gradient', buttonText: 'CLICK ME', hovered: true})
                 .buttons
                   +button({type: 'white', buttonText: 'CLICK ME'})
-                  +button({type: 'white', buttonText: 'CLICK ME'})
+                  +button({type: 'white', buttonText: 'CLICK ME', hovered: true})
                 .buttons
                   +button({type: 'text', buttonText: 'CLICK ME'})
-                  +button({type: 'text', buttonText: 'CLICK ME'})
-                .buttons
-                  +button({type: 'form-submit', buttonText: 'перейти к оплате'})
+                  +button({type: 'text', buttonText: 'CLICK ME', hovered: true})
 
             .inputs-and-buttons__item
-              +fieldset({legend: 'pagination'})
+              +button({type: 'form-submit', buttonText: 'перейти к оплате'})
+
+            .inputs-and-buttons__item
+              .inputs-and-buttons__item-heading.heading_level-3 pagination 
+              .inputs-and-buttons__item-body
                 +pagination({totalCount: 150, take: 10})
         
         .dropdowns

@@ -10,6 +10,8 @@
   flex-wrap: wrap;
   max-width: 320px;
   position: relative;
+  flex-grow: 1;
+  cursor: pointer;
 
   &__main-text, &__additional-text{
     flex: 1 1 50%;
@@ -63,6 +65,11 @@
   grid-column-gap: 20px;
 }
 
+.dropdown-input{
+  cursor: pointer;
+  position: relative;
+}
+
 .dropdown-icon{
   position: absolute;
   font-size: 24px;
@@ -70,6 +77,7 @@
   color: $main50;
   right: 12px;
   top: 31px;
+  pointer-events: none;
 }
 
 .checkbox{
@@ -81,7 +89,7 @@
 
     &:checked{
       background: url('../../../images/svg/checked.svg') no-repeat 4px 3px;
-      border: 1px solid #BC9CFF;
+      border: 1px solid $purple;
     }
 
     &_rich-checkbox{
@@ -98,10 +106,10 @@
       margin: 0 10px 0 0;
 
       &:checked{
-          background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
+          background: $purple-gradient;
         
           &:before{
-            background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
+            background: $purple-gradient;
             left: 24px;
           }
         }
@@ -154,14 +162,14 @@
       display: inline-block;
       border-radius: 50%;
       transition: all ease 0.6s;
-      background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
+      background: $purple-gradient;
       position: absolute;
       margin: 3px 0 0 3px;
       opacity: 0;
     }
 
     &:checked{
-      border: 1px solid #BC9CFF;
+      border: 1px solid $purple;
       transition: all ease 0.6s;
 
       &:before{
@@ -171,7 +179,7 @@
         display: inline-block;
         border-radius: 50%;
         transition: all ease 0.6s;
-        background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
+        background: $purple-gradient;
         position: absolute;
         margin: 3px 0 0 3px;
         opacity: 1;

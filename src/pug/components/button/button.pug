@@ -11,11 +11,14 @@ mixin button(options)
       button.button.like-button(type = 'button' class = `${options.liked ? 'like-button_liked' : ''}`)
         i.icon.like-button__icon.material-icons favorite
         span.like-button__likes-number #{options.likesNumber}
-    when 'gradient'
-      button.button.gradient-button(type = 'button' class = `${options.class || ''}`) #{options.buttonText}
-    when 'white'
-      button.button.white-button(type = 'button' class = `${options.class || ''}`) #{options.buttonText}
-    when 'text'
-      button.button.text-button(type = 'button' class = `${options.class || ''}`) #{options.buttonText}
     when 'form-submit'
-      button.button.form-submit-button(type = 'submit' class = `${options.class || ''}`) #{options.buttonText} 
+      button.button.button-form-submit(type = 'submit' class = `${options.class || ''}`) #{options.buttonText}
+        i.button__icon.material-icons arrow_forward
+    when 'gradient'
+    when 'white'
+    when 'text'
+      -
+        const classes = ['button', `button-${options.type}`];
+        if (options.hovered) classes.push(`${classes[1]}_hovered`);
+      button(type = 'button' class = classes) #{options.buttonText}
+      

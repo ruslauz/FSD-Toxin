@@ -13,18 +13,42 @@
 
   &__item{
     margin: 0 0 20px 0;
+    display: flex;
+    flex-wrap: wrap;
 
+    &_range-container{
+      max-width: 266px;
+    }
+  }
+
+  &__item-heading{
+    flex: 1 100%;
+    text-transform: uppercase;
   }
 }
 
 .like-buttons{
   display: flex;
+
+  & > .like-button:not(:last-child){
+    margin: 0 14px 0 3px;
+  }
 }
 
 .rates{
   display: flex;
 
   & .rate:not(:last-child) {
+    margin: 0 20px 0 0;
+  }
+}
+
+.buttons{
+  display: flex;
+  margin: 0 0 30px 0;
+  max-width: 218px;
+
+  & > .button:not(:last-child){
     margin: 0 20px 0 0;
   }
 }
