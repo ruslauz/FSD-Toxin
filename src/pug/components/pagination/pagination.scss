@@ -1,0 +1,56 @@
+@import '../../../scss/utils';
+
+.pages{
+  display: flex;
+}
+
+.pagination{
+
+  &__body{
+    margin: 0 0 10px 0;
+  }
+
+  &__text{
+    color: $main75
+  }
+}
+
+.pajinatify__button.pajinatify__current{
+  background: $purple-gradient;
+  border-radius: 22px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.pajinatify__button, .page__spliter{
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(31, 32, 65, 0.5);
+}
+
+.pajinatify__button {
+  cursor: pointer;
+}
+
+.pajinatify__button.arrow__next, .pajinatify__button.arrow__prev {
+    background: $green-gradient;
+    border-radius: 22px;
+
+    &:after{
+      content: 'arrow_forward';
+      font-family: 'Material Icons';
+      width: 40px;
+      height: 40px;
+      display: flex;
+      font-size: 24px;
+      color: #FFFFFF;
+      justify-content: center;
+    }
+}
+
+.pajinatify__button.arrow__prev:after {
+    transform: rotate(180deg);
+}

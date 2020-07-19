@@ -8,13 +8,13 @@ include ../../components/pagination/pagination
 include ../../components/fieldset/fieldset
 include ../../components/list/list
 include ../../components/range/range
+include ../../components/dropdown/dropdown
 
 block variables
   - const title = 'UI Kit Cards'
   - const description = 'UI Kit Cards'
   - const radios = [{labelText: 'Мужчина', isChecked: true},{labelText: 'Женщина', isChecked: false}]
   - const checkboxes = [{labelText: 'Можно курить', isChecked: false},{labelText: 'Можно с питомцами', isChecked: true},{labelText: 'Можно пригласить гостей (до 10 человек)', isChecked: true}]
-  - const rateButtons = [{},{}]
   - const expandableList = [{labelText: 'Завтрак',isChecked: false},{labelText: 'Письменный стол',isChecked: true},{labelText: 'Стул для кормления',isChecked: true},{labelText: 'Кроватка',isChecked: true},{labelText: 'Телевизор',isChecked: false},{labelText: 'Шампунь',isChecked: false}]
 
 block main
@@ -99,53 +99,60 @@ block main
             .inputs-and-buttons__item
               +button({type: 'form-submit', buttonText: 'перейти к оплате'})
 
-            .inputs-and-buttons__item
+            .inputs-and-buttons__item_pagination-container
               .inputs-and-buttons__item-heading.heading_level-3 pagination 
               .inputs-and-buttons__item-body
                 +pagination({totalCount: 150, take: 10})
         
         .dropdowns
-          .dropdown
-            +input({labelText: 'Dropdown',additionalText: 'Default',type: 'dropdown',value: '2 спальни, 2 кровати...', readonly: true})
-            .dropdown-box
-          
-          .dropdown
-            +input({labelText: 'Dropdown',additionalText: 'Expanded',type: 'dropdown',value: '2 спальни, 2 кровати...', readonly: true})
-            .dropdown-box
-          
-          .dropdown
-            +input({labelText: 'Dropdown',type: 'dropdown',placeholder: 'Сколько гостей', readonly: true})
-            .dropdown-box
-          
-          .dropdown
-            +input({labelText: 'Dropdown',type: 'dropdown',value: '3 гостя', readonly: true})
-            .dropdown-box
+          .column-1
+            .dropdowns__item.dropdowns__item_small
+              +dropdown({title: 'Dropdown', subtitle: 'Default', items: [{text: 'спальни', name: 'bedroom', value: '2'},{text: 'кровати', name: 'bed', value: '2'},{text: 'ванные комнаты', name: 'bathroom', value: '0'}]})(class='js-convenience-increment-box')
+
+            .dropdowns__item_small
+              +dropdown({title: 'Dropdown', subtitle: 'Expanded', items: [{text: 'спальни', name: 'bedroom', value: '2'},{text: 'кровати', name: 'bed', value: '2'},{text: 'ванные комнаты', name: 'bathroom', value: '0'}], open: true})(class='js-convenience-increment-box')
+            
+          .column-2
+            .dropdowns__item
+              +dropdown({title: 'Dropdown', items: [{text: 'взрослые', name: 'adults', value: '0'},{text: 'дети', name: 'kids', value: '0'},{text: 'младенцы', name: 'babies', value: '0'}], open: true})(class='js-guest-increment-box')
+            
+          .column-3
+            .dropdowns__item
+              +dropdown({title: 'Dropdown', items: [{text: 'взрослые', name: 'adults', value: '2'},{text: 'дети', name: 'kids', value: '1'},{text: 'младенцы', name: 'babies', value: '0'}], open: true})(class='js-guest-increment-box')
         
         .lists
-          .list
-            +fieldset({legend: 'expandable checkbox list'})
-          
-          .list
-            +fieldset({legend: 'expandable checkbox list'})
-              each item in expandableList
-                - let {labelText, isChecked} = item
-                  +input({type: 'checkbox',labelText: `${labelText}`,isChecked: isChecked})
+          .column-1
+            .list
+              details.checkbox-list
+                summary 
+                  span expandable checkbox list
+                each item in expandableList
+                  - let {labelText, isChecked} = item
+                    +input({type: 'checkbox',labelText: `${labelText}`,isChecked: isChecked})
+            
+            .list
+              details.checkbox-list(open)
+                summary expandable checkbox list
+                each item in expandableList
+                  - let {labelText, isChecked} = item
+                    +input({type: 'checkbox',labelText: `${labelText}`,isChecked: isChecked})
 
+          .column-2
+            .list
+              +fieldset({legend: 'rich Checkbox Buttons'})
+                +input({type: 'rich-checkbox', title: 'Широкий коридор', description: 'Ширина коридоров в номере не менее 91 см.'})
+                +input({type: 'rich-checkbox', title: 'Помощник для инвалидов', description: 'На 1 этаже вас встретит специалист  и проводит до номера.'})
 
-          .list
-            +fieldset({legend: 'rich Checkbox Buttons'})
-              +input({type: 'rich-checkbox', title: 'Широкий коридор', description: 'Ширина коридоров в номере не менее 91 см.'})
-              +input({type: 'rich-checkbox', title: 'Помощник для инвалидов', description: 'На 1 этаже вас встретит специалист  и проводит до номера.'})
-
-          .list
-            h3.list__heading.heading.heading_level-3 bullet list
-            +list({type: 'ul'})
-              +list-item({type: 'li'})
-                | Нельзя с питомцами
-              +list-item({type: 'li'})
-                | Без вечеринок и мероприятий
-              +list-item({type: 'li'})
-                | Время прибытия — после 13:00, а выезд до 12:00
+          .colum-3
+            .list
+              h3.list__heading.heading.heading_level-3 bullet list
+              +list({type: 'ul'})
+                +list-item({type: 'li'})
+                  | Нельзя с питомцами
+                +list-item({type: 'li'})
+                  | Без вечеринок и мероприятий
+                +list-item({type: 'li'})
+                  | Время прибытия — после 13:00, а выезд до 12:00
 
         .misc
           .misc__item

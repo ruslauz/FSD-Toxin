@@ -1,1 +1,25 @@
-include ../button/button
+mixin dropdown(options)
+  - 
+    options = options || {}
+    let {title, subtitle, summary, open, items} = options
+
+  .dropdown
+    .dropdown__heading.heading_level-3 
+      span.dropdown__title= title
+      span.dropdown__subtitle= subtitle
+    details.dropdown__details(open=open)
+      summary.dropdown__summary
+        span.dropdown__text.js-dropdown__text= summary
+      .dropdown__body
+        .increment-box.js-increment-box(class!=attributes.class)
+          .increment-box__rows
+            - for (let {text, name, value} of items)
+              .increment-box__row
+                span.increment-box__text= text
+                .increment-box__buttons
+                  button.decrease -
+                  input.increment-box__number(name = name value = value type = 'text')
+                  button.increase +
+          .action-buttons
+            button.reset очистить
+            button.done применить

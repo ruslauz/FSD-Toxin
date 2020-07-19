@@ -38,6 +38,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "jquery": "^3.5.1",
     "material-design-icons": "^3.0.1",
     "nouislider": "^14.6.0"
   }

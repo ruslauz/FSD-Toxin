@@ -1,3 +1,5 @@
+@import '../../../scss/utils';
+
 .main_form-elements {
   padding: 140px 140px 130px;
 }
@@ -7,23 +9,35 @@
     // grid-template-rows: 636px 262px 282px;
   }
 }
-.inputs-and-buttons {
+
+.inputs-and-buttons, .dropdowns, .lists{
   display: grid;
   grid-template-columns: minmax(320px, 446px) minmax(320px, 392px) minmax(320px, auto);
+}
+
+.inputs-and-buttons{
+  margin: 0 0 100px 0;
 
   &__item{
     margin: 0 0 20px 0;
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
 
     &_range-container{
       max-width: 266px;
+    }
+
+    &_pagination-container{
+      max-width: 320px;
+
     }
   }
 
   &__item-heading{
     flex: 1 100%;
     text-transform: uppercase;
+    margin: 0 0 16px 0;
   }
 }
 
@@ -53,4 +67,23 @@
   }
 }
 
+.dropdowns{
+  margin: 0 0 40px 0;
 
+  &__item{
+    max-width: 320px;
+    &:not(:last-child){
+      margin: 0 0 20px 0;
+    }
+
+    &_small{
+      max-width: 266px;
+    }
+  }
+}
+
+
+
+.lists{
+  margin: 0 0 100px 0;
+}
