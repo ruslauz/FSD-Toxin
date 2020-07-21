@@ -1,0 +1,10 @@
+mixin expandable-list(options)
+    - 
+      options = options || {}
+      let {title, open} = options
+    .expandable-list
+      details.detail.expandable-list__detail(open = open)
+        summary.summary.expandable-list__summary
+          span.expandable-list__title.heading_level-3= title
+        .expandable-list__body
+          block

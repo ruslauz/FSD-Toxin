@@ -13,6 +13,15 @@ export function phraser(single, pluralFirstType, pluralSecondType, number) {
   return `${number} ${pluralSecondType}`;
 };
 
+// Close all
+function closeAll() {
+  document.querySelectorAll('.dropdown_expanded')
+    .forEach(el => {
+      el.classList.remove('dropdown_expanded')
+    })
+}
+
+
 export default function iBox(el) {
 
   // Находим цель
@@ -41,6 +50,7 @@ export default function iBox(el) {
       const plusButtons = target.querySelectorAll('.increase');
       const numbers = target.querySelectorAll('.increment-box__number');
       const output = target.closest('.dropdown').querySelector('.js-dropdown__text');
+      const summary = target.closest('.dropdown__details').querySelector('.dropdown__summary');
 
       //Mutation Observer     
       const observer = new MutationObserver(mutations => {
@@ -56,6 +66,18 @@ export default function iBox(el) {
           }
         })
       });
+      
+      // Listeners
+      summary.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (e.target.closest('.dropdown').classList.contains('dropdown_expanded')){
+          closeAll();
+        } else {
+          closeAll();
+          e.target.closest('.dropdown').classList.toggle('dropdown_expanded')
+        }
+      })
+
 
       ![...numbers].reduce((acc, number, index) => {
         number.setAttribute('data-min-number', items[index].minNumber)
@@ -73,7 +95,6 @@ export default function iBox(el) {
         // Кнопка Применить
         applyButton.addEventListener('click', (e) => {
           iBoxRender(defaultPhrase, items);
-          e.target.closest('.dropdown__details').open = false;
         }, true)
 
         // Кнопка Очистить
@@ -86,7 +107,6 @@ export default function iBox(el) {
         }
         resetButton.addEventListener('click', function (e) {
           reset();
-          e.target.closest('.dropdown__details').open = false;
           e.target.style.visibility = 'hidden';
         }, true)
       }
@@ -143,3 +163,9 @@ export default function iBox(el) {
     init: iBoxInit,
   }
 };
+
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.dropdown_expanded') && !e.target.classList.contains('dropdown__summary')) {
+    closeAll();
+  }
+})

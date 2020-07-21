@@ -27,20 +27,22 @@ mixin input(options)
           i.material-icons.dropdown-icon expand_more
       block
     when 'radio'
-      - options.class =  options.class || 'radio_simple'
-        label(class='label')
-          input(type=`${options.type}` class=`${options.type} ${options.class || ''}` value=options.value || false  name=`${options.name}` checked=options.isChecked)
-          | #{options.labelText}
-          block
+      - options.class =  options.class || 'radio__input_simple'
+        .radio
+          label(class='label radio__label')
+            input(type=`${options.type}` class=`${options.type}__input ${options.class || ''}` value=options.value || false  name=`${options.name}` checked=options.isChecked)
+            span(class = 'label__text radio__text') #{options.labelText}
+            block
     when 'checkbox'
     when 'rich-checkbox'
     when 'toggle'
-      label.label.label_with-checkbox
-        input(type=`checkbox` class=`checkbox ${options.type !== 'checkbox' ? `checkbox_${options.type}` : ''}` checked=options.isChecked)
-        = options.labelText
-        if options.type === 'rich-checkbox'
-          span.rich-checkbox-text
-            span.rich-checkbox-text__title #{options.title}
-            span.rich-checkbox-text__description #{options.description}
-        block
+      .checkbox
+        label.label.checkbox__label
+          input(type=`checkbox` class=`checkbox__input${options.type !== 'checkbox' ? `_${options.type}` : ''}` checked=options.isChecked)
+          = options.labelText
+          if options.type === 'rich-checkbox'
+            span.checkbox__text
+              span.checkbox__title!= options.title
+              span.checkbox__description!= options.description
+          block
     

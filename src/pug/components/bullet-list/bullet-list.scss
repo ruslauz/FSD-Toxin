@@ -1,0 +1,38 @@
+@import '../../../scss/utils';
+
+.bullet-list{
+
+  &__heading{
+    text-transform: uppercase;
+    margin: 0 0 16px 0;
+  }
+
+  &__body{
+
+  }
+
+  &__ul{
+    padding: 0 0 0 20px;
+  }
+
+  &__li{
+    color: $main75;
+    position: relative;
+
+    &:before{
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: rgba(31, 32, 65, 0.25);
+      border-radius: 50%;
+      display: flex ;
+      left: -20px;
+      top: 7px;
+    }
+    
+    &:not(:last-child){
+      margin: 0 0 10px 0;
+    }
+  }
+}

@@ -9,6 +9,10 @@ include ../../components/fieldset/fieldset
 include ../../components/list/list
 include ../../components/range/range
 include ../../components/dropdown/dropdown
+include ../../components/expandable-list/expandable-list
+include ../../components/bullet-list/bullet-list
+include ../../components/advantage/advantage
+include ../../components/review/review
 
 block variables
   - const title = 'UI Kit Cards'
@@ -53,20 +57,27 @@ block main
           .column-2
             .inputs-and-buttons__item
               +fieldset({legend: 'checkbox-buttons'})
-                each checkbox in checkboxes
-                  - let {labelText, isChecked} = checkbox
-                    +input({type: 'checkbox',labelText: `${labelText}`,isChecked: isChecked})
+                .checkbox-buttons
+                  each checkbox in checkboxes
+                    - let {labelText, isChecked} = checkbox
+                      .checkbox-buttons__item
+                        +input({type: 'checkbox',labelText: `${labelText}`,isChecked: isChecked})
 
             .inputs-and-buttons__item
               +fieldset({legend: 'radio-buttons'})
-                each radio in radios
-                  - let {labelText, isChecked} = radio
-                  +input({type: 'radio',labelText: `${labelText}`, isChecked: isChecked,name: 'sex'}) 
+                .radio-buttons
+                  each radio in radios
+                    - let {labelText, isChecked} = radio
+                    .radio-buttons__item
+                      +input({type: 'radio',labelText: `${labelText}`, isChecked: isChecked,name: 'sex'}) 
 
             .inputs-and-buttons__item
               +fieldset({legend: 'toggle'})
-                +input({type: 'toggle', labelText: 'Получать спецпредложения', isChecked: true,})
-                +input({type: 'toggle', labelText: 'Получать спецпредложения', isChecked: false,})
+                .toggle
+                  .toggle__item
+                    +input({type: 'toggle', labelText: 'Получать спецпредложения', isChecked: true,})
+                  .toggle__item
+                    +input({type: 'toggle', labelText: 'Получать спецпредложения', isChecked: false,})
 
             .inputs-and-buttons__item
               +fieldset({legend: 'like button'})
@@ -110,78 +121,65 @@ block main
               +dropdown({title: 'Dropdown', subtitle: 'Default', items: [{text: 'спальни', name: 'bedroom', value: '2'},{text: 'кровати', name: 'bed', value: '2'},{text: 'ванные комнаты', name: 'bathroom', value: '0'}]})(class='js-convenience-increment-box')
 
             .dropdowns__item_small
-              +dropdown({title: 'Dropdown', subtitle: 'Expanded', items: [{text: 'спальни', name: 'bedroom', value: '2'},{text: 'кровати', name: 'bed', value: '2'},{text: 'ванные комнаты', name: 'bathroom', value: '0'}], open: true})(class='js-convenience-increment-box')
+              +dropdown({title: 'Dropdown', subtitle: 'Expanded', items: [{text: 'спальни', name: 'bedroom', value: '2'},{text: 'кровати', name: 'bed', value: '2'},{text: 'ванные комнаты', name: 'bathroom', value: '0'}], expanded: true, static: true})(class='js-convenience-increment-box')
             
           .column-2
             .dropdowns__item
-              +dropdown({title: 'Dropdown', items: [{text: 'взрослые', name: 'adults', value: '0'},{text: 'дети', name: 'kids', value: '0'},{text: 'младенцы', name: 'babies', value: '0'}], open: true})(class='js-guest-increment-box')
+              +dropdown({title: 'Dropdown', items: [{text: 'взрослые', name: 'adults', value: '0'},{text: 'дети', name: 'kids', value: '0'},{text: 'младенцы', name: 'babies', value: '0'}], expanded: true})(class='js-guest-increment-box')
             
           .column-3
             .dropdowns__item
-              +dropdown({title: 'Dropdown', items: [{text: 'взрослые', name: 'adults', value: '2'},{text: 'дети', name: 'kids', value: '1'},{text: 'младенцы', name: 'babies', value: '0'}], open: true})(class='js-guest-increment-box')
+              +dropdown({title: 'Dropdown', items: [{text: 'взрослые', name: 'adults', value: '2'},{text: 'дети', name: 'kids', value: '1'},{text: 'младенцы', name: 'babies', value: '0'}], expanded: true})(class='js-guest-increment-box')
         
         .lists
           .column-1
-            .list
-              details.checkbox-list
-                summary 
-                  span expandable checkbox list
+            .lists__item.lists__item_small
+              +expandable-list({title: 'expandable checkbox list'})
                 each item in expandableList
                   - let {labelText, isChecked} = item
-                    +input({type: 'checkbox',labelText: `${labelText}`,isChecked: isChecked})
+                    .expandable-list__item
+                      +input({type: 'checkbox',labelText: `${labelText}`,isChecked: isChecked})
             
-            .list
-              details.checkbox-list(open)
-                summary expandable checkbox list
+            .lists__item.lists__item_small
+              +expandable-list({title: 'expandable checkbox list', open: true})
                 each item in expandableList
                   - let {labelText, isChecked} = item
-                    +input({type: 'checkbox',labelText: `${labelText}`,isChecked: isChecked})
+                    .expandable-list__item
+                      +input({type: 'checkbox',labelText: `${labelText}`,isChecked: isChecked})
+
+
 
           .column-2
-            .list
-              +fieldset({legend: 'rich Checkbox Buttons'})
-                +input({type: 'rich-checkbox', title: 'Широкий коридор', description: 'Ширина коридоров в номере не менее 91 см.'})
-                +input({type: 'rich-checkbox', title: 'Помощник для инвалидов', description: 'На 1 этаже вас встретит специалист  и проводит до номера.'})
+            .lists__item
+              .rich-buttons
+                +fieldset({legend: 'rich Checkbox Buttons'})
+                  .rich-buttons__body
+                    .rich-buttons__item
+                      +input({type: 'rich-checkbox', title: 'Широкий коридор', description: 'Ширина коридоров в номере<br>не менее 91 см.'})
+                    .rich-buttons__item
+                      +input({type: 'rich-checkbox', title: 'Помощник для инвалидов', description: 'На 1 этаже вас встретит специалист<br>и проводит до номера.'})
 
           .colum-3
-            .list
-              h3.list__heading.heading.heading_level-3 bullet list
-              +list({type: 'ul'})
-                +list-item({type: 'li'})
-                  | Нельзя с питомцами
-                +list-item({type: 'li'})
-                  | Без вечеринок и мероприятий
-                +list-item({type: 'li'})
-                  | Время прибытия — после 13:00, а выезд до 12:00
+            .lists__item
+              +bullet-list({title: 'bullet list', items: ['Нельзя с питомцами', 'Без вечеринок и мероприятий', 'Время прибытия — после 13:00,<br>а выезд до 12:00']})
 
         .misc
           .misc__item
-            +list({type: 'ul'})
-              +list-item({type: 'li'})
-                .icon.material-icons location_city
-                +list({type: 'dl', class: 'description-list'})
-                  +list-item({type: 'dt'})
-                    | Комфорт
-                  +list-item({type: 'dd'})
-                    | Шумопоглощающие стены
-              +list-item({type: 'li'})
-                .icon.material-icons whatshot
-                +list({type: 'dl', class: 'description-list'})
-                  +list-item({type: 'dt'})
-                    | Удобство
-                  +list-item({type: 'dd'})
-                    | Окно в каждой из спален
+            .advantages
+              .advantages__item
+                +advantage({icon: 'location_city', title: 'Комфорт', description: 'Шумопоглощающие стены'})
+              .advantages__item
+                +advantage({icon: 'whatshot', title: 'Удобство', description: 'Окно в каждой из спален'})
+          
           .misc__item
-            .review
-              .review__head
-                .review__avatar
-                  img.review__img(alt='avatar')
-              .review__body
-                +button({type: 'like',likesNumber: 12})
-                p.review__text. 
-                  Обслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, каждый день новое блюдо и десерт как
-                  комплимент
-
+            .reviews
+              +review({imgPath: '/images/avatar.jpg',
+              name: 'Мурад Сарафанов',
+              date: '5 дней назад',
+              likes: 12,
+              liked: true,
+              content: 'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.'
+              })
 
 
 

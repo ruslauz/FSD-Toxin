@@ -118,18 +118,18 @@ module.exports = {
 
     new CleanWebpackPlugin(),
 
-    // new CopyWebpackPlugin({
-    //   patterns: [
-    //     {
-    //       from: path.resolve(__dirname, 'src/images'),
-    //       to: path.resolve(__dirname, 'dist/images')
-    //     },
-    //     {
-    //       from: path.resolve(__dirname, 'src/fonts'),
-    //       to: path.resolve(__dirname, 'dist/fonts')
-    //     }
-    //   ]
-    // }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, 'src/images'),
+          to: path.resolve(__dirname, 'dist/images')
+        },
+        // {
+        //   from: path.resolve(__dirname, 'src/fonts'),
+        //   to: path.resolve(__dirname, 'dist/fonts')
+        // }
+      ]
+    }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].css'
     })

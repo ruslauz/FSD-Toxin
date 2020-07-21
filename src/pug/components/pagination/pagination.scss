@@ -28,7 +28,7 @@
   line-height: 40px;
   text-align: center;
   font-size: 12px;
-  color: rgba(31, 32, 65, 0.5);
+  color: $main50;
 }
 
 .pajinatify__button {
@@ -41,7 +41,7 @@
 
     &:after{
       content: 'arrow_forward';
-      font-family: 'Material Icons';
+      font-family: $material;
       width: 40px;
       height: 40px;
       display: flex;

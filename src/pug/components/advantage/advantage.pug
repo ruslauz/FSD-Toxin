@@ -1,0 +1,10 @@
+mixin advantage(options)
+  - 
+    options = options || {}
+    let {icon, title, description} = options
+  .advantage
+    .advantage__icon.material-icons= icon
+    .advantage__text
+      .advantage__title= title
+      .advantage__description= description
+

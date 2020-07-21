@@ -8,10 +8,9 @@
 .label{
   display: flex;
   flex-wrap: wrap;
-  max-width: 320px;
   position: relative;
-  flex-grow: 1;
   cursor: pointer;
+  line-height: 18px;
 
   &__main-text, &__additional-text{
     flex: 1 1 50%;
@@ -29,6 +28,8 @@
   &_with-checkbox{
     flex-wrap: nowrap;
     cursor: pointer;
+    color: $main50;
+    flex-basis: 100%;
   }
 
 }
@@ -81,11 +82,39 @@
 }
 
 .checkbox{
+
+  &__label{
+    display: flex;
+    flex-wrap: nowrap;
+    color: $main50;
+  }
+
+  &__text{
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title{
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 18px;
+    color: $main75;
+    margin: 0 0 5px 0;
+  }
+
+  &__description{
+    font-size: 12px;
+    line-height: 14px;
+    color:$main50;
+  }
+
+  &__input, &__input_rich-checkbox{
     border: 1px solid $main25;
     border-radius: 4px;
     width: 20px;
     height: 20px;
     margin: 0 10px 0 0;
+    flex-shrink: 0;
 
     &:checked{
       background: url('../../../images/svg/checked.svg') no-repeat 4px 3px;
@@ -141,36 +170,30 @@
         z-index: 2;
       }
     }
+  }
 }
 
 .radio{
+  &__label{
+    flex-wrap: nowrap;
+  }
 
-  &_simple{
-    width: 20px;
-    height: 20px;
-    background: #FFFFFF;
-    border: 1px solid $main25;
-    border-radius: 50%;
-    cursor: pointer;
-    margin: 0 10px 0 0;
-    transition: all ease 0.6s;
+  &__text{
+    color: $main50;
+  }
 
-    &:before{
-      content: "";
-      width: 12px;
-      height: 12px;
-      display: inline-block;
+  &__input{
+
+    &_simple{
+      width: 20px;
+      height: 20px;
+      background: #FFFFFF;
+      border: 1px solid $main25;
       border-radius: 50%;
+      cursor: pointer;
+      margin: 0 10px 0 0;
       transition: all ease 0.6s;
-      background: $purple-gradient;
-      position: absolute;
-      margin: 3px 0 0 3px;
-      opacity: 0;
-    }
-
-    &:checked{
-      border: 1px solid $purple;
-      transition: all ease 0.6s;
+      flex-shrink: 0;
 
       &:before{
         content: "";
@@ -182,7 +205,29 @@
         background: $purple-gradient;
         position: absolute;
         margin: 3px 0 0 3px;
-        opacity: 1;
+        opacity: 0;
+      }
+
+      &:checked{
+        border: 1px solid $purple;
+        transition: all ease 0.6s;
+
+        & ~ *{
+          color: $main75;
+        }
+
+        &:before{
+          content: '';
+          width: 12px;
+          height: 12px;
+          display: inline-block;
+          border-radius: 50%;
+          transition: all ease 0.6s;
+          background: $purple-gradient;
+          position: absolute;
+          margin: 3px 0 0 3px;
+          opacity: 1;
+        }
       }
     }
   }

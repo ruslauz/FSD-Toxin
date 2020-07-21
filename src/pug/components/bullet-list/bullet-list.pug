@@ -1,0 +1,10 @@
+mixin bullet-list(options)
+  -
+    options = options || {}
+    let {title, items} = options
+  .bullet-list
+  .bullet-list__heading.heading_level-3= title
+  .bullet-list__body
+    ul.ul.bullet-list__ul
+      each item in items
+        li.li.bullet-list__li!= item

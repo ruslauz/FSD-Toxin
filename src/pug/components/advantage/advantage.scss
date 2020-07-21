@@ -1,0 +1,28 @@
+  @import '../../../scss/utils';
+  
+  .advantage{
+    display: flex;
+
+    &__icon{
+      width: 48px;
+      height: 48px;
+      font-size: 48px;
+      line-height: 41px;
+      background: $purple-gradient;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0 10px 0 0;
+    }
+
+    &__text{
+      color: $main75;
+    }
+
+    &__title{
+      font-weight: bold;
+    }
+
+    &__description{
+
+    }
+  }

@@ -1,0 +1,17 @@
+include ../button/button
+
+mixin review(options)
+  -
+    options = options || {}
+    let {imgPath, name, date, likes, liked, content} = options
+  .review
+    .review__head
+      .review__avatar
+        img.review__img(alt='avatar' src= imgPath)
+      .review__heading
+        .review__name= name
+        .review__date= date
+    .review__body
+      .review__button
+        +button({type: 'like',likesNumber: likes, liked: liked})
+      .review__content!= content

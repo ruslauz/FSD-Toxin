@@ -5,14 +5,15 @@
 }
 .content{
   &_form-elements{
-    // display: grid;
-    // grid-template-rows: 636px 262px 282px;
   }
 }
-
+.column-1, .column-2, .column-3{
+  pointer-events: all;
+}
 .inputs-and-buttons, .dropdowns, .lists{
   display: grid;
   grid-template-columns: minmax(320px, 446px) minmax(320px, 392px) minmax(320px, auto);
+  grid-template-areas: 'misc-item misc-item2 misc-item2 ';
 }
 
 .inputs-and-buttons{
@@ -23,6 +24,7 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    max-width: 320px;
 
     &_range-container{
       max-width: 266px;
@@ -32,12 +34,37 @@
       max-width: 320px;
 
     }
+
+    &_checkbox-buttons-container{
+      flex-direction: column;
+    }
   }
 
   &__item-heading{
     flex: 1 100%;
     text-transform: uppercase;
     margin: 0 0 16px 0;
+  }
+}
+
+.checkbox-buttons{
+
+  &__item{
+    margin: 0 0 10px 0;
+  }
+}
+
+.radio-buttons{
+display: flex;
+  &__item{
+    margin: 0 20px 0 0;
+  }
+}
+
+.toggle{
+
+  &__item{
+    margin: 0 0 10px 0;
   }
 }
 
@@ -68,7 +95,7 @@
 }
 
 .dropdowns{
-  margin: 0 0 40px 0;
+  margin: 0 0 154px 0;
 
   &__item{
     max-width: 320px;
@@ -82,8 +109,52 @@
   }
 }
 
-
-
 .lists{
   margin: 0 0 100px 0;
+
+  &__item{
+    max-width: 292px;
+    
+    &:not(:last-child){
+      margin: 0 0 20px 0;
+    }
+
+    &_small{
+      max-width: 266px;
+    }
+  }
+}
+
+.rich-buttons{
+
+  &__item{
+    margin: 0 0 10px 0;
+  }
+}
+
+.misc{
+  display: grid;
+  grid-template-columns: minmax(320px, 446px) auto;
+  
+  &__item{
+  }
+  &__item{
+  }
+}
+
+.advantages{
+
+  &__item{
+    margin: 0 0 20px 0;
+    max-width: 280px;
+
+    &:not(:last-child):after{
+      content: '';
+      display: flex;
+      height: 1px;
+      background: rgba(31, 32, 65, 0.1);
+      width: 100%;
+      margin: 17px 0 0 0;
+    }
+  }
 }

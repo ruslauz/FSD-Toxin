@@ -1,0 +1,45 @@
+@import '../../../scss/utils';
+
+.expandable-list{
+
+  &__detail{
+    display: flex;
+
+    &[open]{
+      .expandable-list__summary:after{
+        transform: rotate(-180deg);
+        transition: ease all .6s;
+      }
+    }
+  }
+
+  &__summary{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 2px 0;
+
+    &:after {
+      content: 'expand_more';
+      font-family: $material;
+      display: flex;
+      font-size: 24px;
+      line-height: 24px;
+      width: 44px;
+      height: 44px;
+      align-items: center;
+      justify-content: center;
+      color: $main50;
+      transition: ease all .6s;
+    }
+  }
+
+  &__title{
+    text-transform: uppercase;
+  }
+
+  &__item{
+    margin: 0 0 10px 0;
+  }
+}
