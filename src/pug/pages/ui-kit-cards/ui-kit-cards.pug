@@ -1,1 +1,150 @@
 extends ../../layouts/main
+
+include ../../components/form-elem/form-elem
+include ../../components/input/input
+include ../../components/button/button
+include ../../components/rate/rate
+include ../../components/pagination/pagination
+include ../../components/fieldset/fieldset
+include ../../components/list/list
+include ../../components/range/range
+include ../../components/dropdown/dropdown
+include ../../components/expandable-list/expandable-list
+include ../../components/bullet-list/bullet-list
+include ../../components/advantage/advantage
+include ../../components/review/review
+include ../../components/ibox/ibox
+
+
+block variables
+  - const title = 'UI Kit Cards'
+  - const description = 'UI Kit Cards'
+  - const radios = [{labelText: 'Мужчина', isChecked: true},{labelText: 'Женщина', isChecked: false}]
+
+block main
+  main.main.main_cards
+    .main-logo.main-logo_ui-kit(src="./images/svg/ui-kit-logo.svg", alt="logo")
+      include ../../../images/svg/ui-kit-logo.svg
+    block content
+      .cards
+        .cards__item
+          .form-wrapper
+            form.form.form_main
+              .form__header
+                .form__title Найдём номера под ваши пожелания 
+              .form__content
+                .form__content-item
+                  +input({labelText: 'date Dropdown', type: 'date-dropdown',placeholder: 'ДД.ММ.ГГГГ', value2: '19.08.2019', readonly: true})
+                .form__content-item.form__content-item_30
+                  +dropdown({title: 'Dropdown'})
+                    +ibox({items: [
+                      {text: 'взрослые', name: 'adults', value: '2'},
+                      {text: 'дети', name: 'kids', value: '1'},
+                      {text: 'младенцы', name: 'babies', value: '0'}
+                      ]})(class='js-guest-increment-box')
+                .form__content-item
+                  +button({type: 'form-submit', buttonText: 'подобрать номер'})
+
+        .cards__item
+          .form-wrapper
+            form.form.form_reg
+              .form__header
+                .form__title Регистрация аккаунта 
+              .form__content
+        
+                .form__content-item.form__content-item_10
+                  +input({type: 'text',placeholder: 'Имя'})
+
+                .form__content-item.form__content-item_10
+                  +input({type: 'text',placeholder: 'Фамилия'})
+
+                .form__content-item.form__content-item_20
+                  .radio-buttons
+                    each radio in radios
+                      - let {labelText, isChecked} = radio
+                      .radio-buttons__item
+                        +input({type: 'radio',labelText: `${labelText}`, isChecked: isChecked,name: 'sex'})
+
+                .form__content-item
+                  +input({labelText: 'дата рождения',type: 'text',placeholder: 'ДД.ММ.ГГГГ', maskedInput: true})
+
+                .form__content-item.form__content-item_10
+                  +input({labelText:'данные для входа в сервис', type: 'email',placeholder: 'Email'})
+
+                .form__content-item.form__content-item_10
+                  +input({type: 'password',placeholder: 'Пароль'})
+
+                .form__content-item
+                  +input({type: 'toggle', labelText: 'Получать спецпредложения', isChecked: true,})
+
+                .form__content-item.form__content-item_30
+                  +button({type: 'form-submit', buttonText: 'перейти к оплате'})
+            
+            .form-footer
+              .form-footer__text Уже есть аккаунт на Toxin
+              .form-footer__button 
+                +button({type: 'white', buttonText: 'войти'})
+
+
+      .cards
+        .cards__item
+          .form-wrapper
+            form.form.form_booking
+              .form__header
+                .booking-room
+                  .booking-room__info
+                    span.booking-room__number <span class="booking-room__number booking-room__number_small">№ </span>888
+                    span.booking-room__lux люкс
+                  .booking-room__price 9 990₽<span class="booking-room__price-additional"> в сутки</span>
+              .form__content
+                .form__content-item
+                  +input({labelText: 'date Dropdown', type: 'date-dropdown',placeholder: 'ДД.ММ.ГГГГ', value2: '19.08.2019', readonly: true})
+                .form__content-item
+                  +dropdown({title: 'Dropdown'})
+                    +ibox({items: [
+                      {text: 'взрослые', name: 'adults', value: '2'},
+                      {text: 'дети', name: 'kids', value: '1'},
+                      {text: 'младенцы', name: 'babies', value: '0'}
+                      ]})(class='js-guest-increment-box')
+                .form__content-item
+                  .calculations
+                    .calculations__body
+                      .calculations__item
+                        span.calculations__text 9 990₽ х 4 суток
+                        span.calculations__number 39 960₽
+                      .calculations__item
+                        span.calculations__text Сбор за услуги: скидка 2 179₽
+                        span.calculations__icon i
+                        span.calculations__number 0₽
+                      .calculations__item
+                        span.calculations__text Сбор за дополнительные услуги
+                        span.calculations__icon i
+                        span.calculations__number 300₽
+                    .calculations__result
+                      .calculations__result-text Итого
+                      .calculations__result-dots
+                      .calculations__result-number 38 081₽
+                .form__content-item
+                  +button({type: 'form-submit', buttonText: 'забронировать'})
+        
+        .cards__item
+          .form-wrapper
+            form.form.form_booking
+              .form__header
+                .form__title Войти
+              .form__content
+                .form__content-item.form__content-item_10
+                  +input({type: 'email',placeholder: 'Email'})
+                .form__content-item
+                  +input({type: 'password',placeholder: 'Пароль'})
+                .form__content-item
+                  +button({type: 'form-submit', buttonText: 'войти'})
+              .form-footer
+                .form-footer__text Нет аккаунта на Toxin?
+                .form-footer__button 
+                  +button({type: 'white', buttonText: 'создать'})
+
+
+
+      .cards
+        .cards__item

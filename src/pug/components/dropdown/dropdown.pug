@@ -1,25 +1,26 @@
 mixin dropdown(options)
   - 
     options = options || {}
-    let {title, subtitle, summary, expanded, items} = options
+    let {title, subtitle, summary, expanded} = options
 
   .dropdown(class = `${expanded ? 'dropdown_expanded' : ''}`)
     .dropdown__heading.heading_level-3 
       span.dropdown__title= title
       span.dropdown__subtitle= subtitle
     details.dropdown__details(open=true)
-      summary.dropdown__summary
+      summary.dropdown__summary(class!=attributes.class)
         span.dropdown__text.js-dropdown__text= summary
       .dropdown__body
-        .increment-box.js-increment-box(class!=attributes.class )
-          .increment-box__rows
-            - for (let {text, name, value} of items)
-              .increment-box__row
-                span.increment-box__text= text
-                .increment-box__buttons
-                  button.decrease -
-                  input.increment-box__number(name = name value = value type = 'text')
-                  button.increase +
-          .action-buttons
-            button.reset очистить
-            button.done применить
+        block
+        //- .increment-box.js-increment-box(class!=attributes.class )
+        //-   .increment-box__rows
+        //-     - for (let {text, name, value} of items)
+        //-       .increment-box__row
+        //-         span.increment-box__text= text
+        //-         .increment-box__buttons
+        //-           button.decrease -
+        //-           input.increment-box__number(name = name value = value type = 'text')
+        //-           button.increase +
+        //-   .action-buttons
+        //-     button.reset очистить
+        //-     button.done применить

@@ -5,6 +5,7 @@
 body {
   font-family: 'Montserrat', sans-serif;
   @include main-font;
+  color: $main;
 }
 
 .heading {

@@ -63,6 +63,20 @@
 .button{
   position: relative;
 
+  &_arrow-forward{
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
   &-white, &-gradient, &-form-submit{
     border-radius: 22px;
     padding: 14px 19px 15px 19px;
@@ -71,9 +85,9 @@
     text-transform: uppercase;
     background: $purple-gradient;
     color: #fff;
-    flex-grow: 1;
     justify-content: center;
     align-items: center;
+    width: 100%;
 
       &:hover, &_hovered{
       opacity: 0.5;
@@ -106,6 +120,8 @@
       color: $main50;
     }
   }
+
+  
 
   &-form-submit{
 

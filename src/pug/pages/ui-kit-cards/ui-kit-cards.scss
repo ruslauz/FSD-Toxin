@@ -1,0 +1,169 @@
+@import '../../../scss/utils';
+
+.main{
+
+  &_cards{
+    background: #E5E5E5;
+    padding: 150px 140px 140px;
+    display: grid;
+    grid-template-columns: minmax(300px, 380px) minmax(300px, 380px) minmax(300px, 320px);
+    grid-column-gap: 40px;
+  }
+}
+
+.cards{
+  &__item{
+    &:not(:last-child){
+      margin: 0 0 40px 0;
+    }
+  }
+}
+.form-wrapper{
+  padding: 40px 30px 30px 30px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+.form{
+  
+  &__header{
+    margin: 0 0 20px 0;
+  }
+  &_main{
+
+  }
+  &__title{
+    font-family: $second-font;
+    @include h1();
+  }
+  &__content{
+
+  }
+  &__content-item{
+    &:not(:last-child){
+      margin: 0 0 20px 0;
+    }
+    &_10{
+        &:not(:last-child){
+        margin: 0 0 10px 0;
+      }
+    }
+    &_30{
+        &:not(:last-child){
+        margin: 0 0 30px 0;
+      }
+    }
+  }
+}
+.form-footer{
+  padding: 30px 0 0 0;
+  display: flex;
+  font-size: 14px;
+  line-height: 18px;
+  color: #000000;
+  align-items: center;
+  justify-content: space-between;
+
+  &__text{
+    margin: 0 35px 0 0;
+
+  }
+  &__button{
+
+  }
+}
+
+.booking-room{
+  display: flex;
+  justify-content: space-between;
+
+
+  &__info{
+
+  }
+  &__number{
+    font-family: $second-font;
+    @include h1();
+    margin: 0 5px 0 0;
+    &_small{
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 17px;
+      margin: 0;
+    }
+  }
+  &__lux{
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
+    color: $purple;
+  }
+  &__price{
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 18px;
+    color: rgba(31, 32, 65, 0.5);
+  }
+  &__price-additional{
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+.calculations{
+  color: $main75;
+    &__body{
+      margin: 0 0 30px 0;
+    }
+    &__item{
+      display: grid;
+      grid-template-columns: minmax(auto, 214px) 20px auto;
+      grid-template-areas: 'text icon number';
+      grid-column-gap: 5px;
+      align-items: baseline;
+      &:not(:last-child){
+        margin: 0 0 10px 0;
+      }
+    }
+    &__text{
+      grid-area: text;
+    }
+    &__icon{
+      display: flex;
+      grid-area: icon;
+      border: 1px solid $main25;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      font-weight: bold;
+      font-size: 12px;
+      color: $main25;
+      align-items: center;
+      justify-content: center;
+    }
+    &__number{
+      grid-area: number;
+      text-align: right;
+    }
+    &__result{
+      @include h2();
+      display: flex;
+      justify-content: space-between;
+      font-family: $second-font;
+
+      &-text{
+        margin: 0 5px 0 0;
+      }
+      &-dots{
+        border-bottom: 1px dotted $main25;
+        flex: 1 0;
+        margin: 0 5px 0 0;
+        height: 19px;
+      }
+      &-number{}
+    }
+}
+

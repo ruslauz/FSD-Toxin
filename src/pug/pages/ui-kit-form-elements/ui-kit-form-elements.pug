@@ -13,10 +13,12 @@ include ../../components/expandable-list/expandable-list
 include ../../components/bullet-list/bullet-list
 include ../../components/advantage/advantage
 include ../../components/review/review
+include ../../components/ibox/ibox
+
 
 block variables
-  - const title = 'UI Kit Cards'
-  - const description = 'UI Kit Cards'
+  - const title = 'UI Form Elements'
+  - const description = 'UI Form Elements'
   - const radios = [{labelText: 'Мужчина', isChecked: true},{labelText: 'Женщина', isChecked: false}]
   - const checkboxes = [{labelText: 'Можно курить', isChecked: false},{labelText: 'Можно с питомцами', isChecked: true},{labelText: 'Можно пригласить гостей (до 10 человек)', isChecked: true}]
   - const expandableList = [{labelText: 'Завтрак',isChecked: false},{labelText: 'Письменный стол',isChecked: true},{labelText: 'Стул для кормления',isChecked: true},{labelText: 'Кроватка',isChecked: true},{labelText: 'Телевизор',isChecked: false},{labelText: 'Шампунь',isChecked: false}]
@@ -37,7 +39,12 @@ block main
               .dropdown-box
 
             .inputs-and-buttons__item
-              +input({labelText: 'Dropdown',additionalText: 'Default',type: 'dropdown',placeholder: 'Сколько гостей', readonly: true})
+              +dropdown({title: 'Dropdown'})
+                +ibox({items: [
+                  {text: 'взрослые', name: 'adults', value: '2'},
+                  {text: 'дети', name: 'kids', value: '1'},
+                  {text: 'младенцы', name: 'babies', value: '0'}
+                  ]})(class='js-guest-increment-box')
 
             .inputs-and-buttons__item
               +input({labelText: 'masked text field',additionalText: 'Default',type: 'text',placeholder: 'ДД.ММ.ГГГГ', maskedInput: true})
@@ -52,7 +59,7 @@ block main
 
             .inputs-and-buttons__item
               +input({labelText: 'subscription text field', type: 'text', placeholder: 'Email'})
-              +button({type: 'arrow-forward'})
+                +button({type: 'arrow-forward'})
 
           .column-2
             .inputs-and-buttons__item
@@ -118,19 +125,40 @@ block main
         .dropdowns
           .column-1
             .dropdowns__item.dropdowns__item_small
-              +dropdown({title: 'Dropdown', subtitle: 'Default', items: [{text: 'спальни', name: 'bedroom', value: '2'},{text: 'кровати', name: 'bed', value: '2'},{text: 'ванные комнаты', name: 'bathroom', value: '0'}]})(class='js-convenience-increment-box')
+              +dropdown({title: 'Dropdown', subtitle: 'Default'})
+                +ibox({items: [
+                  {text: 'спальни', name: 'bedroom', value: '2'},
+                  {text: 'кровати', name: 'bed', value: '2'},
+                  {text: 'ванные комнаты', name: 'bathroom', value: '0'}
+                  ]})(class='js-convenience-increment-box')
 
             .dropdowns__item_small
-              +dropdown({title: 'Dropdown', subtitle: 'Expanded', items: [{text: 'спальни', name: 'bedroom', value: '2'},{text: 'кровати', name: 'bed', value: '2'},{text: 'ванные комнаты', name: 'bathroom', value: '0'}], expanded: true, static: true})(class='js-convenience-increment-box')
-            
+              +dropdown({title: 'Dropdown', subtitle: 'Expanded', expanded: true})
+                +ibox({items: [
+                  {text: 'спальни', name: 'bedroom', value: '2'},
+                  {text: 'кровати', name: 'bed', value: '2'},
+                  {text: 'ванные комнаты', name: 'bathroom', value: '0'}
+                  ]})(class='js-convenience-increment-box')
+
           .column-2
             .dropdowns__item
-              +dropdown({title: 'Dropdown', items: [{text: 'взрослые', name: 'adults', value: '0'},{text: 'дети', name: 'kids', value: '0'},{text: 'младенцы', name: 'babies', value: '0'}], expanded: true})(class='js-guest-increment-box')
+              +dropdown({title: 'Dropdown', expanded: true})
+                +ibox({
+                  items: [
+                    {text: 'взрослые', name: 'adults', value: '0'},
+                    {text: 'дети', name: 'kids', value: '0'},
+                    {text: 'младенцы', name: 'babies', value: '0'}
+                    ]})(class='js-guest-increment-box')
             
           .column-3
             .dropdowns__item
-              +dropdown({title: 'Dropdown', items: [{text: 'взрослые', name: 'adults', value: '2'},{text: 'дети', name: 'kids', value: '1'},{text: 'младенцы', name: 'babies', value: '0'}], expanded: true})(class='js-guest-increment-box')
-        
+              +dropdown({title: 'Dropdown', expanded: true})
+                +ibox({items: [
+                  {text: 'взрослые', name: 'adults', value: '2'},
+                  {text: 'дети', name: 'kids', value: '1'},
+                  {text: 'младенцы', name: 'babies', value: '0'}
+                  ]})(class='js-guest-increment-box')
+
         .lists
           .column-1
             .lists__item.lists__item_small

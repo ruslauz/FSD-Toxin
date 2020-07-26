@@ -7,14 +7,15 @@ mixin input(options)
     when 'date'
     when 'password'
     when 'dropdown'
-      label.label 
+    when 'subscription'
+      label.label(class = `label_${options.type}`) 
         span.label__main-text #{options.labelText}
         if options.additionalText 
           span.label__additional-text #{options.additionalText}
         input(type=`${options.type === 'dropdown' ? 'text' : options.type}` class=`${options.type}-input ${options.hover ? `${options.type}-input_hovered`: ''} ${options.maskedInput ? 'js-masked-input' : ''}` placeholder=options.placeholder  || false value=options.value || false readonly= options.type === 'dropdown')
         if options.type === 'dropdown'
           i.material-icons.dropdown-icon expand_more 
-      block
+        block
     when 'date-dropdown'
       .date-dropdown
         label.label 

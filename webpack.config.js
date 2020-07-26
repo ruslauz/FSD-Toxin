@@ -75,6 +75,14 @@ module.exports = {
         use: [
           {
             loader: 'babel-loader',
+            options: {
+              presets: [
+                '@babel/preset-env',
+              ],
+              plugins: [
+                '@babel/plugin-proposal-class-properties'
+              ]
+            }
           }
         ]
       },
@@ -114,6 +122,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/pug/pages/ui-kit-form-elements/ui-kit-form-elements.pug',
       filename: 'ui-kit-form-elements.html',
+    }),
+
+    new HtmlWebpackPlugin({
+      template: './src/pug/pages/ui-kit-cards/ui-kit-cards.pug',
+      filename: 'ui-kit-cards.html',
     }),
 
     new CleanWebpackPlugin(),

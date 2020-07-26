@@ -6,7 +6,7 @@ mixin button(options)
       button.button.dropdown-button(type = 'button' class = `${options.class || ''}`) #{options.buttonText}
       .dropdown-box
     when 'arrow-forward'
-      button.button.arrow-forward-button(type = 'submit' class = `${options.class || ''}`)
+      button.button.button_arrow-forward.material-icons(type = 'submit' class = `${options.class || ''}`) arrow_forward
     when 'like'
       button.button.like-button(type = 'button' class = `${options.liked ? 'like-button_liked' : ''}`)
         i.icon.like-button__icon.material-icons favorite

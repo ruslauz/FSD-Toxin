@@ -1,5 +1,5 @@
-import iBox from '../../components/dropdown/dropdown'
-import phraser from '../../components/dropdown/dropdown'
+import {iBox} from '../../components/ibox/ibox'
+// import phraser from '../../components/ibox/ibox'
 const guest = ["гость", "гостя", "гостей"];
 const baby = ["младенец", "младенца", "младенцев"];
 const bedroom = ["спальня", "спальни", "спалень"];
@@ -7,7 +7,8 @@ const bed = ["кровать", "кровати", "кроватей"];
 const bathroom = ["ванная комната", "ванные комнаты", "ванных комнат"];
 
 // Гости
-iBox('.js-guest-increment-box').init({
+iBox('.js-guest-increment-box',)
+.init({
   defaultPhrase: 'Cколько гостей',
   items: [
     {
@@ -27,7 +28,8 @@ iBox('.js-guest-increment-box').init({
 });
 
 // Удобства
-iBox('.js-convenience-increment-box').init({
+iBox('.js-convenience-increment-box')
+.init({
   // defaultPhrase: 'Уточните удобства',
   items: [
     {
