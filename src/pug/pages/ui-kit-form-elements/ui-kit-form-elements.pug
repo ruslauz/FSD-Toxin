@@ -54,8 +54,9 @@ block main
               .dropdown-box
 
             .inputs-and-buttons__item
-              +input({labelText: 'filter date dropdown',type: 'dropdown',value: '19 авг - 23 авг', readonly: true})
-              .dropdown-box
+              +dropdown({title: 'filter date dropdown', summary: '19 авг - 23 авг'})
+              //- +input({labelText: 'filter date dropdown',type: 'dropdown',value: '19 авг - 23 авг', readonly: true})
+              //- .dropdown-box
 
             .inputs-and-buttons__item
               +input({labelText: 'subscription text field', type: 'text', placeholder: 'Email'})

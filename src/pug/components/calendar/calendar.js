@@ -1,10 +1,10 @@
-getTemplate = () => {
+const getTemplate = () => {
   return `
   <div class="calendar">
 		<div class="calendar__header">
-			<button class="calendar__header-button  js-prev-button">prev</button>
+			<button class="calendar__header-button  js-prev-button material-icons">arrow_back</button>
 			<div class="calendar__month-and-year js-month-and-year"></div>
-			<button class="calendar__header-button js-next-button">next</button>
+			<button class="calendar__header-button js-next-button material-icons">arrow_forward</button>
 		</div>
 		<div class="calendar__week">
 			<div class="calendar__week-day">Пн</div>
@@ -26,7 +26,7 @@ getTemplate = () => {
 `
 }
 
-class Calendar {
+export class Calendar {
   constructor(selector, options) {
     options = options || {}
     this.$el = document.querySelector(selector)
@@ -39,12 +39,13 @@ class Calendar {
     this.placeholder = options.placeholder
 
     this.#setup()
-    this.#render(this.month, this.year)
+    this.#render()
   }
 
-  #render(month, year) {
+  #render() {
+    if (!this.$el) return
     const $jsMonthAndYear = this.$el.querySelector('.js-month-and-year')
-    const date = new Date(year, month);
+    const date = new Date(this.year, this.month);
     const day = date.getDay();
     const calendarMonth = date.getMonth();
     const calendarYear = date.getFullYear();
@@ -59,7 +60,6 @@ class Calendar {
       $day.setAttribute('data-date', date.toLocaleDateString());
       $day.setAttribute('data-timestamp', +date);
       $day.classList.add('day');
-      date.toLocaleDateString() == this.currentDate.toLocaleDateString() && $day.classList.add('day__current-day');
       calendarMonth > date.getMonth() && $day.classList.add('day__prev-month');
       calendarMonth < date.getMonth() && $day.classList.add('day__next-month');
       if (this.dateRange) {
@@ -72,6 +72,7 @@ class Calendar {
           (+$day.dataset.timestamp > firstDay && +$day.dataset.timestamp < lastDay) && $day.classList.add('day__in-range');
         }
       }
+      date.toLocaleDateString() == this.currentDate.toLocaleDateString() && $day.classList.add('day__current-day');
       $days.append($day);
       date.setDate(date.getDate() + 1);
     }
@@ -80,6 +81,7 @@ class Calendar {
   }
 
   #setup() {
+    if (!this.$el) return
     this.$el.innerHTML = getTemplate()
     const $prevButton = this.$el.querySelector('.js-prev-button')
     const $nextButton = this.$el.querySelector('.js-next-button')
@@ -130,5 +132,23 @@ class Calendar {
   reset() {
     this.dateRange.length = 0;
     if (this.$output) this.$output.textContent = this.placeholder;
+  }
+
+  setCustomDate(date){
+    this.currentDate = new Date(date)
+    this.year = this.currentDate.getFullYear()
+    this.month = this.currentDate.getMonth()
+    this.date = this.currentDate.getDate()
+    this.#render()
+    return this
+  }
+
+  setCustomRange(firstDate, lastDate){
+    this.dateRange = [
+      +(new Date(firstDate)),
+      +(new Date(lastDate))
+    ]
+    this.#render()
+    return this
   }
 }
