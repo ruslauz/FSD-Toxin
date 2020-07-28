@@ -1,9 +1,10 @@
 mixin dropdown(options)
   - 
     options = options || {}
-    let {title, subtitle, summary, expanded} = options
+    let {title, subtitle, summary, expanded, separated} = options
 
-  .dropdown(class = `${expanded ? 'dropdown_expanded' : ''}`)
+  .dropdown(class = `${expanded ? 'dropdown_expanded' : ''} ${separated ? 'dropdown_separated' : ''}`)
+    .dropdown__layer
     .dropdown__heading.heading_level-3 
       span.dropdown__title= title
       span.dropdown__subtitle= subtitle

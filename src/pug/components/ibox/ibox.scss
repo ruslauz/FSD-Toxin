@@ -1,7 +1,6 @@
 @import '../../../scss/utils';
 
 .increment-box {
-  position: absolute;
   background: #FFFFFF;
   border: 1px solid $main50;
   box-shadow: 0px 10px 20px $main5;
@@ -10,10 +9,6 @@
   padding: 6px 6px 6px 14px;
   border-top: none;
   width: 100%;
-  z-index: 2;
-  visibility: hidden;
-  opacity: 0;
-  transition: all ease .6s;
 
   &_static{
   }

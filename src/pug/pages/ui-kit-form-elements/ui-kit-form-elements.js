@@ -1,10 +1,17 @@
 import {iBox} from '../../components/ibox/ibox'
-// import phraser from '../../components/ibox/ibox'
+import {Calendar} from '../../components/calendar/calendar'
 const guest = ["гость", "гостя", "гостей"];
 const baby = ["младенец", "младенца", "младенцев"];
 const bedroom = ["спальня", "спальни", "спалень"];
 const bed = ["кровать", "кровати", "кроватей"];
 const bathroom = ["ванная комната", "ванные комнаты", "ванных комнат"];
+
+// Calendars
+const uiKitCal1 = new Calendar('.js-ui-kit-cal1', {
+  placeholder: 'ДД.ММ.ГГГГ',
+}).setCustomRange('2020.08.19', '2020.08.23')
+uiKitCal1.$output = uiKitCal1.$el.closest('.dropdown').querySelector('.dropdown__summary')
+uiKitCal1.dateOutput();
 
 // Гости
 iBox('.js-guest-increment-box',)

@@ -1,6 +1,21 @@
 @import '../../../scss/utils';
 
 .dropdown{
+  position: relative;
+
+  &__layer{
+    position: fixed;
+    background: transparent;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    visibility: hidden;
+    opacity: 0;
+  }
 
   &_static{
     .increment-box{
@@ -20,7 +35,12 @@
   
   &_expanded{
 
-    .increment-box{
+    .dropdown__layer{
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .dropdown__body{
       visibility: visible;
       opacity: 1;
       transition: all ease .6s;
@@ -30,6 +50,19 @@
       border: 1px solid $main50;
       border-radius: 4px 4px 0 0;
       transition: all ease .6s;
+    }
+  }
+
+  &_separated{
+
+    .dropdown__summary{
+      border-radius: 4px;
+      border: 1px solid $main25;
+      margin: 0 0 5px 0;
+
+      &:hover{
+        border: 1px solid $main25;
+      }
     }
   }
 
@@ -91,111 +124,111 @@
     pointer-events: none;
   }
   &__body{
-
-  }
-}
-
-.increment-box {
-  position: absolute;
-  background: #FFFFFF;
-  border: 1px solid $main50;
-  box-shadow: 0px 10px 20px $main5;
-  border-radius: 0 0 4px 4px;
-  overflow: hidden;
-  padding: 6px 6px 6px 14px;
-  border-top: none;
-  width: 100%;
-  z-index: 2;
-  visibility: hidden;
-  opacity: 0;
-  transition: all ease .6s;
-
-  &_static{
-  }
-
-  &__rows {
-    margin: 0 0 20px 0;
-  }
-
-  &__row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 2;
+    transition: all ease .6s;
     width: 100%;
-  }
-
-  &__row:not(:last-child) {
-    padding: 0 0 7px;
-  }
-
-  &__text {
-    padding: 0;
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 15px;
-    text-transform: uppercase;
-    color: $main;
-    width: 100%;
-    padding-bottom: 3px;
-  }
-
-  &__buttons {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: center;
-    flex: 1 0 92px;
-  }
-
-  &__number {
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 15px;
-    text-align: center;
-    text-transform: uppercase;
-    color: $main;
-    padding-bottom: 3px;
-    max-width: 32px;
+    z-index: 100;
   }
 }
 
-.decrease_disabled {
-  opacity: 0.38;
-}
+// .increment-box {
+//   background: #FFFFFF;
+//   border: 1px solid $main50;
+//   box-shadow: 0px 10px 20px $main5;
+//   border-radius: 0 0 4px 4px;
+//   overflow: hidden;
+//   padding: 6px 6px 6px 14px;
+//   border-top: none;
 
-.increase, .decrease {
-  font-size: 18px;
-  color: $main50;
-  border: 1px solid $main25;
-  border-radius: 22px;
-  width: 30px;
-  height: 30px;
-  box-sizing: border-box;
-  background: #fff;
-  justify-content: center;
-  display: flex;
-  align-items: center;
-}
+//   &_static{
+//   }
 
-.action-buttons {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  margin: 0 0 6px 0;
-}
+//   &__rows {
+//     margin: 0 0 20px 0;
+//   }
 
-.reset, .done {
-  font-weight: bold;
-  font-size: 12px;
-  line-height: 15px;
-  text-transform: uppercase;
-  color: $main50;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #fff;
-}
+//   &__row {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     width: 100%;
+//   }
 
-.done {
-  color: $purple;
-}
+//   &__row:not(:last-child) {
+//     padding: 0 0 7px;
+//   }
+
+//   &__text {
+//     padding: 0;
+//     font-weight: bold;
+//     font-size: 12px;
+//     line-height: 15px;
+//     text-transform: uppercase;
+//     color: $main;
+//     width: 100%;
+//     padding-bottom: 3px;
+//   }
+
+//   &__buttons {
+//     display: flex;
+//     flex-wrap: nowrap;
+//     justify-content: space-between;
+//     align-items: center;
+//     flex: 1 0 92px;
+//   }
+
+//   &__number {
+//     font-weight: bold;
+//     font-size: 12px;
+//     line-height: 15px;
+//     text-align: center;
+//     text-transform: uppercase;
+//     color: $main;
+//     padding-bottom: 3px;
+//     max-width: 32px;
+//   }
+// }
+
+// .decrease_disabled {
+//   opacity: 0.38;
+// }
+
+// .increase, .decrease {
+//   font-size: 18px;
+//   color: $main50;
+//   border: 1px solid $main25;
+//   border-radius: 22px;
+//   width: 30px;
+//   height: 30px;
+//   box-sizing: border-box;
+//   background: #fff;
+//   justify-content: center;
+//   display: flex;
+//   align-items: center;
+// }
+
+// .action-buttons {
+//   display: flex;
+//   width: 100%;
+//   justify-content: space-between;
+//   margin: 0 0 6px 0;
+// }
+
+// .reset, .done {
+//   font-weight: bold;
+//   font-size: 12px;
+//   line-height: 15px;
+//   text-transform: uppercase;
+//   color: $main50;
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+//   background: #fff;
+// }
+
+// .done {
+//   color: $purple;
+// }

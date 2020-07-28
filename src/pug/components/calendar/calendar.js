@@ -1,5 +1,21 @@
-const getTemplate = () => {
-  return `
+export class Calendar {
+  constructor(selector, options) {
+    options = options || {}
+    this.$el = document.querySelector(selector)
+    this.currentDate = new Date()
+    this.month = this.currentDate.getMonth()
+    this.year = this.currentDate.getFullYear()
+    this.dayCellsAmount = 42
+    this.dateRange = []
+    this.$output = document.querySelector(options.output)
+    this.placeholder = options.placeholder
+
+    this.#setup()
+    this.#render()
+  }
+
+  #getTemplate() {
+    return `
   <div class="calendar">
 		<div class="calendar__header">
 			<button class="calendar__header-button  js-prev-button material-icons">arrow_back</button>
@@ -24,22 +40,49 @@ const getTemplate = () => {
 		</div>
 	</div>
 `
-}
+  }
 
-export class Calendar {
-  constructor(selector, options) {
-    options = options || {}
-    this.$el = document.querySelector(selector)
-    this.currentDate = new Date()
-    this.month = this.currentDate.getMonth()
-    this.year = this.currentDate.getFullYear()
-    this.dayCellsAmount = 42
-    this.dateRange = []
-    this.$output = document.querySelector(options.output)
-    this.placeholder = options.placeholder
+  #setup() {
+    if (!this.$el) return
+    this.$el.innerHTML = this.#getTemplate()
+    const $prevButton = this.$el.querySelector('.js-prev-button')
+    const $nextButton = this.$el.querySelector('.js-next-button')
+    const $resetButton = this.$el.querySelector('.reset')
+    const $applyButton = this.$el.querySelector('.done')
+    const $calendar = this.$el.querySelector('.calendar')
 
-    this.#setup()
-    this.#render()
+    $prevButton.addEventListener('click', (e) => {
+      this.month--
+      this.#render(this.month, this.year)
+    })
+    $nextButton.addEventListener('click', (e) => {
+      this.month++
+      this.#render(this.month, this.year)
+    })
+    $resetButton.addEventListener('click', (e) => {
+      this.reset()
+      this.#render(this.month, this.year);
+    })
+    $applyButton.addEventListener('click', (e) => {
+      if (this.dateRange.length < 2) return
+      this.dateOutput()
+    })
+
+    $calendar.addEventListener('click', (e) => {
+      if (e.target.classList.contains('day') && !e.target.classList.contains('day_selected')) {
+        if (this.dateRange.length < 2) {
+          e.target.classList.add('day_selected')
+          this.dateRange.push(new Date(this.year, this.month, +e.target.textContent))
+          if (this.dateRange.length === 2) {
+            this.dateRange.sort((a, b) => +a - +b)
+            this.#render(this.month, this.year);
+          }
+        } else if (this.dateRange.length === 2) {
+          this.reset();
+          this.#render(this.month, this.year);
+        }
+      }
+    })
   }
 
   #render() {
@@ -65,11 +108,11 @@ export class Calendar {
       if (this.dateRange) {
         let [firstDay, lastDay] = this.dateRange;
         if (this.dateRange.length < 2) {
-          +$day.dataset.timestamp === firstDay && $day.classList.add('day_selected');
+          +$day.dataset.timestamp === +firstDay && $day.classList.add('day_selected');
         } else {
-          +$day.dataset.timestamp === firstDay && $day.classList.add('day_selected', 'day_first-day');
-          +$day.dataset.timestamp === lastDay && $day.classList.add('day_selected', 'day_last-day');
-          (+$day.dataset.timestamp > firstDay && +$day.dataset.timestamp < lastDay) && $day.classList.add('day__in-range');
+          +$day.dataset.timestamp === +firstDay && $day.classList.add('day_selected', 'day_first-day');
+          +$day.dataset.timestamp === +lastDay && $day.classList.add('day_selected', 'day_last-day');
+          (+$day.dataset.timestamp > +firstDay && +$day.dataset.timestamp < +lastDay) && $day.classList.add('day__in-range');
         }
       }
       date.toLocaleDateString() == this.currentDate.toLocaleDateString() && $day.classList.add('day__current-day');
@@ -80,53 +123,9 @@ export class Calendar {
     this.$el.querySelector('.calendar__days').append($days);
   }
 
-  #setup() {
-    if (!this.$el) return
-    this.$el.innerHTML = getTemplate()
-    const $prevButton = this.$el.querySelector('.js-prev-button')
-    const $nextButton = this.$el.querySelector('.js-next-button')
-    const $resetButton = this.$el.querySelector('.reset')
-    const $applyButton = this.$el.querySelector('.done')
-    const $calendar = this.$el.querySelector('.calendar')
-
-    $prevButton.addEventListener('click', (e) => {
-      this.month--
-      this.#render(this.month, this.year)
-    })
-    $nextButton.addEventListener('click', (e) => {
-      this.month++
-      this.#render(this.month, this.year)
-    })
-    $resetButton.addEventListener('click', (e) => {
-      this.reset()
-      this.#render(this.month, this.year);
-    })
-    $applyButton.addEventListener('click', (e) => {
-      this.dateOutput()
-    })
-
-    $calendar.addEventListener('click', (e) => {
-      if (e.target.classList.contains('day')) {
-        if (this.dateRange.length < 2) {
-          e.target.classList.add('day_selected')
-          this.dateRange.push(+e.target.dataset.timestamp)
-          // this.dateOutput()
-          if (this.dateRange.length === 2) {
-            this.dateRange.sort((a, b) => a - b)
-            this.#render(this.month, this.year);
-          }
-        } else if (this.dateRange.length === 2) {
-          this.reset();
-          this.#render(this.month, this.year);
-        }
-      }
-    })
-  }
-
   dateOutput() {
     if (!this.$output) return
-    const $selectedDays = this.$el.querySelectorAll('.day_selected')
-    this.$output.textContent = [...$selectedDays].map(day => day.dataset.date).join(' - ')
+    this.$output.textContent = this.dateRange.map(date => date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'short'})).join(' - ')
   }
 
   reset() {
@@ -145,8 +144,8 @@ export class Calendar {
 
   setCustomRange(firstDate, lastDate){
     this.dateRange = [
-      +(new Date(firstDate)),
-      +(new Date(lastDate))
+      new Date(firstDate),
+      new Date(lastDate)
     ]
     this.#render()
     return this
