@@ -1,27 +1,44 @@
 mixin dropdown(options)
   - 
     options = options || {}
-    let {title, subtitle, summary, expanded, separated} = options
-
-  .dropdown(class = `${expanded ? 'dropdown_expanded' : ''} ${separated ? 'dropdown_separated' : ''}`)
-    .dropdown__layer
-    .dropdown__heading.heading_level-3 
-      span.dropdown__title= title
-      span.dropdown__subtitle= subtitle
-    details.dropdown__details(open=true)
-      summary.dropdown__summary(class!=attributes.class)
-        span.dropdown__text.js-dropdown__text= summary
+    let {
+      title, 
+      subtitle,
+      summary,
+      expanded,
+      filterDateDropdown,
+      dateDropDown,
+      firstLabelText,
+      firstPlaceholder,
+      firstValue,
+      secondLabelText,
+      secondPlaceholder,
+      secondValue,
+      } = options
+  if dateDropDown
+    .dropdown(class = `${expanded ? 'dropdown_expanded' : ''} ${dateDropDown ? 'dropdown_date-dropdown' : ''}`)
+      .dropdown__layer
+      .dropdown__inputs
+        .dropdown__inputs-item
+          label.label.dropdown__label 
+            span.label__main-text.heading_level-3 #{firstLabelText}
+            input(type=`text` class=`dropdown__input` placeholder=firstPlaceholder  || false value=firstValue || false readonly)
+            i.material-icons.dropdown__icon expand_more 
+        .dropdown__inputs-item
+          label.label.dropdown__label
+            span.label__main-text.heading_level-3 #{secondLabelText}
+            input(type=`text` class=`dropdown__input` placeholder=secondPlaceholder  || false value=secondValue || false readonly)
+            i.material-icons.dropdown__icon expand_more
       .dropdown__body
         block
-        //- .increment-box.js-increment-box(class!=attributes.class )
-        //-   .increment-box__rows
-        //-     - for (let {text, name, value} of items)
-        //-       .increment-box__row
-        //-         span.increment-box__text= text
-        //-         .increment-box__buttons
-        //-           button.decrease -
-        //-           input.increment-box__number(name = name value = value type = 'text')
-        //-           button.increase +
-        //-   .action-buttons
-        //-     button.reset очистить
-        //-     button.done применить
+  else
+    .dropdown(class = `${expanded ? 'dropdown_expanded' : ''} ${filterDateDropdown ? 'dropdown_filter-date-dropdown' : ''}`)
+      .dropdown__layer
+      .dropdown__heading.heading_level-3 
+        span.dropdown__title= title
+        span.dropdown__subtitle= subtitle
+      details.dropdown__details(open=true)
+        summary.dropdown__summary(class!=attributes.class)
+          span.dropdown__text.js-dropdown__text= summary
+        .dropdown__body
+          block

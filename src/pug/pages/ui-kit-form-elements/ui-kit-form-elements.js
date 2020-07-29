@@ -8,10 +8,16 @@ const bathroom = ["ванная комната", "ванные комнаты", 
 
 // Calendars
 const uiKitCal1 = new Calendar('.js-ui-kit-cal1', {
-  placeholder: 'ДД.ММ.ГГГГ',
+  placeholder: 'Выберите даты',
 }).setCustomRange('2020.08.19', '2020.08.23')
-uiKitCal1.$output = uiKitCal1.$el.closest('.dropdown').querySelector('.dropdown__summary')
+uiKitCal1.$output = uiKitCal1.$el.closest('.dropdown').querySelectorAll('.dropdown__summary')
 uiKitCal1.dateOutput();
+console.dir(uiKitCal1.$output);
+
+const dateDropdown = new Calendar('.js-date-dropdown', {
+  placeholder: 'ДД.ММ.ГГГГ',
+})
+dateDropdown.$output = dateDropdown.$el.closest('.dropdown').querySelectorAll('.dropdown__input')
 
 // Гости
 iBox('.js-guest-increment-box',)

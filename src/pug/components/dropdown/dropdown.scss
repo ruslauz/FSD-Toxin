@@ -53,7 +53,7 @@
     }
   }
 
-  &_separated{
+  &_filter-date-dropdown{
 
     .dropdown__summary{
       border-radius: 4px;
@@ -73,9 +73,6 @@
   }
   &__title, &__subtitle{
     text-transform: uppercase;
-  }
-  &__title{
-
   }
   &__subtitle{
     font-weight: normal;
@@ -132,103 +129,34 @@
     width: 100%;
     z-index: 100;
   }
+  &__inputs{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(100px, 150px));
+    grid-column-gap: 20px;
+    margin: 0 0 5px 0;
+  }
+  &__inputs-item{
+  }
+
+  &__input{
+    border: 1px solid $main25;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    padding: 12px 15px 8px 15px;
+    max-width: 100%;
+    font-size: 14px;
+    line-height: 24px;
+    color: $main75;
+  }
+
+  &__icon{
+    position: absolute;
+    font-size: 24px;
+    line-height: 24px;
+    color: $main50;
+    right: 12px;
+    top: 31px;
+    pointer-events: none;
+  }
 }
-
-// .increment-box {
-//   background: #FFFFFF;
-//   border: 1px solid $main50;
-//   box-shadow: 0px 10px 20px $main5;
-//   border-radius: 0 0 4px 4px;
-//   overflow: hidden;
-//   padding: 6px 6px 6px 14px;
-//   border-top: none;
-
-//   &_static{
-//   }
-
-//   &__rows {
-//     margin: 0 0 20px 0;
-//   }
-
-//   &__row {
-//     display: flex;
-//     justify-content: space-between;
-//     align-items: center;
-//     width: 100%;
-//   }
-
-//   &__row:not(:last-child) {
-//     padding: 0 0 7px;
-//   }
-
-//   &__text {
-//     padding: 0;
-//     font-weight: bold;
-//     font-size: 12px;
-//     line-height: 15px;
-//     text-transform: uppercase;
-//     color: $main;
-//     width: 100%;
-//     padding-bottom: 3px;
-//   }
-
-//   &__buttons {
-//     display: flex;
-//     flex-wrap: nowrap;
-//     justify-content: space-between;
-//     align-items: center;
-//     flex: 1 0 92px;
-//   }
-
-//   &__number {
-//     font-weight: bold;
-//     font-size: 12px;
-//     line-height: 15px;
-//     text-align: center;
-//     text-transform: uppercase;
-//     color: $main;
-//     padding-bottom: 3px;
-//     max-width: 32px;
-//   }
-// }
-
-// .decrease_disabled {
-//   opacity: 0.38;
-// }
-
-// .increase, .decrease {
-//   font-size: 18px;
-//   color: $main50;
-//   border: 1px solid $main25;
-//   border-radius: 22px;
-//   width: 30px;
-//   height: 30px;
-//   box-sizing: border-box;
-//   background: #fff;
-//   justify-content: center;
-//   display: flex;
-//   align-items: center;
-// }
-
-// .action-buttons {
-//   display: flex;
-//   width: 100%;
-//   justify-content: space-between;
-//   margin: 0 0 6px 0;
-// }
-
-// .reset, .done {
-//   font-weight: bold;
-//   font-size: 12px;
-//   line-height: 15px;
-//   text-transform: uppercase;
-//   color: $main50;
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-//   background: #fff;
-// }
-
-// .done {
-//   color: $purple;
-// }

@@ -53,15 +53,15 @@ export class Calendar {
 
     $prevButton.addEventListener('click', (e) => {
       this.month--
-      this.#render(this.month, this.year)
+      this.#render()
     })
     $nextButton.addEventListener('click', (e) => {
       this.month++
-      this.#render(this.month, this.year)
+      this.#render()
     })
     $resetButton.addEventListener('click', (e) => {
       this.reset()
-      this.#render(this.month, this.year);
+      this.#render();
     })
     $applyButton.addEventListener('click', (e) => {
       if (this.dateRange.length < 2) return
@@ -72,14 +72,15 @@ export class Calendar {
       if (e.target.classList.contains('day') && !e.target.classList.contains('day_selected')) {
         if (this.dateRange.length < 2) {
           e.target.classList.add('day_selected')
-          this.dateRange.push(new Date(this.year, this.month, +e.target.textContent))
+          this.dateRange.push(new Date(e.target.dataset.date.split('.').reverse()))
           if (this.dateRange.length === 2) {
             this.dateRange.sort((a, b) => +a - +b)
-            this.#render(this.month, this.year);
+            this.#render();
           }
         } else if (this.dateRange.length === 2) {
           this.reset();
-          this.#render(this.month, this.year);
+          this.dateRange.push(new Date(e.target.dataset.date.split('.').reverse()))
+          this.#render();
         }
       }
     })
@@ -125,12 +126,18 @@ export class Calendar {
 
   dateOutput() {
     if (!this.$output) return
-    this.$output.textContent = this.dateRange.map(date => date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'short'})).join(' - ')
+    this.$output.forEach((item, index, array) => {
+      if (array.length > 1) item.value = this.dateRange[index].toLocaleDateString()
+      else item.textContent = this.dateRange.map(date => date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'short' })).join(' - ')
+    })
   }
 
   reset() {
     this.dateRange.length = 0;
-    if (this.$output) this.$output.textContent = this.placeholder;
+    this.$output && this.$output.forEach((item, index, array) => {
+      if (array.length > 1) item.value = this.placeholder
+      else item.textContent = this.placeholder
+    });
   }
 
   setCustomDate(date){

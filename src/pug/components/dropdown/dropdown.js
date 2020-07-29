@@ -1,6 +1,7 @@
 const summary = document.querySelectorAll('.dropdown__summary');
+const dropdownInput = document.querySelectorAll('.dropdown__input')
 
-// Close all
+// Close all\
 function closeAll() {
   document.querySelectorAll('.dropdown_expanded')
     .forEach(el => {
@@ -11,6 +12,18 @@ function closeAll() {
 
 // Listeners
 summary.forEach(item => {
+  item.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (e.target.closest('.dropdown').classList.contains('dropdown_expanded')) {
+      closeAll();
+    } else {
+      closeAll();
+      e.target.closest('.dropdown').classList.toggle('dropdown_expanded')
+    }
+  })
+})
+
+dropdownInput.forEach(item => {
   item.addEventListener('click', (e) => {
     e.preventDefault();
     if (e.target.closest('.dropdown').classList.contains('dropdown_expanded')) {

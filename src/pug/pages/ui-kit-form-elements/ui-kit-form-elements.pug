@@ -50,14 +50,18 @@ block main
               +input({labelText: 'masked text field',additionalText: 'Default',type: 'text',placeholder: 'ДД.ММ.ГГГГ', maskedInput: true})
             
             .inputs-and-buttons__item
-              +input({labelText: 'date Dropdown', type: 'date-dropdown',placeholder: 'ДД.ММ.ГГГГ', value2: '19.08.2019', readonly: true})
-              .dropdown-box
+              +dropdown({
+                dateDropDown: true,
+                firstLabelText: 'date Dropdown',
+                firstPlaceholder: 'ДД.ММ.ГГГГ',
+                secondLabelText: 'date Dropdown',
+                secondValue: '19.08.2019',
+                })
+                .js-date-dropdown
 
             .inputs-and-buttons__item
-              +dropdown({title: 'filter date dropdown', separated: true})
+              +dropdown({title: 'filter date dropdown', filterDateDropdown: true})
                 .js-ui-kit-cal1
-              //- +input({labelText: 'filter date dropdown',type: 'dropdown',value: '19 авг - 23 авг', readonly: true})
-              //- .dropdown-box
 
             .inputs-and-buttons__item
               +input({labelText: 'subscription text field', type: 'text', placeholder: 'Email'})

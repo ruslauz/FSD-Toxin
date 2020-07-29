@@ -34,7 +34,7 @@
 
 }
 
-.email-input, .dropdown-input, .text-input, .date-dropdown-input, .password-input {
+.email-input, .dropdown-input, .text-input, .password-input {
   background: #FFFFFF;
   border: 1px solid $main25;
   border-radius: 4px;
@@ -58,27 +58,6 @@
     color: $main75;
   }
 
-}
-
-.date-dropdown{
-  display: grid;
-  grid-template-columns: repeat(2, minmax(100px, 150px));
-  grid-column-gap: 20px;
-}
-
-.dropdown-input{
-  cursor: pointer;
-  position: relative;
-}
-
-.dropdown-icon{
-  position: absolute;
-  font-size: 24px;
-  line-height: 24px;
-  color: $main50;
-  right: 12px;
-  top: 31px;
-  pointer-events: none;
 }
 
 .checkbox{
