@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "jquery": "^3.5.1",
+    "jquery.maskedinput": "^1.4.1",
     "material-design-icons": "^3.0.1",
     "nouislider": "^14.6.0"
   }
