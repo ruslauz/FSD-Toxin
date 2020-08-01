@@ -7,6 +7,9 @@ body {
   @include main-font;
   color: $main;
 }
+strong{
+  font-weight: bold;
+}
 
 .heading {
   @include h1;

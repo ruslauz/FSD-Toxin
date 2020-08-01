@@ -66,18 +66,18 @@
   justify-content: space-between;
 
   &__text{
-    margin: 0 35px 0 0;
+    // margin: 0 35px 0 0;
 
   }
   &__button{
-
+    min-width: 99px;
   }
 }
 
 .booking-room{
   display: flex;
   justify-content: space-between;
-
+  align-items: center;
 
   &__info{
 
@@ -121,19 +121,22 @@
     &__item{
       display: grid;
       grid-template-columns: minmax(auto, 214px) 20px auto;
-      grid-template-areas: 'text icon number';
+      grid-template-rows: minmax(auto, 24px);
+      // grid-template-areas: 'text icon number';
       grid-column-gap: 5px;
+      grid-row-gap: 5px;
       align-items: baseline;
       &:not(:last-child){
         margin: 0 0 10px 0;
       }
     }
     &__text{
-      grid-area: text;
+      line-height: 18px;
+      // grid-area: text;
     }
     &__icon{
       display: flex;
-      grid-area: icon;
+      // grid-area: icon;
       border: 1px solid $main25;
       width: 20px;
       height: 20px;
@@ -143,9 +146,10 @@
       color: $main25;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
     }
     &__number{
-      grid-area: number;
+      // grid-area: number;
       text-align: right;
     }
     &__result{
@@ -166,4 +170,5 @@
       &-number{}
     }
 }
+
 

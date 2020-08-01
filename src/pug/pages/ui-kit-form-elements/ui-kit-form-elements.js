@@ -1,5 +1,6 @@
 import {iBox} from '../../components/ibox/ibox'
 import {Calendar} from '../../components/calendar/calendar'
+import setCustomOutput from '../../../js/setCustomOutput'
 const guest = ["гость", "гостя", "гостей"];
 const baby = ["младенец", "младенца", "младенцев"];
 const bedroom = ["спальня", "спальни", "спалень"];
@@ -10,14 +11,14 @@ const bathroom = ["ванная комната", "ванные комнаты", 
 const uiKitCal1 = new Calendar('.js-ui-kit-cal1', {
   placeholder: 'Выберите даты',
 }).setCustomRange('2020.08.19', '2020.08.23')
-uiKitCal1.$output = uiKitCal1.$el.closest('.dropdown').querySelectorAll('.dropdown__summary')
-uiKitCal1.dateOutput();
-console.dir(uiKitCal1.$output);
 
 const dateDropdown = new Calendar('.js-date-dropdown', {
   placeholder: 'ДД.ММ.ГГГГ',
 })
-dateDropdown.$output = dateDropdown.$el.closest('.dropdown').querySelectorAll('.dropdown__input')
+
+setCustomOutput.call(uiKitCal1, '.dropdown__summary')
+
+setCustomOutput.call(dateDropdown, '.dropdown__input')
 
 // Гости
 iBox('.js-guest-increment-box',)

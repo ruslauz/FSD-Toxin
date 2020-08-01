@@ -18,9 +18,9 @@ export class Calendar {
     return `
   <div class="calendar">
 		<div class="calendar__header">
-			<button class="calendar__header-button  js-prev-button material-icons">arrow_back</button>
+			<button class="calendar__header-button  js-prev-button material-icons" type="button">arrow_back</button>
 			<div class="calendar__month-and-year js-month-and-year"></div>
-			<button class="calendar__header-button js-next-button material-icons">arrow_forward</button>
+			<button class="calendar__header-button js-next-button material-icons" type="button">arrow_forward</button>
 		</div>
 		<div class="calendar__week">
 			<div class="calendar__week-day">Пн</div>
@@ -34,8 +34,8 @@ export class Calendar {
 		<div class="calendar__days"></div>
 		<div class="calendar__footer">
 			<div class="action-buttons">
-				<button class="reset">очистить</button>
-				<button class="done">применить</button>
+				<button class="reset" type="button">очистить</button>
+				<button class="done" type="button">применить</button>
 			</div>
 		</div>
 	</div>
@@ -125,7 +125,7 @@ export class Calendar {
   }
 
   dateOutput() {
-    if (!this.$output) return
+    if (!this.$output || !this.dateRange.length)  return
     this.$output.forEach((item, index, array) => {
       if (array.length > 1) item.value = this.dateRange[index].toLocaleDateString()
       else item.textContent = this.dateRange.map(date => date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'short' })).join(' - ')

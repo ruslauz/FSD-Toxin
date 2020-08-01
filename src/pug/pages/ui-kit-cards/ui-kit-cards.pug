@@ -14,12 +14,13 @@ include ../../components/bullet-list/bullet-list
 include ../../components/advantage/advantage
 include ../../components/review/review
 include ../../components/ibox/ibox
+include ../../components/room-card/room-card
 
 
 block variables
   - const title = 'UI Kit Cards'
   - const description = 'UI Kit Cards'
-  - const radios = [{labelText: 'Мужчина', isChecked: true},{labelText: 'Женщина', isChecked: false}]
+  - const radios = [{labelText: 'Мужчина', isChecked: true},{labelText: 'Женщина'}]
 
 block main
   main.main.main_cards
@@ -34,7 +35,14 @@ block main
                 .form__title Найдём номера под ваши пожелания 
               .form__content
                 .form__content-item
-                  +input({labelText: 'date Dropdown', type: 'date-dropdown',placeholder: 'ДД.ММ.ГГГГ', value2: '19.08.2019', readonly: true})
+                  +dropdown({
+                    dateDropDown: true,
+                    firstLabelText: 'прибытие',
+                    firstPlaceholder: 'ДД.ММ.ГГГГ',
+                    secondLabelText: 'выезд',
+                    secondPlaceholder: 'ДД.ММ.ГГГГ',
+                    })
+                    .js-uikitcards-cal1
                 .form__content-item.form__content-item_30
                   +dropdown({title: 'Dropdown'})
                     +ibox({items: [
@@ -98,7 +106,12 @@ block main
                   .booking-room__price 9 990₽<span class="booking-room__price-additional"> в сутки</span>
               .form__content
                 .form__content-item
-                  +input({labelText: 'date Dropdown', type: 'date-dropdown',placeholder: 'ДД.ММ.ГГГГ', value2: '19.08.2019', readonly: true})
+                  +dropdown({
+                    dateDropDown: true,
+                    firstLabelText: 'прибытие',
+                    secondLabelText: 'выезд',
+                    })
+                    .js-uikitcards-cal2
                 .form__content-item
                   +dropdown({title: 'Dropdown'})
                     +ibox({items: [
@@ -111,12 +124,11 @@ block main
                     .calculations__body
                       .calculations__item
                         span.calculations__text 9 990₽ х 4 суток
+                        span.calculations__empty
                         span.calculations__number 39 960₽
-                      .calculations__item
                         span.calculations__text Сбор за услуги: скидка 2 179₽
                         span.calculations__icon i
                         span.calculations__number 0₽
-                      .calculations__item
                         span.calculations__text Сбор за дополнительные услуги
                         span.calculations__icon i
                         span.calculations__number 300₽
@@ -144,8 +156,27 @@ block main
                 .form-footer__button 
                   +button({type: 'white', buttonText: 'создать'})
 
-
-
       .cards
         .cards__item
           .calendar-wrapper.js-calendar-wrapper
+        
+        .cards__item       
+          +room-card({
+            number: '888',
+            price: '9 900',
+            isLux: true,
+            rateNumber: 5,
+            images: [],
+            reviewsAmount: '145'
+            }) 
+
+        .cards__item       
+          +room-card({
+            number: '840',
+            price: '9 900',
+            isLux: false,
+            rateNumber: 4,
+            images: [],
+            reviewsAmount: '65'
+            }) 
+

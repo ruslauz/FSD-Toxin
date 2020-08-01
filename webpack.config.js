@@ -33,7 +33,7 @@ module.exports = {
     // hot: true
   },
 
-  // devtool: 'source-map',
+  devtool: 'source-map',
 
   module: {
     rules: [
@@ -93,8 +93,9 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: '[name].[ext]',
-              outputPath: 'images/'
+              name: '[name]-[contenthash:5].[ext]',
+              outputPath: 'images/',
+              esModule: false,
             }
           }
         ]
@@ -132,18 +133,18 @@ module.exports = {
 
     new CleanWebpackPlugin(),
 
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: path.resolve(__dirname, 'src/images'),
-          to: path.resolve(__dirname, 'dist/images')
-        },
-        // {
-        //   from: path.resolve(__dirname, 'src/fonts'),
-        //   to: path.resolve(__dirname, 'dist/fonts')
-        // }
-      ]
-    }),
+    // new CopyWebpackPlugin({
+    //   patterns: [
+    //     {
+    //       from: path.resolve(__dirname, 'src/images'),
+    //       to: path.resolve(__dirname, 'dist/images')
+    //     },
+    //     {
+    //       from: path.resolve(__dirname, 'src/fonts'),
+    //       to: path.resolve(__dirname, 'dist/fonts')
+    //     }
+    //   ]
+    // }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].css'
     })

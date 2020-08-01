@@ -1,0 +1,26 @@
+include ../rate/rate
+
+mixin room-card(options)
+  -
+    options = options || {}
+    const {number, price, isLux, rateNumber, reviewsAmount} = options
+    const fs = require('fs')
+    const find = require('find')
+    const filePath = find.dirSync('room-card', './src')
+    const images = fs.readdirSync(filePath + '/img/' + number)
+  .room
+    .room__images
+      each image in images
+        img(src=require(`../../components/room-card/img/${number}/${image}`), alt=`${alt || number}`)
+    .room__text
+      .room__info
+        .room__number <span class="room__number_small" >№</span> #{number}
+        if isLux
+          .room__lux люкс
+        .room__price #{price}₽ <span class="room__price_small">в сутки</span>
+      hr.room__hr
+      .room__rating
+        .room__rate
+          +rate({rateNumber: rateNumber})
+        .room__reviews 
+          |<span class="room__reviews-amount">#{reviewsAmount}</span> Отзывов
