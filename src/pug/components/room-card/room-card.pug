@@ -9,9 +9,14 @@ mixin room-card(options)
     const filePath = find.dirSync('room-card', './src')
     const images = fs.readdirSync(filePath + '/img/' + number)
   .room
-    .room__images
-      each image in images
-        img(src=require(`../../components/room-card/img/${number}/${image}`), alt=`${alt || number}`)
+    .room__images.swiper-container
+      .swiper-wrapper
+        each image in images
+          .swiper-slide
+            img(src=require(`../../components/room-card/img/${number}/${image}`), alt=`${alt || number}`)
+      .swiper-pagination
+      .swiper-button-prev
+      .swiper-button-next
     .room__text
       .room__info
         .room__number <span class="room__number_small" >№</span> #{number}

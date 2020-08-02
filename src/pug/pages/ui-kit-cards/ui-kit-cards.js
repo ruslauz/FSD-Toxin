@@ -30,4 +30,3 @@ uikitCardsCal2.onDateOutput = function () {
 setCustomOutput.call(uikitCardsCal1, '.dropdown__input')
 setCustomOutput.call(uikitCardsCal2, '.dropdown__input')
 
-console.log(uikitCardsCal2);
