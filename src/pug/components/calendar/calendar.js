@@ -9,6 +9,7 @@ export class Calendar {
     this.dateRange = []
     this.$output = document.querySelector(options.output)
     this.placeholder = options.placeholder
+    this.onDateOutput = null
 
     this.#setup()
     this.#render()
@@ -34,8 +35,8 @@ export class Calendar {
 		<div class="calendar__days"></div>
 		<div class="calendar__footer">
 			<div class="action-buttons">
-				<button class="reset" type="button">очистить</button>
-				<button class="done" type="button">применить</button>
+				<button class="reset js-reset" type="button">очистить</button>
+				<button class="done js-done" type="button">применить</button>
 			</div>
 		</div>
 	</div>
@@ -47,8 +48,8 @@ export class Calendar {
     this.$el.innerHTML = this.#getTemplate()
     const $prevButton = this.$el.querySelector('.js-prev-button')
     const $nextButton = this.$el.querySelector('.js-next-button')
-    const $resetButton = this.$el.querySelector('.reset')
-    const $applyButton = this.$el.querySelector('.done')
+    const $resetButton = this.$el.querySelector('.js-reset')
+    const $applyButton = this.$el.querySelector('.js-done')
     const $calendar = this.$el.querySelector('.calendar')
 
     $prevButton.addEventListener('click', (e) => {
@@ -61,7 +62,6 @@ export class Calendar {
     })
     $resetButton.addEventListener('click', (e) => {
       this.reset()
-      this.#render();
     })
     $applyButton.addEventListener('click', (e) => {
       if (this.dateRange.length < 2) return
@@ -73,14 +73,11 @@ export class Calendar {
         if (this.dateRange.length < 2) {
           e.target.classList.add('day_selected')
           this.dateRange.push(new Date(e.target.dataset.date.split('.').reverse()))
-          if (this.dateRange.length === 2) {
-            this.dateRange.sort((a, b) => +a - +b)
-            this.#render();
-          }
+          this.dateRangeRender();
         } else if (this.dateRange.length === 2) {
           this.reset();
           this.dateRange.push(new Date(e.target.dataset.date.split('.').reverse()))
-          this.#render();
+          e.target.classList.add('day_selected')
         }
       }
     })
@@ -124,15 +121,32 @@ export class Calendar {
     this.$el.querySelector('.calendar__days').append($days);
   }
 
+  dateRangeRender(){
+    if (this.dateRange.length < 2) return
+    const $days = this.$el.querySelectorAll('.day')
+    $days.forEach(day => {
+      this.dateRange.sort((a, b) => +a - +b)
+      const [firstDate, lastDate] = this.dateRange;
+      +day.dataset.timestamp === +firstDate && day.classList.add('day_first-day');
+      +day.dataset.timestamp === +lastDate && day.classList.add('day_last-day');
+      (+day.dataset.timestamp > +firstDate && +day.dataset.timestamp < +lastDate) && day.classList.add('day__in-range');
+    })
+  }
+
   dateOutput() {
     if (!this.$output || !this.dateRange.length)  return
     this.$output.forEach((item, index, array) => {
       if (array.length > 1) item.value = this.dateRange[index].toLocaleDateString()
       else item.textContent = this.dateRange.map(date => date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'short' })).join(' - ')
     })
+    this.onDateOutput && this.onDateOutput()
   }
 
   reset() {
+    const $days = this.$el.querySelectorAll('.day')
+    $days.forEach(day => {
+      day.classList.remove('day_first-day', 'day_last-day', 'day__in-range', 'day_selected')
+    })
     this.dateRange.length = 0;
     this.$output && this.$output.forEach((item, index, array) => {
       if (array.length > 1) item.value = this.placeholder

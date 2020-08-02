@@ -1,6 +1,7 @@
 mixin input(options)
   if !options
     - options = {}
+    let {} = options
   case options.type
     when 'email'
     when 'text'
@@ -12,7 +13,12 @@ mixin input(options)
         span.label__main-text #{options.labelText}
         if options.additionalText 
           span.label__additional-text #{options.additionalText}
-        input(type=`${options.type === 'dropdown' ? 'text' : options.type}` class=`${options.type}-input ${options.hover ? `${options.type}-input_hovered`: ''} ${options.maskedInput ? 'js-masked-input' : ''}` placeholder=options.placeholder  || false value=options.value || false readonly= options.type === 'dropdown')
+        input(type=`${options.type === 'dropdown' ? 'text' : options.type}`
+          class=`${options.type}-input ${options.hover ? `${options.type}-input_hovered`: ''} ${options.maskedInput ? 'js-masked-input' : ''}`
+          placeholder=options.placeholder  || false 
+          value=options.value || false 
+          readonly= options.type === 'dropdown'
+          name= options.name || false)
         if options.type === 'dropdown'
           i.material-icons.dropdown-icon expand_more 
         block
@@ -31,7 +37,11 @@ mixin input(options)
       - options.class =  options.class || 'radio__input_simple'
         .radio
           label(class='label radio__label')
-            input(type=`${options.type}` class=`${options.type}__input ${options.class || ''}` value=options.value || false  name=`${options.name}` checked=options.isChecked)
+            input(type=`${options.type}` 
+              class=`${options.type}__input ${options.class || ''}` 
+              value=options.value || false  
+              name=`${options.name}` 
+              checked=options.isChecked)
             span(class = 'label__text radio__text') #{options.labelText}
             block
     when 'checkbox'
@@ -39,7 +49,10 @@ mixin input(options)
     when 'toggle'
       .checkbox
         label.label.checkbox__label
-          input(type=`checkbox` class=`checkbox__input${options.type !== 'checkbox' ? `_${options.type}` : ''}` checked=options.isChecked)
+          input(type=`checkbox`
+            class=`checkbox__input${options.type !== 'checkbox' ? `_${options.type}` : ''}` 
+            checked=options.isChecked
+            name=options.name)
           = options.labelText
           if options.type === 'rich-checkbox'
             span.checkbox__text

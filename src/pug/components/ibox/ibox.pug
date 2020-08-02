@@ -4,14 +4,14 @@ mixin ibox (options)
     let {items} = options
 
   .increment-box.js-increment-box(class!=attributes.class )
-    .increment-box__rows
+    .increment-box__rows.js-increment-box__rows
       - for (let {text, name, value} of items)
-        .increment-box__row
+        .increment-box__row.js-increment-box__row
           span.increment-box__text= text
           .increment-box__buttons
-            button.decrease(type = 'button') -
-            input.increment-box__number(name = name value = value type = 'text')
-            button.increase(type = 'button') +
+            button.decrease.js-decrease(type = 'button') -
+            input.increment-box__number.js-increment-box__number(name = name value = value type = 'text')
+            button.increase.js-increase(type = 'button') +
     .action-buttons
-      button.reset(type = 'button') очистить
-      button.done(type = 'button') применить
+      button.reset.js-reset(type = 'button') очистить
+      button.done.js-done(type = 'button') применить

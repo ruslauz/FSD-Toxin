@@ -39,11 +39,11 @@ export function iBox(el) {
 
       // Собираем элементы
 
-      const applyButton = target.querySelector('.done');
-      const resetButton = target.querySelector('.reset');
-      const minusButtons = target.querySelectorAll('.decrease');
-      const plusButtons = target.querySelectorAll('.increase');
-      const numbers = target.querySelectorAll('.increment-box__number');
+      const applyButton = target.querySelector('.js-done');
+      const resetButton = target.querySelector('.js-reset');
+      const minusButtons = target.querySelectorAll('.js-decrease');
+      const plusButtons = target.querySelectorAll('.js-increase');
+      const numbers = target.querySelectorAll('.js-increment-box__number');
       const defaultOutput = target.closest('.dropdown').querySelector('.js-dropdown__text');
       let output = outputEl || defaultOutput
 
@@ -53,10 +53,10 @@ export function iBox(el) {
         mutations.forEach(mutation => {
           if (mutation.attributeName === 'value') {
             if (mutation.target.value === mutation.target.dataset.minNumber) {
-              mutation.target.parentElement.querySelector('.decrease').classList.add('decrease_disabled');
+              mutation.target.parentElement.querySelector('.js-decrease').classList.add('decrease_disabled');
               ![...numbers].reduce((acc, el) => acc = +acc + +el.value, 0) ? resetButton.style.visibility = 'hidden' : null;
             } else {
-              mutation.target.parentElement.querySelector('.decrease').classList.remove('decrease_disabled');
+              mutation.target.parentElement.querySelector('.js-decrease').classList.remove('decrease_disabled');
               resetButton.style.visibility = 'visible';
             }
           }
@@ -73,7 +73,7 @@ export function iBox(el) {
 
       if (!actionButtons) {
         target.querySelector('.action-buttons').style.display = 'none';
-        target.querySelector('.increment-box__rows').style.margin = 0;
+        target.querySelector('.js-increment-box__rows').style.margin = 0;
       } else {
 
         // Кнопка Применить
@@ -101,7 +101,7 @@ export function iBox(el) {
 
       minusButtons.forEach(minusButton => {
         minusButton.addEventListener('click', function (e) {
-          const number = this.parentElement.querySelector('.increment-box__number');
+          const number = this.parentElement.querySelector('.js-increment-box__number');
           if (number.value > number.dataset.minNumber) {
             number.value--;
             number.setAttribute('value', number.value);
@@ -114,7 +114,7 @@ export function iBox(el) {
 
       plusButtons.forEach(plusButton => {
         plusButton.addEventListener('click', function (e) {
-          const number = this.parentElement.querySelector('.increment-box__number')
+          const number = this.parentElement.querySelector('.js-increment-box__number')
           number.value++;
           number.setAttribute('value', number.value);
           if (!actionButtons) iBoxRender(defaultPhrase, items);
@@ -128,7 +128,7 @@ export function iBox(el) {
         const map = new Map()
         numbers.forEach((number, index) => {
           if (number.value <= number.dataset.minNumber) {
-            number.parentElement.querySelector('.decrease').classList.add('decrease_disabled')
+            number.parentElement.querySelector('.js-decrease').classList.add('decrease_disabled')
           }
           if (map.has(items[index].phrases)) {
             map.set(items[index].phrases, map.get(items[index].phrases) + +number.value)

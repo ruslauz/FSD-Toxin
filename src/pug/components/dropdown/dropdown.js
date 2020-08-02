@@ -1,7 +1,8 @@
 const summary = document.querySelectorAll('.dropdown__summary');
 const dropdownInput = document.querySelectorAll('.dropdown__input')
+// const done = document.querySelectorAll('.js-done')
 
-// Close all\
+// Close all
 function closeAll() {
   document.querySelectorAll('.dropdown_expanded')
     .forEach(el => {
@@ -37,7 +38,7 @@ dropdownInput.forEach(item => {
 
 
 document.addEventListener('click', (e) => {
-  if (e.target.classList.contains('dropdown__layer')) {
+  if (e.target.classList.contains('dropdown__layer') || e.target.classList.contains('js-done')) {
     closeAll();
   }
 })

@@ -20,7 +20,7 @@ include ../../components/room-card/room-card
 block variables
   - const title = 'UI Kit Cards'
   - const description = 'UI Kit Cards'
-  - const radios = [{labelText: 'Мужчина', isChecked: true},{labelText: 'Женщина'}]
+  - const radios = [{labelText: 'Мужчина', isChecked: true, value: 'man'},{labelText: 'Женщина', value: 'woman'}]
 
 block main
   main.main.main_cards
@@ -55,35 +55,35 @@ block main
 
         .cards__item
           .form-wrapper
-            form.form.form_reg
+            form.form.form_reg(method='post')
               .form__header
                 .form__title Регистрация аккаунта 
               .form__content
         
                 .form__content-item.form__content-item_10
-                  +input({type: 'text',placeholder: 'Имя'})
+                  +input({type: 'text',placeholder: 'Имя', name: 'user-name'})
 
                 .form__content-item.form__content-item_10
-                  +input({type: 'text',placeholder: 'Фамилия'})
+                  +input({type: 'text',placeholder: 'Фамилия', name: 'user-surname'})
 
                 .form__content-item.form__content-item_20
                   .radio-buttons
                     each radio in radios
-                      - let {labelText, isChecked} = radio
+                      - let {labelText, isChecked, value} = radio
                       .radio-buttons__item
-                        +input({type: 'radio',labelText: `${labelText}`, isChecked: isChecked,name: 'sex'})
+                        +input({type: 'radio', labelText: labelText, isChecked: isChecked, name: 'sex', value: value})
 
                 .form__content-item
-                  +input({labelText: 'дата рождения',type: 'text',placeholder: 'ДД.ММ.ГГГГ', maskedInput: true})
+                  +input({labelText: 'дата рождения',type: 'text',placeholder: 'ДД.ММ.ГГГГ', maskedInput: true, name: 'birthday'})
 
                 .form__content-item.form__content-item_10
-                  +input({labelText:'данные для входа в сервис', type: 'email',placeholder: 'Email'})
+                  +input({labelText:'данные для входа в сервис', type: 'email',placeholder: 'Email', name: 'email'})
 
                 .form__content-item.form__content-item_10
-                  +input({type: 'password',placeholder: 'Пароль'})
+                  +input({type: 'password',placeholder: 'Пароль', name: 'password'})
 
                 .form__content-item
-                  +input({type: 'toggle', labelText: 'Получать спецпредложения', isChecked: true,})
+                  +input({type: 'toggle', labelText: 'Получать спецпредложения', isChecked: true, name: 'get-special-offers'})
 
                 .form__content-item.form__content-item_30
                   +button({type: 'form-submit', buttonText: 'перейти к оплате'})
@@ -123,9 +123,9 @@ block main
                   .calculations
                     .calculations__body
                       .calculations__item
-                        span.calculations__text 9 990₽ х 4 суток
+                        span.calculations__text <span class='js-calculations-price-per-day'>9 990</span>₽ х <span class='js-calculations-period'>4 суток</span>
                         span.calculations__empty
-                        span.calculations__number 39 960₽
+                        span.calculations__number <span class='js-calculations-price-for-period'>39 960</span>₽
                         span.calculations__text Сбор за услуги: скидка 2 179₽
                         span.calculations__icon i
                         span.calculations__number 0₽
@@ -135,7 +135,7 @@ block main
                     .calculations__result
                       .calculations__result-text Итого
                       .calculations__result-dots
-                      .calculations__result-number 38 081₽
+                      .calculations__result-number <span class='js-calculations-total-price'>38 081</span>₽
                 .form__content-item
                   +button({type: 'form-submit', buttonText: 'забронировать'})
         
@@ -146,9 +146,9 @@ block main
                 .form__title Войти
               .form__content
                 .form__content-item.form__content-item_10
-                  +input({type: 'email',placeholder: 'Email'})
+                  +input({type: 'email',placeholder: 'Email', name: 'email'})
                 .form__content-item
-                  +input({type: 'password',placeholder: 'Пароль'})
+                  +input({type: 'password',placeholder: 'Пароль', name: 'password'})
                 .form__content-item
                   +button({type: 'form-submit', buttonText: 'войти'})
               .form-footer
@@ -166,7 +166,6 @@ block main
             price: '9 900',
             isLux: true,
             rateNumber: 5,
-            images: [],
             reviewsAmount: '145'
             }) 
 
@@ -176,7 +175,6 @@ block main
             price: '9 900',
             isLux: false,
             rateNumber: 4,
-            images: [],
             reviewsAmount: '65'
             }) 
 

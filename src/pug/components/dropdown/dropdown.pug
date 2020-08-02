@@ -22,12 +22,23 @@ mixin dropdown(options)
         .dropdown__inputs-item
           label.label.dropdown__label 
             span.label__main-text.heading_level-3 #{firstLabelText}
-            input(type=`text` class=`dropdown__input` placeholder=firstPlaceholder  || false value=firstValue || false readonly)
+            input(
+              type=`text` 
+              class=`dropdown__input` 
+              placeholder=firstPlaceholder  || false 
+              value=firstValue || false 
+              name= 'arrival-date'
+              readonly)
             i.material-icons.dropdown__icon expand_more 
         .dropdown__inputs-item
           label.label.dropdown__label
             span.label__main-text.heading_level-3 #{secondLabelText}
-            input(type=`text` class=`dropdown__input` placeholder=secondPlaceholder  || false value=secondValue || false readonly)
+            input(type=`text` 
+            class=`dropdown__input` 
+            placeholder=secondPlaceholder  || false 
+            value=secondValue || false
+            name= 'departure-date' 
+            readonly)
             i.material-icons.dropdown__icon expand_more
       .dropdown__body
         block
