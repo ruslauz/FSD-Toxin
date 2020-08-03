@@ -1,0 +1,128 @@
+ 
+ @import '../../../scss/utils';
+ 
+ .footer{
+
+  &__top{
+      background: #FFFFFF;
+      box-shadow: 0px 1px 0px rgba(31, 32, 65, 0.1);
+      padding: 100px 0 100px 0;
+      display: flex;
+     justify-content: center;
+     border-bottom: 1px solid #E5E5E5;
+  }
+  &__container{
+     align-items: start;
+
+     &_bottom{
+       justify-content: space-between;
+     }
+  }
+  &__logo{
+    width: 100%;
+    max-width: 260px;
+    margin: 0 40px 0 0;
+  }
+  &__logo-link{
+  display: flex;
+  margin: 0 0 20px 0;
+  }
+  &__text{
+    color: $main75;
+  }
+  &__nav{
+    display: flex;
+    margin: 0 50px 0 0;
+    width: 100%;
+  }
+  &__nav-item{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 150px;
+
+    &:not(:last-child){
+      margin: 0 50px 0 0;
+    }
+  }
+  &__subscription{
+    width: 100%;
+    max-width: 260px;
+  }
+
+  .subscription{
+  &__title{
+    margin: 0 0 20px 0;
+  }
+  &__text{
+    color: $main75;
+    margin: 0 0 20px 0;
+  }
+  &__input{}
+}
+
+  &__bottom{
+    background: #FFFFFF;
+    box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
+    display: flex;
+    justify-content: center;
+    padding: 23px 0;
+  }
+  &__copy{
+    line-height: 17px;
+    color: $main75;
+  }
+  &__social{
+    display: flex;
+  }
+  &__social-item{
+    font-size: 24px;
+    line-height: 23px;
+    background: $purple-gradient;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    &:not(:last-child){
+      margin: 0 20px 0 0;
+    }
+  }
+
+  &_mobile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 768px;
+    margin: 0 auto;
+    box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
+
+    & .footer__top{
+      width: 100%;
+      border: none;
+      padding: 120px 0 20px 0;
+    }
+    &  .footer__container{
+      justify-content: center;
+    }
+    & .footer__logo{
+      margin: 0;
+    }
+    & .footer__logo-link{
+      justify-content: center;
+      margin: 0;
+    }
+    & .footer__bottom{
+      width: 100%;
+      padding: 0 0 120px 0;
+    }
+    & .footer__container_bottom{
+      flex-direction: column;
+      align-items: center;
+    }
+    & .footer__copy{
+      margin: 0 0 25px 0;
+    }
+    &__social{}
+    &__social-item{}
+  }
+}
+
