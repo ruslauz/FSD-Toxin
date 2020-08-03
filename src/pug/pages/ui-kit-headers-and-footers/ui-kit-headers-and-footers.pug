@@ -1,0 +1,73 @@
+extends ../../layouts/main
+
+include ../../components/form-elem/form-elem
+include ../../components/input/input
+include ../../components/button/button
+include ../../components/rate/rate
+include ../../components/pagination/pagination
+include ../../components/fieldset/fieldset
+include ../../components/list/list
+include ../../components/range/range
+include ../../components/dropdown/dropdown
+include ../../components/expandable-list/expandable-list
+include ../../components/bullet-list/bullet-list
+include ../../components/advantage/advantage
+include ../../components/review/review
+include ../../components/ibox/ibox
+
+include ../../includes/header/header
+include ../../includes/footer/footer
+
+block variables
+  - const title = 'UI Headers and Footers'
+  - const description = 'UI Headers and Footers'
+
+block main
+  main.main.main_headers-footers
+    .main-logo.main-logo_ui-kit(src="./images/svg/ui-kit-logo.svg", alt="logo")
+      include ../../../images/svg/ui-kit-logo.svg
+    block content
+      .content.content_headers-footers
+        .header-footers
+          .header-footers__item
+            +header()
+
+          .header-footers__item
+            +header({isLogedIn: true})
+          
+          .header-footers__item
+            +footer()
+            //- footer.footer
+            //-   .container.footer__container
+            //-     .footer__logo
+            //-       a.footer__logo-link(href='/' title='Toxin - Главная страниу=ца')
+            //-         img.logo(src=require('../../../images/svg/logo.svg'))
+            //-       .footer__text.
+            //-         Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
+            //-     .footer__nav
+            //-       .footer__nav-item
+            //-         .footer-nav
+            //-           .footer-nav__title.heading_level-3 навигация
+            //-           .footer-nav__content
+            //-             a.footer-nav__link О нас
+            //-             a.footer-nav__link Новости
+            //-             a.footer-nav__link Служба поддержки
+            //-             a.footer-nav__link Услуги
+            //-       .footer__nav-item
+            //-       .footer__nav-item
+            //-     .footer__subscription
+            //-       .subscription
+            //-         .subscription__title.heading_level-3 Подписка
+            //-         .subscription__text.
+            //-           Получайте специальные предложения и новости сервиса
+            //-         .subscription__input
+            //-           +input({type: 'text', placeholder: 'Email'})
+            //-             +button({type: 'arrow-forward'})
+
+
+
+
+
+
+
+

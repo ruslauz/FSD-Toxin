@@ -33,6 +33,12 @@ module.exports = {
     // hot: true
   },
 
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
+  },
+
   devtool: 'source-map',
 
   module: {
@@ -129,6 +135,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/pug/pages/ui-kit-cards/ui-kit-cards.pug',
       filename: 'ui-kit-cards.html',
+    }),
+
+    new HtmlWebpackPlugin({
+      template: './src/pug/pages/ui-kit-headers-and-footers/ui-kit-headers-and-footers.pug',
+      filename: 'ui-kit-headers-and-footers.html',
     }),
 
     new CleanWebpackPlugin(),

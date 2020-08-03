@@ -1,1 +1,28 @@
-header.header
+include ../../components/nav/nav
+
+mixin header(options)
+  - 
+    options = options || {}
+    let {isLogedIn} = options
+    let items = [
+      {isActive: true, text: 'О нас'},
+      {isExpandable: true, text: 'Услуги'},
+      {text: 'Вакансии'},
+      {text: 'Новости'},
+      {isExpandable: true, text: 'Соглашения'},
+      ]
+
+  header.header
+    .container.header__container
+      .header__logo
+        a.header__logo-link(href='/' title='Toxin - Главная страниу=ца')
+          img.logo(src=require('../../../images/svg/logo.svg'))
+      .header__nav
+        +nav({items: items})
+      if !isLogedIn
+        .header__buttons
+          +button({type: 'white', buttonText: 'войти'})
+          +button({type: 'gradient', buttonText: 'зарегистрироваться'})
+      else
+        .header__user-block
+          .header__user-name Юлий Цезарь

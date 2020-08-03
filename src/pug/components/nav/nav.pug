@@ -1,0 +1,9 @@
+mixin nav(options)
+  -
+    options = options || {}
+    let {items} = options
+  nav.nav
+    each item in items
+      - let {text, isActive, isExpandable} = item
+        .nav__item(class=isActive && 'nav__item_active' class=isExpandable && 'nav__item_expandable') 
+          a.nav__link(href='#link' title=text)= text

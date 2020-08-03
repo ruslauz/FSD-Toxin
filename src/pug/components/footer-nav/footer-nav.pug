@@ -1,0 +1,9 @@
+mixin footer-nav(options)
+  - 
+    options = options || {}
+    const {title, items} = options
+  .footer-nav
+  .footer-nav__title.heading_level-3= title
+  .footer-nav__content
+    each item in items
+      a.footer-nav__link(href='#footer-link' title=item)= item
