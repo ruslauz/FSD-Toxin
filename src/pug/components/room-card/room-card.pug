@@ -26,6 +26,6 @@ mixin room-card(options)
       hr.room__hr
       .room__rating
         .room__rate
-          +rate({rateNumber: rateNumber})
+          +rate({rateNumber: rateNumber, name: number})
         .room__reviews 
           |<span class="room__reviews-amount">#{reviewsAmount}</span> Отзывов

@@ -1,6 +1,7 @@
 import {iBox} from '../../components/ibox/ibox'
 import {Calendar} from '../../components/calendar/calendar'
 import setCustomOutput from '../../../js/setCustomOutput'
+
 const guest = ["гость", "гостя", "гостей"];
 const baby = ["младенец", "младенца", "младенцев"];
 const bedroom = ["спальня", "спальни", "спалень"];
