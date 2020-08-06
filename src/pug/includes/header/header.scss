@@ -24,8 +24,11 @@
     align-items: center;
   }
 
-  &__logo{
+  &__logo-link{
 
+    & > * {
+      height: 40px;
+    }
   }
 
   &__nav{
