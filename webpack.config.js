@@ -26,7 +26,7 @@ module.exports = {
   },
 
   output: {
-    filename: 'js/[name].js',
+    filename: 'js/[name]-[contenthash:5].js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/FSD-Toxin/'
   },
@@ -56,7 +56,7 @@ module.exports = {
           {
             loader: 'pug-loader',
             options: {
-              pretty: true
+              pretty: isDev
             }
           }
         ]
@@ -104,7 +104,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(jpg|png|gif|svg)$/,
+        test: /(\.(jpe?g|png|gif)$|^((?!font).)*\.svg$)/,
         use: [
           {
             loader: 'file-loader',
@@ -117,7 +117,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(ttf|woff|woff2|eot)$/,
+        test: /\.(ttf|woff|woff2|eot|svg)$/,
         use: [
           {
             loader: 'file-loader',
@@ -154,7 +154,7 @@ module.exports = {
     //   ]
     // }),
     new MiniCssExtractPlugin({
-      filename: 'css/[name].css'
+      filename: 'css/[name]-[contenthash:5].css'
     })
   ]
 }
