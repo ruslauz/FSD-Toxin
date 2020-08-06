@@ -1,0 +1,59 @@
+@import '../../../scss/utils';
+
+.main{
+  &_search-room{
+    padding: 20px 0 70px 0;
+    border-bottom:1px solid $main25;
+  }
+}
+.container{
+
+  &_search-room{
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+.aside-left{
+  &__form{
+    width: 100%;
+    max-width: 266px;
+    margin: 0 60px 0 0;
+  }
+}
+
+.content{
+  &_search-room{
+    flex: 1;
+  }
+}
+.search-room{
+
+  &__title{
+    margin: 0 0 20px 0;
+  }
+  &__body{
+    margin: 0 0 40px 0;
+  }
+  &__footer{
+    display: flex;
+    justify-content: center;
+  }
+}
+.rooms{
+  display: grid;
+  grid-template-columns: repeat(auto-fill ,minmax(270px, auto));
+  grid-column-gap: 12px;
+  grid-row-gap: 20px;
+
+  .room{
+    max-width: unset;
+    & img{
+      width: 100%;
+      height: auto;
+    }
+  }
+  &__item{
+    display: flex;
+    justify-content: center;
+  }
+}

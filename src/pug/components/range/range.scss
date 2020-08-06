@@ -25,6 +25,13 @@
     text-transform: uppercase;
     color: $main50;
 }
+.range__bottom{
+  font-size: 12px;
+  line-height: 14px;
+  color: $main50;
+  padding: 13px 0 0 0;
+}
+
 .noUi-target{
   box-shadow: unset;
   height: 6px;

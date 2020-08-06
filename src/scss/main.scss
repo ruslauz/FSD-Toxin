@@ -23,6 +23,10 @@ strong{
   @include h3;
   font-family: $main-font;
 }
+.main{
+  display: flex;
+  justify-content: center;
+}
 
 .main-logo {
 
@@ -39,5 +43,24 @@ strong{
   padding: 0 20px;
   width: 100%;
 }
+.content{
+  width: 100%;
+}
+.aside-left{
+}
 
-
+.ibg {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+.ibg > img {
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+}

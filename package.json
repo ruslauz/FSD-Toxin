@@ -17,11 +17,14 @@
     "@babel/plugin-proposal-private-methods": "^7.10.4",
     "@babel/polyfill": "^7.10.1",
     "@babel/preset-env": "^7.10.3",
+    "autoprefixer": "^9.8.6",
     "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^6.0.2",
     "cross-env": "^7.0.2",
     "css-loader": "^3.6.0",
+    "css-mqpacker": "^7.0.0",
+    "cssnano": "^4.1.10",
     "file-loader": "^6.0.0",
     "find": "^0.3.0",
     "html-webpack-plugin": "^4.3.0",
@@ -30,6 +33,7 @@
     "node-sass": "^4.14.1",
     "npm": "^6.14.5",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "postcss-loader": "^3.0.0",
     "pug": "^3.0.0",
     "pug-loader": "^2.4.0",
     "sass-loader": "^8.0.2",
@@ -45,6 +49,11 @@
     "jquery.maskedinput": "^1.4.1",
     "material-design-icons": "^3.0.1",
     "nouislider": "^14.6.0",
+    "postcss-unprefix": "^2.1.4",
     "swiper": "^6.1.1"
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 10 version"
+  ]
 }

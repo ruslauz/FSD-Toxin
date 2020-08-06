@@ -1,11 +1,29 @@
 extends ../../layouts/main
 
+include ../../components/form-elem/form-elem
+include ../../components/input/input
+include ../../components/button/button
+include ../../components/rate/rate
+include ../../components/pagination/pagination
+include ../../components/fieldset/fieldset
+include ../../components/list/list
+include ../../components/range/range
+include ../../components/dropdown/dropdown
+include ../../components/expandable-list/expandable-list
+include ../../components/bullet-list/bullet-list
+include ../../components/advantage/advantage
+include ../../components/review/review
+include ../../components/ibox/ibox
+
+include ../../includes/header/header.pug
+include ../../includes/footer/footer.pug
+
 block variables
   - let title = 'Главная страница'
   - let description = 'Toxin - сервис онлайн бронирования номеров'
 
 block header
-  include ../../includes/header/header.pug
+  +header()
 block main
   main.main
 
@@ -13,10 +31,50 @@ block main
       include ../../includes/aside-left/aside-left.pug
 
     block content
-     .content
+      .content.landing-content
+        .landing-content__slider.swiper-container.swiper-container_landing
+          .slider.swiper-wrapper.swiper-wrapper_landing
+            .swiper-slide
+              .slider__element.ibg
+                img(src=require('../../../images/header/background.jpg'), alt="slider__element")
+            .swiper-slide
+              .slider__element.ibg
+                img(src=require('../../../images/header/background-2.jpg'), alt="slider__element")
+            .swiper-slide
+              .slider__element.ibg
+                img(src=require('../../../images/header/background-3.jpg'), alt="slider__element")
+        .landing-content__wrapper
+          .container.container_landing
+            .landing-content__form
+              .form-wrapper
+                form.form.form_main
+                  .form__header
+                    .form__title Найдём номера под ваши пожелания 
+                  .form__content
+                    .form__content-item
+                      +dropdown({
+                        dateDropDown: true,
+                        firstLabelText: 'прибытие',
+                        firstPlaceholder: 'ДД.ММ.ГГГГ',
+                        secondLabelText: 'выезд',
+                        secondPlaceholder: 'ДД.ММ.ГГГГ',
+                        })
+                        .js-uikitcards-cal1
+                    .form__content-item.form__content-item_30
+                      +dropdown({title: 'Dropdown'})
+                        +ibox({items: [
+                          {text: 'взрослые', name: 'adults', value: '2'},
+                          {text: 'дети', name: 'kids', value: '1'},
+                          {text: 'младенцы', name: 'babies', value: '0'}
+                          ]})(class='js-guest-increment-box')
+                    .form__content-item
+                      +button({type: 'form-submit', buttonText: 'подобрать номер'})
+            .landing-content__text Лучшие номера для вашей работы, отдыха и просто вдохновения
+          
+    
 
     block aside-right
       include ../../includes/aside-right/aside-right.pug
 
 block footer
-  include ../../includes/footer/footer.pug
+  +footer()

@@ -1,0 +1,32 @@
+.landing-content{
+  &__wrapper{
+    display: flex;
+    justify-content: center;
+    min-height: 492px;
+    position: absolute;
+    padding: 0 0 26px 0;
+    width: 100%;
+    top: 70px;
+    height: 57.6388888vw;
+    z-index: 111;
+  }
+
+  &__form{
+    margin: 70px 0 0 0;
+  }
+
+  &__text{
+    position: absolute;
+    bottom: 18px;
+    right: 128px;
+    width: 100%;
+    max-width: 297px;
+    text-align: right;
+  }
+}
+.slider{
+  &__element{
+    height: 57.6388888vw;
+    min-height: 492px;
+  }
+}

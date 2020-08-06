@@ -1,0 +1,69 @@
+extends ../../layouts/main
+
+include ../../components/form-elem/form-elem
+include ../../components/input/input
+include ../../components/button/button
+include ../../components/rate/rate
+include ../../components/pagination/pagination
+include ../../components/fieldset/fieldset
+include ../../components/list/list
+include ../../components/range/range
+include ../../components/dropdown/dropdown
+include ../../components/expandable-list/expandable-list
+include ../../components/bullet-list/bullet-list
+include ../../components/advantage/advantage
+include ../../components/review/review
+include ../../components/ibox/ibox
+
+include ../../includes/header/header.pug
+include ../../includes/footer/footer.pug
+
+block variables
+  - let title = 'Регистрация'
+  - let description = 'Toxin - сервис онлайн бронирования номеров'
+  - const radios = [{labelText: 'Мужчина', isChecked: true, value: 'man'},{labelText: 'Женщина', value: 'woman'}]
+
+block header
+  +header()
+block main
+  main.main
+
+    block aside-left
+      
+
+    block content
+      .content.sign-in-content
+        .sign-in-content__wrapper
+          .sign-in-content__slider.swiper-container.swiper-container_sign-in
+            .slider.swiper-wrapper.swiper-wrapper_sign-in
+              .swiper-slide
+                .slider__element.ibg
+                  img(src=require('../../../images/header/sign-background.jpg'), alt="slider__element")
+              .swiper-slide
+                .slider__element.ibg
+                  img(src=require('../../../images/header/background.jpg'), alt="slider__element")
+
+          .container.container_sign-in
+            .sign-in-content__form
+              .form-wrapper
+                form.form.form_log-in
+                  .form__header
+                    .form__title Войти
+                  .form__content
+                    .form__content-item.form__content-item_10
+                      +input({type: 'email',placeholder: 'Email', name: 'email'})
+                    .form__content-item
+                      +input({type: 'password',placeholder: 'Пароль', name: 'password'})
+                    .form__content-item
+                      +button({type: 'form-submit', buttonText: 'войти'})
+                  .form-footer
+                    .form-footer__text Нет аккаунта на Toxin?
+                    .form-footer__button 
+                      +button({type: 'white', buttonText: 'создать'})
+
+          
+    block aside-right
+      
+
+block footer
+  +footer()

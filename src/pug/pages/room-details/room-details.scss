@@ -1,0 +1,195 @@
+@import '../../../scss/utils';
+
+
+.main{
+  &_room-details{
+    padding: 0 0 70px 0;
+    border-bottom:1px solid $main25;
+  }
+}
+.container{
+
+  &_room-details{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+}
+.room-details{
+  width: 100%;
+
+  &__top{
+    margin: 0 0 70px 0;
+  }
+  &__images{
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(320px,981px) minmax(320px,459px);
+    grid-template-rows: minmax(auto,243px) minmax(auto,242px);
+    grid-template-areas:
+        'first second'
+        'first third';  
+      }
+  &__image{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    
+    &:nth-child(1){
+      grid-area: first;
+    }
+    &:nth-child(2){
+      grid-area: second;
+    }
+    &:nth-child(3){
+      grid-area: third;
+    }
+  }
+
+  &__body{
+    display: flex;
+    margin: 0 0 70px 0;
+    width: 100%;
+    justify-content: center;
+  }
+  &__content{
+    max-width: 712px;
+  }
+  &__row{
+    display: flex;
+    justify-content: space-between;
+    &:not(:last-child){
+      margin: 0 0 30px 0;
+    }
+  }
+  &__item{
+    width: 100%;
+    max-width: 350px;
+    // &:not(:last-child){
+    //   margin: 0 70px 0 0;
+    // }
+  }
+  &__aside{
+    width: 100%;
+    max-width: 380px;
+  }
+}
+.advantages{
+  width: 100%;
+  max-width: 291px;
+  &__title{
+    margin: 0 0 20px 0;
+  }
+  &__body{}
+}
+
+.impressions{
+  width: 100%;
+  // max-width: 311px;
+  &__title{
+    margin: 0 0 20px 0;
+  }
+  &__body{
+    display: flex;
+  }
+}
+.circle{
+  width: 100%;
+  max-width: 120px;
+  margin: 0 30px 5px 0;
+  align-self: flex-start;
+  position: relative;
+  line-height: 0; //Height fixes
+
+  &__text{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    color: $purple;
+    font-weight: bold;
+    text-align: center;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+  &__top-text{
+    font-size: 24px;
+    line-height: 30px;
+    font-family: $second-font;
+    // position: absolute;
+  }                      
+  &__bottom-text{
+    // position: absolute;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;  
+  }                      
+}
+.marked-list{
+  align-self: flex-end;
+  &__item{
+    padding: 0 0 0 15px;
+    position: relative;
+    &:before{
+      content: "";
+      width: 10px;
+      height: 10px;
+      display: inline-block;
+      border-radius: 50%;
+      background: $main25;
+      position: absolute;
+      left: 0;
+      margin: 7px 0 0 0;
+    }
+    &_orange{
+      &:before{
+        background: linear-gradient(180deg, #FFE39C 0%, #FFBA9C 100%);
+      }
+    }
+    &_green{
+      &:before{
+        background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);      
+      }
+    }
+    &_violet{
+      &:before{
+        background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);      
+      }
+    }
+    &_black{
+      &:before{
+        background: linear-gradient(180deg, #919191 0%, #3D4975 100%);
+      }
+    }
+  }
+}
+.reviews{
+  &__title{
+    margin: 0 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__count{
+    line-height: 14px;
+    color: $main50;
+  }
+  &__body{
+
+  }
+  &__item{
+    margin: 0 0 22px 0;
+  }
+}
+.cancel{
+  &__title{
+    margin: 0 0 20px 0;
+  }
+  &__body{
+    color: $main75;
+  }
+}
+

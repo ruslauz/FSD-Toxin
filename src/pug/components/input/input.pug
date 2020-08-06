@@ -9,8 +9,9 @@ mixin input(options)
     when 'password'
     when 'dropdown'
     when 'subscription'
-      label.label(class = `label_${options.type}`) 
-        span.label__main-text #{options.labelText}
+      label.label(class = `label_${options.type}`)
+        if  options.labelText
+          span.label__main-text #{options.labelText}
         if options.additionalText 
           span.label__additional-text #{options.additionalText}
         input(type=`${options.type === 'dropdown' ? 'text' : options.type}`
@@ -53,7 +54,7 @@ mixin input(options)
             class=`checkbox__input${options.type !== 'checkbox' ? `_${options.type}` : ''}` 
             checked=options.isChecked
             name=options.name)
-          = options.labelText
+          != options.labelText
           if options.type === 'rich-checkbox'
             span.checkbox__text
               span.checkbox__title!= options.title

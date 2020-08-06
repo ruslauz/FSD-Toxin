@@ -1,0 +1,91 @@
+extends ../../layouts/main
+
+include ../../components/form-elem/form-elem
+include ../../components/input/input
+include ../../components/button/button
+include ../../components/rate/rate
+include ../../components/pagination/pagination
+include ../../components/fieldset/fieldset
+include ../../components/list/list
+include ../../components/range/range
+include ../../components/dropdown/dropdown
+include ../../components/expandable-list/expandable-list
+include ../../components/bullet-list/bullet-list
+include ../../components/advantage/advantage
+include ../../components/review/review
+include ../../components/ibox/ibox
+
+include ../../includes/header/header.pug
+include ../../includes/footer/footer.pug
+
+block variables
+  - let title = 'Регистрация'
+  - let description = 'Toxin - сервис онлайн бронирования номеров'
+  - const radios = [{labelText: 'Мужчина', isChecked: true, value: 'man'},{labelText: 'Женщина', value: 'woman'}]
+
+block header
+  +header()
+block main
+  main.main
+
+    block aside-left
+      
+
+    block content
+      .content.registration-content
+        .registration-content__wrapper
+          .registration-content__slider.swiper-container.swiper-container_registration
+            .slider.swiper-wrapper.swiper-wrapper_registration
+              .swiper-slide
+                .slider__element.ibg
+                  img(src=require('../../../images/header/sign-background.jpg'), alt="slider__element")
+              .swiper-slide
+                .slider__element.ibg
+                  img(src=require('../../../images/header/background.jpg'), alt="slider__element")
+
+          .container.container_registration
+            .registration-content__form
+              .form-wrapper
+                form.form.form_reg(method='post')
+                  .form__header
+                    .form__title Регистрация аккаунта 
+                  .form__content
+            
+                    .form__content-item.form__content-item_10
+                      +input({type: 'text',placeholder: 'Имя', name: 'user-name'})
+
+                    .form__content-item.form__content-item_10
+                      +input({type: 'text',placeholder: 'Фамилия', name: 'user-surname'})
+
+                    .form__content-item
+                      .radio-buttons
+                        each radio in radios
+                          - let {labelText, isChecked, value} = radio
+                          .radio-buttons__item
+                            +input({type: 'radio', labelText: labelText, isChecked: isChecked, name: 'sex', value: value})
+
+                    .form__content-item
+                      +input({labelText: 'дата рождения',type: 'text',placeholder: 'ДД.ММ.ГГГГ', maskedInput: true, name: 'birthday'})
+
+                    .form__content-item.form__content-item_10
+                      +input({labelText:'данные для входа в сервис', type: 'email',placeholder: 'Email', name: 'email'})
+
+                    .form__content-item.form__content-item_10
+                      +input({type: 'password',placeholder: 'Пароль', name: 'password'})
+
+                    .form__content-item
+                      +input({type: 'toggle', labelText: 'Получать спецпредложения', isChecked: true, name: 'get-special-offers'})
+
+                    .form__content-item.form__content-item_30
+                      +button({type: 'form-submit', buttonText: 'перейти к оплате'})
+                
+                  .form-footer
+                    .form-footer__text Уже есть аккаунт на Toxin
+                    .form-footer__button 
+                      +button({type: 'white', buttonText: 'войти'})
+          
+    block aside-right
+      
+
+block footer
+  +footer()

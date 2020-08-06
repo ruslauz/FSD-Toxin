@@ -10,9 +10,12 @@
     }
     &__link{
       display: flex;
-      margin: 0 0 20px 0;
       font-size: 14px;
       line-height: 17px;
       color: $main50;
+
+      &:not(:last-child){
+        margin: 0 0 20px 0;
+      }
     }
   }

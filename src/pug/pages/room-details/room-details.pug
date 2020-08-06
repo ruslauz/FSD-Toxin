@@ -1,0 +1,176 @@
+extends ../../layouts/main
+
+include ../../components/form-elem/form-elem
+include ../../components/input/input
+include ../../components/button/button
+include ../../components/rate/rate
+include ../../components/pagination/pagination
+include ../../components/fieldset/fieldset
+include ../../components/list/list
+include ../../components/range/range
+include ../../components/dropdown/dropdown
+include ../../components/expandable-list/expandable-list
+include ../../components/bullet-list/bullet-list
+include ../../components/advantage/advantage
+include ../../components/review/review
+include ../../components/ibox/ibox
+include ../../components/room-card/room-card
+
+include ../../includes/header/header.pug
+include ../../includes/footer/footer.pug
+
+block variables
+  - let title = 'Описание комнаты'
+  - let description = 'Toxin - сервис онлайн бронирования номеров'
+
+block header
+  +header()
+
+block main
+  main.main.main_room-details
+    .room-details
+      .room-details__top
+        .room-details__images
+          img(src=require('../../../images/room/888/image.jpg'), alt="room-details-image").room-details__image
+          img(src=require('../../../images/room/888/image 2.jpg'), alt="room-details-image").room-details__image
+          img(src=require('../../../images/room/888/image 3.jpg'), alt="room-details-image").room-details__image
+      
+      .room-details__body
+        .container.container_room-details
+          block aside-left
+            aside.aside-left
+                    
+          block content
+            .room-details__content
+              .room-details__row
+                .room-details__item              
+                  .advantages
+                    .advantages__title.heading_level-2 Сведения о номере
+                    .advantages__body 
+                      .advantages__item
+                        +advantage({icon: 'insert_emoticon', title: 'Комфорт', description: 'Шумопоглощающие стены'})
+                      .advantages__item
+                        +advantage({icon: 'location_city', title: 'Удобство', description: 'Окно в каждой из спален'})
+                      .advantages__item
+                        +advantage({icon: 'whatshot', title: 'Уют', description: 'Номер оснащён камином'})
+
+                .room-details__item
+                  .impressions
+                    .impressions__title.heading_level-2 Впечатления от номера
+                    .impressions__body
+                      .circle
+                        |<svg width="100%" height="100%" viewBox="0 0 120 120" class="donut">
+                        |<linearGradient id="gradient1" x1="0" x2="0" y1="0" y2="1">
+                        |<stop id="stop1" offset="0%" stop-color="#BC9CFF"></stop>
+                        |<stop id="stop2" offset="100%" stop-color="#8BA4F9"></stop>
+                        |</linearGradient>
+                        |<linearGradient id="gradient2">
+                        |<stop id="stop1" offset="0%" stop-color="#66D2EA"></stop>
+                        |<stop id="stop2" offset="100%" stop-color="#6FCF97"></stop>
+                        |</linearGradient>
+                        |<linearGradient id="gradient3" x1="0" x2="0" y1="0" y2="1">
+                        |<stop id="stop1" offset="0%" stop-color="#FFE39C"></stop>
+                        |<stop id="stop2" offset="100%" stop-color="#FFBA9C"></stop>
+                        |</linearGradient>
+                        |<circle class="donut-segment" cx="50%" cy="50%" r="58" fill="transparent" stroke="url(#gradient1)" stroke-width="4" stroke-dasharray="90 274" stroke-dashoffset="90"></circle>
+                        |<circle class="donut-segment" cx="50%" cy="50%" r="58" fill="transparent" stroke="url(#gradient2)" stroke-width="4" stroke-dasharray="88 276" stroke-dashoffset="-2"></circle>
+                        |<circle class="donut-segment" cx="50%" cy="50%" r="58" fill="transparent" stroke="url(#gradient3)" stroke-width="4" stroke-dasharray="180 184" stroke-dashoffset="-92"></circle>
+                        |</svg>
+                        .circle__text
+                          span.circle__top-text 260
+                          span.circle__bottom-text голосов
+                      ul.marked-list
+                        li.marked-list__item.marked-list__item_orange
+                          span.marked-list__text Великолепно
+                        li.marked-list__item.marked-list__item_green
+                          span.marked-list__text Хорошо
+                        li.marked-list__item.marked-list__item_violet
+                          span.marked-list__text Удовлетворительно
+                        li.marked-list__item.marked-list__item_black
+                          span.marked-list__text Разочарован
+
+              .room-details__row
+                .reviews
+                    .reviews__title
+                      .reviews__title-text.heading_level-2 Отзывы посетителей номера
+                      span.reviews__count 2 отзыва
+                    .reviews__body  
+                      .reviews__item
+                        +review({
+                          img: 'avatar.jpg',
+                          name: 'Мурад Сарафанов',
+                          date: '5 дней назад',
+                          likes: 12,
+                          liked: true,
+                          content: 'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.'
+                          })
+                      .reviews__item
+                        +review({
+                          img: 'avatar-2.jpg',
+                          name: 'Патрисия Стёклышкова',
+                          date: 'Неделю назад',
+                          likes: 2,
+                          content: 'Обслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, каждый день новое блюдо и десерт как комплимент'
+                          })
+    
+              .room-details__row
+                .room-details__item
+                  .rules
+                    .rules__title.heading_level-2 Правила
+                    .rules__body
+                      +bullet-list({items: ['Нельзя с питомцами', 'Без вечеринок и мероприятий', 'Время прибытия — после 13:00,<br>а выезд до 12:00']})
+
+                .room-details__item  
+                  .cancel
+                    .cancel__title.heading_level-2 Отмена
+                    .cancel__body Бесплатная отмена в течение 48 ч. После этого&nbspпри отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.
+
+          block aside-right
+            .room-details__aside
+              aside.aside-right
+                .form-wrapper
+                  form.form.form_booking
+                    .form__header
+                      .booking-room
+                        .booking-room__info
+                          span.booking-room__number <span class="booking-room__number booking-room__number_small">№ </span>888
+                          span.booking-room__lux люкс
+                        .booking-room__price 9 990₽<span class="booking-room__price-additional"> в сутки</span>
+                    .form__content
+                      .form__content-item
+                        +dropdown({
+                          dateDropDown: true,
+                          firstLabelText: 'прибытие',
+                          secondLabelText: 'выезд',
+                          })
+                          .js-uikitcards-cal2
+                      .form__content-item
+                        +dropdown({title: 'Dropdown'})
+                          +ibox({items: [
+                            {text: 'взрослые', name: 'adults', value: '2'},
+                            {text: 'дети', name: 'kids', value: '1'},
+                            {text: 'младенцы', name: 'babies', value: '0'}
+                            ]})(class='js-guest-increment-box')
+                      .form__content-item
+                        .calculations
+                          .calculations__body
+                            .calculations__item
+                              span.calculations__text <span class='js-calculations-price-per-day'>9 990</span>₽ х <span class='js-calculations-period'>4 суток</span>
+                              span.calculations__empty
+                              span.calculations__number <span class='js-calculations-price-for-period'>39 960</span>₽
+                              span.calculations__text Сбор за услуги: скидка 2 179₽
+                              span.calculations__icon i
+                              span.calculations__number 0₽
+                              span.calculations__text Сбор за дополнительные услуги
+                              span.calculations__icon i
+                              span.calculations__number 300₽
+                          .calculations__result
+                            .calculations__result-text Итого
+                            .calculations__result-dots
+                            .calculations__result-number <span class='js-calculations-total-price'>38 081</span>₽
+                      .form__content-item
+                        +button({type: 'form-submit', buttonText: 'забронировать'})
+
+            
+block footer
+  +footer()

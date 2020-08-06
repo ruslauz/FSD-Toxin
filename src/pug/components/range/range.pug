@@ -1,8 +1,12 @@
 mixin range(options)
-  - options = options || {}
+  - 
+    options = options || {}
+    const {title, text} = options
   .range
     .range__heading
-      h3.range__title.heading_level-3 #{options.title}
+      h3.range__title.heading_level-3 #{title}
       span.range__text.js-range-text
     .range-body.js-range
+    .range__bottom= text
+      block
     

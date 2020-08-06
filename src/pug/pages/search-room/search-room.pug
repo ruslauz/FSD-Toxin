@@ -1,0 +1,124 @@
+extends ../../layouts/main
+
+include ../../components/form-elem/form-elem
+include ../../components/input/input
+include ../../components/button/button
+include ../../components/rate/rate
+include ../../components/pagination/pagination
+include ../../components/fieldset/fieldset
+include ../../components/list/list
+include ../../components/range/range
+include ../../components/dropdown/dropdown
+include ../../components/expandable-list/expandable-list
+include ../../components/bullet-list/bullet-list
+include ../../components/advantage/advantage
+include ../../components/review/review
+include ../../components/ibox/ibox
+include ../../components/room-card/room-card
+
+include ../../includes/header/header.pug
+include ../../includes/footer/footer.pug
+
+block variables
+  - let title = 'Станица поиска'
+  - let description = 'Toxin - сервис онлайн бронирования номеров'
+  - const checkboxes = [{labelText: 'Можно курить', isChecked: false},{labelText: 'Можно с питомцами', isChecked: true},{labelText: 'Можно пригласить гостей (до&nbsp10&nbspчеловек)', isChecked: true}]
+  - const expandableList = [{labelText: 'Завтрак',isChecked: false},{labelText: 'Письменный стол',isChecked: true},{labelText: 'Стул для кормления',isChecked: true},{labelText: 'Кроватка',isChecked: true},{labelText: 'Телевизор',isChecked: false},{labelText: 'Шампунь',isChecked: false}]
+  - 
+    const rooms = [
+      {number: '888',price: '9 900',isLux: true,rateNumber: 5,reviewsAmount: '145'},
+      {number: '840',price: '9 900',rateNumber: 4,reviewsAmount: '65'},
+      {number: '980',price: '8 500',isLux: true,rateNumber: 3,reviewsAmount: '35'},
+      {number: '856',price: '7 300',rateNumber: 5,reviewsAmount: '19'},
+      {number: '740',price: '6 000',rateNumber: 4,reviewsAmount: '44'},
+      {number: '982',price: '5 800',rateNumber: 3,reviewsAmount: '56'},
+      {number: '678',price: '5 500',rateNumber: 5,reviewsAmount: '45'},
+      {number: '450',price: '5 300',rateNumber: 4,reviewsAmount: '39'},
+      {number: '350',price: '5 000',rateNumber: 3,reviewsAmount: '77'},
+      {number: '666',price: '5 000',rateNumber: 5,reviewsAmount: '25'},
+      {number: '444',price: '5 000',rateNumber: 3,reviewsAmount: '15'},
+      {number: '352',price: '5 000',rateNumber: 3,reviewsAmount: '55'},
+      ]
+
+block header
+  +header()
+block main
+  main.main.main_search-room
+    .container.container_search-room
+
+      block aside-left
+        aside.aside-left
+          .aside-left__form
+            form.form_search-room
+              .form__content
+                .form__content-item
+                  +dropdown({title: 'даты пребывания в отеле', filterDateDropdown: true})
+                    .js-search-rom-cal
+                .form__content-item
+                  +dropdown({title: 'гости'})
+                    +ibox({items: [
+                      {text: 'взрослые', name: 'adults', value: '2'},
+                      {text: 'дети', name: 'kids', value: '1'},
+                      {text: 'младенцы', name: 'babies', value: '1'}
+                      ]})(class='js-guest-increment-box')
+                .form__content-item.form__content-item_30
+                  +range({title: 'диапазон цены', text: 'Стоимость за сутки пребывания в номере'})
+
+                .form__content-item.form__content-item_30
+                  +fieldset({legend: 'checkbox-buttons'})
+                    .checkbox-buttons
+                      each checkbox in checkboxes
+                        - let {labelText, isChecked} = checkbox
+                          .checkbox-buttons__item
+                            +input({type: 'checkbox',labelText: `${labelText}`,isChecked: isChecked})
+                .form__content-item.form__content-item_30
+                  .rich-buttons
+                    +fieldset({legend: 'доступность'})
+                      .rich-buttons__body
+                        .rich-buttons__item
+                          +input({type: 'rich-checkbox', title: 'Широкий коридор', description: 'Ширина коридоров в номере<br>не менее 91 см.'})
+                        .rich-buttons__item
+                          +input({type: 'rich-checkbox', title: 'Помощник для инвалидов', description: 'На 1 этаже вас встретит специалист<br>и проводит до номера.'})
+                
+                .form__content-item.form__content-item_30
+                  +dropdown({title: 'удобства номера'})
+                    +ibox({items: [
+                      {text: 'спальни', name: 'bedroom', value: '2'},
+                      {text: 'кровати', name: 'bed', value: '2'},
+                      {text: 'ванные комнаты', name: 'bathroom', value: '0'}
+                      ]})(class='js-convenience-increment-box')
+                
+                .form__content-item.form__content-item_30
+                  +expandable-list({title: 'дополнительные удобства'})
+                    each item in expandableList
+                      - let {labelText, isChecked} = item
+                        .expandable-list__item
+                          +input({type: 'checkbox',labelText: `${labelText}`,isChecked: isChecked})
+                
+      block content
+        .content.content_search-room
+          .search-room
+            .search-room__title.heading Номера, которые мы для вас подобрали
+            .search-room__body
+              .rooms
+                each room in rooms
+                  - const {number, price, isLux, rateNumber, reviewsAmount} = room
+                    .rooms__item
+                      +room-card({
+                        number: number,
+                        price: price,
+                        isLux: isLux,
+                        rateNumber: rateNumber,
+                        reviewsAmount: reviewsAmount
+                        }) 
+
+            .search-room__footer
+              +pagination({totalCount: 150, take: 10})
+
+      
+
+      block aside-right
+        include ../../includes/aside-right/aside-right.pug
+
+block footer
+  +footer()

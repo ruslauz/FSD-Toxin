@@ -35,9 +35,12 @@ mixin footer(options)
           .footer__copy.
             Copyright © 2018 Toxin отель. Все права зачищены.
           .footer__social
-            .footer__social-item(class="fab fa-twitter")
-            .footer__social-item(class="fab fa-facebook-square")
-            .footer__social-item(class="fab fa-instagram")
+            a(href="#twitter").footer__social-link
+              span.footer__social-item(class="fab fa-twitter")
+            a(href="#twitter").footer__social-link
+              span.footer__social-item(class="fab fa-facebook-square")
+            a(href="#twitter").footer__social-link
+              span.footer__social-item(class="fab fa-instagram")
   else 
     footer.footer.footer_mobile
       .footer__top
@@ -50,7 +53,7 @@ mixin footer(options)
           .footer__copy.
             Copyright © 2018 Toxin отель. Все права зачищены.
           .footer__social
-            .footer__social-item(class="fab fa-twitter")
-            .footer__social-item(class="fab fa-facebook-square")
-            .footer__social-item(class="fab fa-instagram")
+            span.footer__social-item(class="fab fa-twitter")
+            span.footer__social-item(class="fab fa-facebook-square")
+            span.footer__social-item(class="fab fa-instagram")
 

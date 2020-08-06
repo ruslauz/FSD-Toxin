@@ -1,4 +1,5 @@
 const path = require('path')
+const fs = require('fs')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
@@ -6,16 +7,22 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
-
-console.log(isDev);
-console.log(process.env.NODE_ENV);
-
+const PATHS = {
+  dev: 'src',
+  prod: 'dist',
+  assets: 'assets'
+};
+const PAGES_DIR = `./${PATHS.dev}/pug/pages`
+const PAGES = fs.readdirSync(PAGES_DIR)
+  .map((dir) => fs.readdirSync(`${PAGES_DIR}/${dir}`))
+  .flat()
+  .filter((filename) => filename.endsWith('.pug'))
 
 module.exports = {
   mode: `${process.env.NODE_ENV}`,
 
   entry: {
-    app: './index.js'
+    app: './index.js',
   },
 
   output: {
@@ -60,15 +67,18 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
-          }
+          },
+          {
+            loader: 'postcss-loader',          },
         ]
       },
       {
         test: /\.scss$/,
         use: [
           MiniCssExtractPlugin.loader,
+          'css-loader',
           {
-            loader: 'css-loader',
+            loader: 'postcss-loader',
           },
           {
             loader: 'sass-loader',
@@ -122,24 +132,11 @@ module.exports = {
   },
 
   plugins: [
-    new HtmlWebpackPlugin({
-      template: './src/pug/pages/ui-kit-colors/ui-kit-colors.pug',
-      filename: 'ui-kit-colors.html',
-    }),
-
-    new HtmlWebpackPlugin({
-      template: './src/pug/pages/ui-kit-form-elements/ui-kit-form-elements.pug',
-      filename: 'ui-kit-form-elements.html',
-    }),
-
-    new HtmlWebpackPlugin({
-      template: './src/pug/pages/ui-kit-cards/ui-kit-cards.pug',
-      filename: 'ui-kit-cards.html',
-    }),
-
-    new HtmlWebpackPlugin({
-      template: './src/pug/pages/ui-kit-headers-and-footers/ui-kit-headers-and-footers.pug',
-      filename: 'ui-kit-headers-and-footers.html',
+    ...PAGES.map(page => {
+      return new HtmlWebpackPlugin({
+        template: `${PAGES_DIR}/${page.replace(/\.pug$/, '')}/${page}`,
+        filename: `${page.replace(/\.pug$/, '.html')}`,
+      })
     }),
 
     new CleanWebpackPlugin(),

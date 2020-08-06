@@ -1,0 +1,38 @@
+.registration-content{
+  position: relative;
+  &__form{
+    z-index: 111;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 19px 0;
+  }
+
+  &__wrapper{
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__slider{
+    position: absolute;
+    z-index: 111;
+    height: 100%;
+    width: 100%;
+  }
+
+  & .swiper-wrapper{
+    position: unset;
+  }
+
+  & .slider__element {
+    height: 100%;
+  }
+
+  & .swiper-container {
+    /* z-index: 111; */
+    height: 100%;
+    width: 100%;
+  }
+  
+}
