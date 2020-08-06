@@ -16,7 +16,7 @@ mixin header(options)
     .container.header__container
       .header__logo
         a.header__logo-link(href='/' title='Toxin - Главная страниу=ца')
-          img.logo(src=require('../../../images/svg/logo.svg'))
+          img.logo(src=require('../../../images/svg/logo.svg') alt="Toxin Logo")
       .header__nav
         +nav({items: items})
       if !isLogedIn
