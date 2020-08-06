@@ -105,7 +105,7 @@ module.exports = {
         ]
       },
       {
-        test: /(\.(jpe?g|png|gif)$|^((?!font).)*\.svg$)/,
+        test: /(\.(jpe?g|png|gif)$)/,
         use: [
           {
             loader: 'file-loader',
@@ -118,7 +118,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(ttf|woff|woff2|eot|svg)$/,
+        test: /font.*\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9-]+)?$/,
         use: [
           {
             loader: 'file-loader',
@@ -129,6 +129,10 @@ module.exports = {
           }
         ]
       },
+      {
+        test: /\.svg$/,
+        loader: 'svg-inline-loader'
+      }
     ]
   },
 
