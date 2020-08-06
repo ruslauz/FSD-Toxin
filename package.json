@@ -12,7 +12,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "homepage": "https://ruslauz.github.io/fsd-toxin",
+  "homepage": "https://ruslauz.github.io/FSD-Toxin/",
   "devDependencies": {
     "@babel/core": "^7.10.3",
     "@babel/plugin-proposal-class-properties": "^7.10.1",
