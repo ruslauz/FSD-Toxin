@@ -4,6 +4,7 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
@@ -46,7 +47,7 @@ module.exports = {
     }
   },
 
-  devtool: 'source-map',
+  devtool: isDev ? 'source-map' : '',
 
   module: {
     rules: [
@@ -155,6 +156,10 @@ module.exports = {
     // }),
     new MiniCssExtractPlugin({
       filename: 'css/[name]-[contenthash:5].css'
+    }),
+    new FaviconsWebpackPlugin({
+      logo: './src/favicon/favicon-logo.png',
+      inject: true,
     })
   ]
 }
