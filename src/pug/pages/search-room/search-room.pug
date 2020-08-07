@@ -1,9 +1,7 @@
 extends ../../layouts/main
 
-include ../../components/form-elem/form-elem
 include ../../components/input/input
 include ../../components/button/button
-include ../../components/rate/rate
 include ../../components/pagination/pagination
 include ../../components/fieldset/fieldset
 include ../../components/list/list
@@ -12,11 +10,12 @@ include ../../components/dropdown/dropdown
 include ../../components/expandable-list/expandable-list
 include ../../components/bullet-list/bullet-list
 include ../../components/advantage/advantage
-include ../../components/review/review
 include ../../components/ibox/ibox
-include ../../components/room-card/room-card
+include ../../components/rate/rate
+
 
 include ../../includes/header/header.pug
+include ../../includes/room-card/room-card
 include ../../includes/footer/footer.pug
 
 block variables
@@ -54,7 +53,7 @@ block main
                 .form__content-item
                   +dropdown({title: 'даты пребывания в отеле', filterDateDropdown: true})
                     .js-search-rom-cal
-                .form__content-item
+                .form__content-item.form__content-item_30
                   +dropdown({title: 'гости'})
                     +ibox({items: [
                       {text: 'взрослые', name: 'adults', value: '2'},
@@ -71,7 +70,7 @@ block main
                         - let {labelText, isChecked} = checkbox
                           .checkbox-buttons__item
                             +input({type: 'checkbox',labelText: `${labelText}`,isChecked: isChecked})
-                .form__content-item.form__content-item_30
+                .form__content-item
                   .rich-buttons
                     +fieldset({legend: 'доступность'})
                       .rich-buttons__body
@@ -118,7 +117,6 @@ block main
       
 
       block aside-right
-        include ../../includes/aside-right/aside-right.pug
 
 block footer
   +footer()

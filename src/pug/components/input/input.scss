@@ -2,7 +2,7 @@
 
 .legend{
   text-transform: uppercase;
-  margin: 0 0 16px;
+  margin: 0 0 17px;
 }
 
 .label{
@@ -78,7 +78,7 @@
     font-size: 14px;
     line-height: 18px;
     color: $main75;
-    margin: 0 0 5px 0;
+    margin: 0 0 6px 0;
   }
 
   &__description{
@@ -111,7 +111,7 @@
       background: #c7c7cf;
       border-radius: 10px;
       cursor: pointer;
-      margin: 0 10px 0 0;
+      margin: 0 10px 3px 0;
 
       &:checked{
           background: $purple-gradient;

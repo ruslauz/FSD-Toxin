@@ -2,7 +2,6 @@ const path = require('path')
 const fs = require('fs')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
@@ -105,7 +104,7 @@ module.exports = {
         ]
       },
       {
-        test: /(\.(jpe?g|png|gif)$)/,
+        test: /(\.(jpe?g|png|gif|svg)$)/,
         use: [
           {
             loader: 'file-loader',
@@ -129,10 +128,6 @@ module.exports = {
           }
         ]
       },
-      {
-        test: /\.svg$/,
-        loader: 'svg-inline-loader'
-      }
     ]
   },
 
@@ -146,18 +141,6 @@ module.exports = {
 
     new CleanWebpackPlugin(),
 
-    // new CopyWebpackPlugin({
-    //   patterns: [
-    //     {
-    //       from: path.resolve(__dirname, 'src/images'),
-    //       to: path.resolve(__dirname, 'dist/images')
-    //     },
-    //     {
-    //       from: path.resolve(__dirname, 'src/fonts'),
-    //       to: path.resolve(__dirname, 'dist/fonts')
-    //     }
-    //   ]
-    // }),
     new MiniCssExtractPlugin({
       filename: 'css/[name]-[contenthash:5].css'
     }),

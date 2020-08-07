@@ -63,6 +63,7 @@
 .button{
   position: relative;
 
+
   &_arrow-forward{
     position: absolute;
     width: 44px;
@@ -79,7 +80,7 @@
 
   &-white, &-gradient, &-form-submit{
     border-radius: 22px;
-    padding: 14px 19px 15px 19px;
+    padding: 15px 20px 15px 20px;
     display: flex;
     @include h3;
     text-transform: uppercase;
@@ -92,6 +93,9 @@
       &:hover, &_hovered{
       opacity: 0.5;
     }
+  }
+  &-form-submit{
+    padding: 15px 22px 15px 18px;
   }
 
   &-white{
@@ -134,4 +138,8 @@
     right: 10px;
     pointer-events: none;
   }
+  &_narrow{
+    padding: 9px 20px 10px;
+  }
+
 }

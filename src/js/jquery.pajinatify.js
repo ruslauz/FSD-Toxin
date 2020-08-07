@@ -1,4 +1,3 @@
-import * as $ from 'jquery';
 import * as jQuery from 'jquery';
 
 'use strict';

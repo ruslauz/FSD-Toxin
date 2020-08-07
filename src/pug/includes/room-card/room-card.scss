@@ -20,7 +20,7 @@
   }
   &__info{
     display: flex;
-    align-items: center;
+    align-items: baseline;
   }
   &__number{
     font-family: $second-font;
@@ -55,6 +55,7 @@
     background: rgba(31, 32, 65, 0.1);
     height: 1px;
     border: none ;
+    margin: 9px 0 7px;
   }
   &__rating{
     display: flex;

@@ -50,12 +50,15 @@
 .checkbox-buttons{
 
   &__item{
-    margin: 0 0 10px 0;
+    &:not(:last-child){
+      margin: 0 0 10px 0;
+    }
   }
 }
 
 .radio-buttons{
-display: flex;
+  display: flex;
+  padding-bottom: 3px;
   &__item{
     margin: 0 20px 0 0;
   }
@@ -145,8 +148,10 @@ display: flex;
 .advantages{
 
   &__item{
-    margin: 0 0 20px 0;
     max-width: 280px;
+    &:not(:last-child){
+      margin: 0 0 23px 0;
+    }
 
     &:not(:last-child):after{
       content: '';

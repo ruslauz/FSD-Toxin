@@ -6,7 +6,7 @@
   &__top{
       background: #FFFFFF;
       box-shadow: 0px 1px 0px rgba(31, 32, 65, 0.1);
-      padding: 100px 0 100px 0;
+      padding: 101px 0 100px 0;
       display: flex;
      justify-content: center;
      border-bottom: 1px solid #E5E5E5;
@@ -21,19 +21,17 @@
   &__logo{
     width: 100%;
     max-width: 260px;
-    margin: 0 40px 0 0;
+    margin: 0 41px 0 0;
   }
   &__logo-link{
   display: flex;
-  margin: 0 0 20px 0;
-    & > * {
-      height: 40px;
-    }
+  margin: 0 0 17px;
   }
   &__text{
     color: $main75;
   }
   &__nav{
+    padding: 4px 0 0 0;
     display: flex;
     margin: 0 50px 0 0;
     width: 100%;
@@ -54,12 +52,13 @@
   }
 
   .subscription{
+    padding: 5px 0 0 0;
   &__title{
-    margin: 0 0 20px 0;
+    margin: 0 0 17px;
   }
   &__text{
     color: $main75;
-    margin: 0 0 20px 0;
+    margin: 0 0 23px 0;
   }
   &__input{}
 }
@@ -69,15 +68,16 @@
     box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
     display: flex;
     justify-content: center;
-    padding: 23px 0;
+    padding: 22px 0;
   }
 
   &__copy{
-    line-height: 17px;
+    line-height: 26px;
     color: $main75;
   }
   &__social{
     display: flex;
+    margin: 0 2px 0 0;
   }
   &__social-item{
     font-size: 24px;
@@ -91,7 +91,7 @@
     line-height: 1;
       
     &:not(:last-child){
-      margin: 0 20px 0 0;
+      margin: 0 22px 0 0;
     }
   }
 

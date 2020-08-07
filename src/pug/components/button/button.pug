@@ -1,24 +1,26 @@
 mixin button(options)
   if !options
     - options = {}
-  case options.type
-    when 'dropdown'
-      button.button.dropdown-button(type = 'button' class = `${options.class || ''}`) #{options.buttonText}
-      .dropdown-box
-    when 'arrow-forward'
-      button.button.button_arrow-forward.material-icons(type = 'submit' class = `${options.class || ''}`) arrow_forward
-    when 'like'
-      button.button.like-button(type = 'button' class = `${options.liked ? 'like-button_liked' : ''}`)
-        i.icon.like-button__icon.material-icons favorite
-        span.like-button__likes-number #{options.likesNumber}
-    when 'form-submit'
-      button.button.button-form-submit(type = 'submit' class = `${options.class || ''}`) #{options.buttonText}
-        i.button__icon.material-icons arrow_forward
-    when 'gradient'
-    when 'white'
-    when 'text'
-      -
-        const classes = ['button', `button-${options.type}`];
-        if (options.hovered) classes.push(`${classes[1]}_hovered`);
-      button(type = 'button' class = classes) #{options.buttonText}
-      
+  - let {type, className, likesNumber, buttonText, hovered, liked, narrow} = options
+    case type
+      when 'dropdown'
+        button.button.dropdown-button(type = 'button' class = `${className || ''}`) #{buttonText}
+        .dropdown-box
+      when 'arrow-forward'
+        button.button.button_arrow-forward.material-icons(type = 'submit' class = `${className || ''}`) arrow_forward
+      when 'like'
+        button.button.like-button(type = 'button' class = `${liked ? 'like-button_liked' : ''}`)
+          i.icon.like-button__icon.material-icons favorite
+          span.like-button__likes-number #{likesNumber}
+      when 'form-submit'
+        button.button.button-form-submit(type = 'submit' class = `${className || ''}`) #{buttonText}
+          i.button__icon.material-icons arrow_forward
+      when 'gradient'
+      when 'white'
+      when 'text'
+        -
+          const classes = ['button', `button-${type}`];
+          if (hovered) classes.push(`${classes[1]}_hovered`);
+          if (narrow) classes.push(`${classes[0]}_narrow`);
+        button(type = 'button' class = classes) #{buttonText}
+    

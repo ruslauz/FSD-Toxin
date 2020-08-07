@@ -4,7 +4,7 @@
     justify-content: center;
     min-height: 492px;
     position: absolute;
-    padding: 0 0 26px 0;
+    // padding: 0 0 26px 0;
     width: 100%;
     top: 70px;
     height: 57.6388888vw;
@@ -17,8 +17,8 @@
 
   &__text{
     position: absolute;
-    bottom: 18px;
-    right: 128px;
+    bottom: 21px;
+    right: 133px;
     width: 100%;
     max-width: 297px;
     text-align: right;
@@ -26,7 +26,12 @@
 }
 .slider{
   &__element{
-    height: 57.6388888vw;
-    min-height: 492px;
+    // height: 57.6388888vw;
+    // min-height: 492px;
+    height: 62.638889vw;
+    min-height: 670px;
   }
+}
+.swiper-container_landing{
+  margin-top: -73px;
 }

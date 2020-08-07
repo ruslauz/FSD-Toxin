@@ -1,7 +1,8 @@
 mixin pagination(options)
   if !options
     - options = {}
+  - const {totalCount, take} = options
   .pagination
     .pagination__body
-      .pages.js-pages(data-total-count=`${options.totalCount || ''}` data-take=`${options.take || ''}`)
+      .pages.js-pages(data-total-count=`${totalCount || ''}` data-take=`${take || ''}`)
     span.pagination__text 1 – 12 из 100+ вариантов аренды

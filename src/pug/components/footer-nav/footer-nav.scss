@@ -2,7 +2,7 @@
 
   .footer-nav{
     &__title{
-      margin: 0 0 20px 0;
+      margin: 0 0 22px 0;
     }
     &__content{
       display: flex;
@@ -15,7 +15,7 @@
       color: $main50;
 
       &:not(:last-child){
-        margin: 0 0 20px 0;
+        margin: 0 0 21px 0;
       }
     }
   }

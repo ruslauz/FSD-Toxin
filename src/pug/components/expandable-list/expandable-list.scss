@@ -16,7 +16,6 @@
   &__summary{
     position: relative;
     display: flex;
-    align-items: center;
     justify-content: space-between;
     margin: 0 0 2px 0;
     cursor: pointer;
@@ -26,10 +25,8 @@
       font-family: $material;
       display: flex;
       font-size: 24px;
-      line-height: 24px;
+      line-height: 217px;
       width: 44px;
-      height: 44px;
-      align-items: center;
       justify-content: center;
       color: $main50;
       transition: ease all .6s;

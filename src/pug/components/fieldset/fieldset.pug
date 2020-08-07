@@ -1,5 +1,6 @@
 mixin fieldset(options)
   - options = options || {}
-  fieldset.fieldset(class = options.class)
-    legend.legend.heading.heading_level-3 #{options.legend}
+  - const {className, legend} = options
+  fieldset.fieldset(class = className)
+    legend.legend.heading.heading_level-3 #{legend}
     block

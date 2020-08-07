@@ -3,11 +3,15 @@
 
 .main{
   &_room-details{
-    padding: 0 0 70px 0;
+    padding: 0 0 72px 0;
     border-bottom:1px solid $main25;
   }
 }
 .container{
+
+  & .aside-left{
+    display: none;
+  }
 
   &_room-details{
     display: flex;
@@ -49,12 +53,13 @@
 
   &__body{
     display: flex;
-    margin: 0 0 70px 0;
+    // margin: 0 0 70px 0;
     width: 100%;
     justify-content: center;
   }
   &__content{
     max-width: 712px;
+    // margin: 0 0 70px 0;
   }
   &__row{
     display: flex;
@@ -79,7 +84,7 @@
   width: 100%;
   max-width: 291px;
   &__title{
-    margin: 0 0 20px 0;
+    margin: 0 0 24px 0;
   }
   &__body{}
 }
@@ -97,7 +102,7 @@
 .circle{
   width: 100%;
   max-width: 120px;
-  margin: 0 30px 5px 0;
+  margin: 0 30px 3px 0;
   align-self: flex-start;
   position: relative;
   line-height: 0; //Height fixes
@@ -112,7 +117,7 @@
     left: 0;
     right: 0;
     z-index: 3;
-    top: 50%;
+    top: 48%;
     transform: translate(0, -50%);
   }
   &__top-text{
@@ -131,7 +136,7 @@
 .marked-list{
   align-self: flex-end;
   &__item{
-    padding: 0 0 0 15px;
+    padding: 0 0 0 14px;
     position: relative;
     &:before{
       content: "";
@@ -168,7 +173,7 @@
 }
 .reviews{
   &__title{
-    margin: 0 0 20px;
+    margin: 0 0 19px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -181,12 +186,22 @@
 
   }
   &__item{
-    margin: 0 0 22px 0;
+
+    &:not(:last-child){
+      margin: 0 0 23px 0;
+    }
+  }
+}
+.rules{
+  &__title{
+    margin: 0 0 18px 0;
+    padding: 2px 0 0 20px;
   }
 }
 .cancel{
   &__title{
-    margin: 0 0 20px 0;
+    margin: 0 0 18px 0;
+    padding: 2px 0 0 0;
   }
   &__body{
     color: $main75;

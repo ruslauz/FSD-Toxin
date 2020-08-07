@@ -1,9 +1,7 @@
 extends ../../layouts/main
 
-include ../../components/form-elem/form-elem
 include ../../components/input/input
 include ../../components/button/button
-include ../../components/rate/rate
 include ../../components/pagination/pagination
 include ../../components/fieldset/fieldset
 include ../../components/list/list
@@ -12,8 +10,12 @@ include ../../components/dropdown/dropdown
 include ../../components/expandable-list/expandable-list
 include ../../components/bullet-list/bullet-list
 include ../../components/advantage/advantage
-include ../../components/review/review
 include ../../components/ibox/ibox
+include ../../components/rate/rate
+
+include ../../includes/review/review
+
+
 
 
 block variables
@@ -25,7 +27,7 @@ block variables
 
 block main
   main.main.main_form-elements
-    .main-logo.main-logo_ui-kit(src="./images/svg/ui-kit-logo.svg", alt="logo")
+    .main-logo.main-logo_ui-kit
       include ../../../images/svg/ui-kit-logo.svg
     block content
       .content.content_form-elements

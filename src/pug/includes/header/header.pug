@@ -15,14 +15,14 @@ mixin header(options)
   header.header
     .container.header__container
       .header__logo
-        a.header__logo-link(href='/' title='Toxin - Главная страница')!= require('../../../images/svg/logo.svg')
-          
+        a.header__logo-link(href='/' title='Toxin - Главная страница')
+          include ../../../images/svg/logo.svg
       .header__nav
         +nav({items: items})
       if !isLogedIn
         .header__buttons
-          +button({type: 'white', buttonText: 'войти'})
-          +button({type: 'gradient', buttonText: 'зарегистрироваться'})
+          +button({type: 'white', buttonText: 'войти', narrow: true})
+          +button({type: 'gradient', buttonText: 'зарегистрироваться', narrow: true})
       else
         .header__user-block
           .header__user-name Юлий Цезарь

@@ -1,6 +1,5 @@
 extends ../../layouts/main
 
-include ../../components/form-elem/form-elem
 include ../../components/input/input
 include ../../components/button/button
 include ../../components/rate/rate
@@ -12,11 +11,10 @@ include ../../components/dropdown/dropdown
 include ../../components/expandable-list/expandable-list
 include ../../components/bullet-list/bullet-list
 include ../../components/advantage/advantage
-include ../../components/review/review
 include ../../components/ibox/ibox
-include ../../components/room-card/room-card
 
 include ../../includes/header/header.pug
+include ../../includes/review/review
 include ../../includes/footer/footer.pug
 
 block variables
@@ -130,7 +128,7 @@ block main
               aside.aside-right
                 .form-wrapper
                   form.form.form_booking
-                    .form__header
+                    .form__header.form__header_booking
                       .booking-room
                         .booking-room__info
                           span.booking-room__number <span class="booking-room__number booking-room__number_small">№ </span>888
@@ -145,7 +143,7 @@ block main
                           })
                           .js-uikitcards-cal2
                       .form__content-item
-                        +dropdown({title: 'Dropdown'})
+                        +dropdown({title: 'гости'})
                           +ibox({items: [
                             {text: 'взрослые', name: 'adults', value: '2'},
                             {text: 'дети', name: 'kids', value: '1'},

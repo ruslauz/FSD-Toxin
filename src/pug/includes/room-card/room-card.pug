@@ -1,4 +1,4 @@
-include ../rate/rate
+include ../../components/rate/rate
 
 mixin room-card(options)
   -
@@ -13,7 +13,7 @@ mixin room-card(options)
       .swiper-wrapper
         each image in images
           .swiper-slide
-            img(src=require(`../../components/room-card/img/${number}/${image}`), alt=`${alt || number}`)
+            img(src=require(`../../includes/room-card/img/${number}/${image}`), alt=`${alt || number}`)
       .swiper-pagination
       .swiper-button-prev
       .swiper-button-next

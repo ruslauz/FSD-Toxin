@@ -1,13 +1,13 @@
-include ../button/button
+include ../../components/button/button
 
 mixin review(options)
   -
     options = options || {}
-    let {img, name, date, likes, liked, content} = options
+    const {img, name, date, likes, liked, content} = options
   .review
     .review__head
       .review__avatar
-        img.review__img(alt='avatar' src=require('../../components/review/images/' + img))
+        img.review__img(alt='avatar' src=require('../../includes/review/images/' + img))
       .review__heading
         .review__name= name
         .review__date= date

@@ -1,6 +1,5 @@
 extends ../../layouts/main
 
-include ../../components/form-elem/form-elem
 include ../../components/input/input
 include ../../components/button/button
 include ../../components/rate/rate
@@ -12,7 +11,6 @@ include ../../components/dropdown/dropdown
 include ../../components/expandable-list/expandable-list
 include ../../components/bullet-list/bullet-list
 include ../../components/advantage/advantage
-include ../../components/review/review
 include ../../components/ibox/ibox
 
 include ../../includes/header/header.pug
@@ -28,7 +26,6 @@ block main
   main.main
 
     block aside-left
-      include ../../includes/aside-left/aside-left.pug
 
     block content
       .content.landing-content
@@ -61,10 +58,10 @@ block main
                         })
                         .js-uikitcards-cal1
                     .form__content-item.form__content-item_30
-                      +dropdown({title: 'Dropdown'})
+                      +dropdown({title: 'Гости'})
                         +ibox({items: [
-                          {text: 'взрослые', name: 'adults', value: '2'},
-                          {text: 'дети', name: 'kids', value: '1'},
+                          {text: 'взрослые', name: 'adults', value: '0'},
+                          {text: 'дети', name: 'kids', value: '0'},
                           {text: 'младенцы', name: 'babies', value: '0'}
                           ]})(class='js-guest-increment-box')
                     .form__content-item
@@ -74,7 +71,6 @@ block main
     
 
     block aside-right
-      include ../../includes/aside-right/aside-right.pug
 
 block footer
   +footer()

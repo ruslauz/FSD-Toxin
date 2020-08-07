@@ -25,7 +25,8 @@ block variables
 
 block main
   main.main
-    img.main-logo.main-logo_ui-kit(src="./images/svg/ui-kit-logo.svg", alt="logo")
+    .main-logo.main-logo_ui-kit
+      include ../../../images/svg/ui-kit-logo.svg
     block content
       .content.colors-and-types
         +list({type: 'ul', class: 'colors'})

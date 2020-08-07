@@ -11,7 +11,8 @@ mixin footer(options)
       .footer__top
         .container.footer__container
           .footer__logo
-            a.footer__logo-link(href='/' title='Toxin - Главная страниу=ца')!= require('../../../images/svg/logo.svg')
+            a.footer__logo-link(href='/' title='Toxin - Главная страниу=ца')
+              include ../../../images/svg/logo.svg
             .footer__text.
               Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
           .footer__nav
