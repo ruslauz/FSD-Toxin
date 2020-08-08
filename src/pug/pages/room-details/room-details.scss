@@ -9,14 +9,16 @@
 }
 .container{
 
-  & .aside-left{
-    display: none;
-  }
 
   &_room-details{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+
+    & .aside-left{
+      display: none;
+    }
+
   }
 
 }

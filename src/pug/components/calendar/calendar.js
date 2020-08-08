@@ -72,11 +72,11 @@ export class Calendar {
       if (e.target.classList.contains('day') && !e.target.classList.contains('day_selected')) {
         if (this.dateRange.length < 2) {
           e.target.classList.add('day_selected')
-          this.dateRange.push(new Date(e.target.dataset.date.split('.').reverse()))
+          this.dateRange.push(new Date(+e.target.dataset.timestamp))
           this.dateRangeRender();
         } else if (this.dateRange.length === 2) {
           this.reset();
-          this.dateRange.push(new Date(e.target.dataset.date.split('.').reverse()))
+          this.dateRange.push(new Date(+e.target.dataset.timestamp))
           e.target.classList.add('day_selected')
         }
       }
@@ -155,7 +155,7 @@ export class Calendar {
   }
 
   setCustomDate(date){
-    this.currentDate = new Date(date)
+    this.currentDate = new Date(date.replace(/\./g, '/'))
     this.year = this.currentDate.getFullYear()
     this.month = this.currentDate.getMonth()
     this.date = this.currentDate.getDate()
@@ -165,8 +165,8 @@ export class Calendar {
 
   setCustomRange(firstDate, lastDate){
     this.dateRange = [
-      new Date(firstDate),
-      new Date(lastDate)
+      new Date(firstDate.replace(/\./g, '/')),
+      new Date(lastDate.replace(/\./g, '/'))
     ]
     this.#render()
     return this

@@ -22,7 +22,7 @@ module.exports = {
   mode: `${process.env.NODE_ENV}`,
 
   entry: {
-    app: './index.js',
+    app: ['@babel/polyfill', './index.js'],
   },
 
   output: {
@@ -69,7 +69,8 @@ module.exports = {
             loader: 'css-loader',
           },
           {
-            loader: 'postcss-loader',          },
+            loader: 'postcss-loader',          
+          },
         ]
       },
       {
