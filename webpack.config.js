@@ -4,6 +4,9 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
+const TerserWebpackPlugin = require('terser-webpack-plugin')
+const ImageminPlugin = require('imagemin-webpack-plugin').default
+const imageminMozjpeg = require('imagemin-mozjpeg')
 
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
@@ -43,7 +46,11 @@ module.exports = {
   optimization: {
     splitChunks: {
       chunks: 'all'
-    }
+    },
+    minimize: true,
+    minimizer: [
+      new TerserWebpackPlugin()
+    ]
   },
 
   devtool: isDev ? 'source-map' : '',
@@ -114,7 +121,63 @@ module.exports = {
               outputPath: 'images/',
               esModule: false,
             }
-          }
+          },
+          // {
+          //   loader: 'img-optimize-loader',
+          //   options: {
+          //     compress: {
+          //       // loseless compression for png
+          //       optipng: {
+          //         optimizationLevel: 4,
+          //       },
+          //       // lossy compression for png. This will generate smaller file than optipng.
+          //       pngquant: {
+          //         quality: [0.2, 0.8],
+          //       },
+          //       // Compression for webp.
+          //       // You can also tranform jpg/png into webp.
+          //       webp: {
+          //         quality: 100,
+          //       },
+          //       // Compression for svg.
+          //       svgo: true,
+          //       // Compression for gif.
+          //       gifsicle: {
+          //         optimizationLevel: 3,
+          //       },
+          //       // Compression for jpg.
+          //       mozjpeg: {
+          //         progressive: true,
+          //         quality: 60,
+          //       },
+          //     },
+          //   },
+          // },
+          // {
+          //   loader: 'image-webpack-loader',
+          //   options: {
+          //     mozjpeg: {
+          //       arithmetic: true,
+          //       progressive: true,
+          //       quality: 75
+          //     },
+          //     // optipng.enabled: false will disable optipng
+          //     optipng: {
+          //       enabled: false,
+          //     },
+          //     pngquant: {
+          //       quality: [0.65, 0.90],
+          //       speed: 4
+          //     },
+          //     gifsicle: {
+          //       interlaced: false,
+          //     },
+          //     // the webp option will enable WEBP
+          //     webp: {
+          //       quality: 75
+          //     }
+          //   }
+          // },
         ]
       },
       {
@@ -144,6 +207,15 @@ module.exports = {
 
     new MiniCssExtractPlugin({
       filename: 'css/[name]-[contenthash:5].css'
+    }),
+    new ImageminPlugin({ 
+      test: /\.(jpe?g|png|gif|svg)$/i,
+      plugins: [
+        imageminMozjpeg({
+          quality: 75,
+          progressive: true
+        })
+      ]
     }),
     new FaviconsWebpackPlugin({
       logo: './src/favicon/favicon-logo.png',
