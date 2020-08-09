@@ -1,0 +1,10 @@
+/*!
+ * pajinatify - A light-weight pagination plugin for jQuery
+ *
+ * Copyright 2018, Mehdi Dehghani
+ * (http://www.github.com/dehghani-mehdi)
+ *
+ * @author   Mehdi Dehghani
+ * @license  MIT
+ *
+ */
