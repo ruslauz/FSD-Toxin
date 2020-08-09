@@ -7,8 +7,7 @@
 
     &[open]{
       .expandable-list__summary:after{
-        transform: rotate(-180deg);
-        transition: ease all .6s;
+        transform: rotateX(-180deg);
       }
     }
   }
@@ -17,7 +16,7 @@
     position: relative;
     display: flex;
     justify-content: space-between;
-    margin: 0 0 2px 0;
+    margin: 0 0 18px 0;
     cursor: pointer;
 
     &:after {
@@ -29,7 +28,9 @@
       width: 44px;
       justify-content: center;
       color: $main50;
-      transition: ease all .6s;
+      position: absolute;
+      right: 0;
+      top: 0;
     }
   }
 

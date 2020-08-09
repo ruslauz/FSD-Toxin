@@ -2,7 +2,7 @@ mixin nav(options)
   -
     options = options || {}
     let {items} = options
-  nav.nav
+  nav.nav&attributes(attributes)
     each item in items
       - let {text, isActive, isExpandable} = item
         .nav__item(class=isActive && 'nav__item_active' class=isExpandable && 'nav__item_expandable') 

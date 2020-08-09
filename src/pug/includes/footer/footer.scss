@@ -10,9 +10,20 @@
       display: flex;
      justify-content: center;
      border-bottom: 1px solid #E5E5E5;
+
+    @include max-media(s){
+      padding-bottom: 0;
+      padding-top: 120px;
+      border: none;
+    }
   }
   &__container{
      align-items: start;
+
+     @include max-media(m){
+      flex-direction: column;
+      align-items: center;
+     }
 
      &_bottom{
        justify-content: space-between;
@@ -22,19 +33,41 @@
     width: 100%;
     max-width: 260px;
     margin: 0 41px 0 0;
+
+    @include max-media(m){
+      margin: 0 0 20px;
+    }
   }
   &__logo-link{
   display: flex;
   margin: 0 0 17px;
+
+    @include max-media(s){
+      justify-content: center;
+      margin: 0;
+    }
   }
   &__text{
     color: $main75;
+
+    @include max-media(s){
+      display: none;
+    }
   }
   &__nav{
     padding: 4px 0 0 0;
     display: flex;
     margin: 0 50px 0 0;
     width: 100%;
+
+    @include max-media(m){
+      margin: 0 0 20px;
+      justify-content: center;
+    }
+
+    @include max-media(s){
+      display: none;
+    }
   }
   &__nav-item{
     display: flex;
@@ -49,6 +82,10 @@
   &__subscription{
     width: 100%;
     max-width: 260px;
+
+    @include max-media(s){
+      display: none;
+    }
   }
 
   .subscription{
@@ -69,11 +106,24 @@
     display: flex;
     justify-content: center;
     padding: 22px 0;
+
+    @include max-media(s){
+      padding-top: 0;
+      padding-bottom: 120px;
+    }
   }
 
   &__copy{
     line-height: 26px;
     color: $main75;
+
+    @include max-media(m){
+      margin: 0 0 20px;
+    }
+
+    @include max-media(s){
+      text-align: center;
+    }
   }
   &__social{
     display: flex;

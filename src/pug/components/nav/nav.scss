@@ -1,0 +1,59 @@
+@import '../../../scss/utils';
+
+.nav{
+  display: flex;
+  font-size: 14px;
+  line-height: 17px;
+  color: $main50;
+  align-items: center;
+
+  &__link{
+    @include max-media(m){
+      display: flex;
+      padding: 8.5px 0;
+
+    }
+  }
+
+  &__item{
+    cursor: pointer;
+
+    &_active{
+      font-weight: bold;
+      color: $main75;
+    }
+
+    &_expandable{
+      display: flex;
+      align-items: center;
+
+      &:after{
+        content: 'expand_more';
+        font-family: $material;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        font-size: 24px;
+        line-height: 20px;
+      }
+    }
+
+  }
+
+  & > :not(:last-child){
+    margin: 0 21px 0 0;
+
+    @include max-media(m){
+      margin: 0 0 10px;
+    }
+  }
+
+  @include max-media(m){
+    flex-direction: column;
+
+    &:not(:last-child){
+      margin: 0 0 10px 0;
+    }
+  }
+}

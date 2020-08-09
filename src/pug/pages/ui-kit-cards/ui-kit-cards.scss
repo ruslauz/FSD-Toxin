@@ -41,6 +41,11 @@
   &__title{
     font-family: $second-font;
     @include h1();
+
+    @include max-media(xs){
+      font-size: 20px;
+      line-height: 24px;
+    }
   }
   &__content{
 

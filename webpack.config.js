@@ -27,7 +27,7 @@ module.exports = {
 
   output: {
     filename: 'js/[name]-[contenthash:5].js',
-    path: path.resolve(__dirname, 'dist'),
+    path: __dirname + '/dist',
     publicPath: '/FSD-Toxin/'
   },
 
@@ -36,7 +36,7 @@ module.exports = {
     port: 3000,
     open: 'Google Chrome',
     writeToDisk: true,
-    contentBase: './dist',
+    contentBase: __dirname + '/dist',
     // hot: true
   },
 

@@ -11,6 +11,11 @@
   &_search-room{
     flex-wrap: wrap;
     justify-content: center;
+
+    @include max-media(s){
+      flex-direction: column;
+      align-items: center;
+    }
   }
 }
 .aside-left{
@@ -18,6 +23,10 @@
     width: 100%;
     max-width: 266px;
     margin: 0 60px 0 0;
+
+    @include max-media(s){
+      margin: 0;
+    }
   }
 }
 
@@ -37,6 +46,7 @@
   &__footer{
     display: flex;
     justify-content: center;
+    overflow: hidden;
   }
 }
 .rooms{

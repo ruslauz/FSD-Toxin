@@ -1,3 +1,5 @@
+@import '../../../scss/utils';
+
 .landing-content{
   &__wrapper{
     display: flex;
@@ -13,6 +15,10 @@
 
   &__form{
     margin: 70px 0 0 0;
+
+    @include max-media(m){
+      margin: 0 0 20px;
+    }
   }
 
   &__text{
@@ -22,6 +28,11 @@
     width: 100%;
     max-width: 297px;
     text-align: right;
+
+    @include max-media(m){
+      position: unset;
+      text-align: center;
+    }
   }
 }
 .slider{
@@ -34,4 +45,15 @@
 }
 .swiper-container_landing{
   margin-top: -73px;
+}
+.container{
+
+  @include max-media(m){
+
+    &_landing{
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
 }

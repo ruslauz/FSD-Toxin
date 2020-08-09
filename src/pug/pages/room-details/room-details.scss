@@ -15,6 +15,11 @@
     flex-wrap: wrap;
     justify-content: space-between;
 
+    @include max-media(xl){
+      flex-direction: column;
+      align-items: center;
+    }
+
     & .aside-left{
       display: none;
     }
@@ -27,6 +32,10 @@
 
   &__top{
     margin: 0 0 70px 0;
+
+    @include max-media(s){
+      margin: 0 0 20px 0;
+    }
   }
   &__images{
     width: 100%;
@@ -35,7 +44,12 @@
     grid-template-rows: minmax(auto,243px) minmax(auto,242px);
     grid-template-areas:
         'first second'
-        'first third';  
+        'first third';
+
+    @include max-media(s){
+      display: flex;
+      flex-wrap: wrap;
+    }  
       }
   &__image{
     height: 100%;
@@ -61,7 +75,10 @@
   }
   &__content{
     max-width: 712px;
-    // margin: 0 0 70px 0;
+
+    @include max-media(xl){
+      margin: 0 0 20px;
+    }
   }
   &__row{
     display: flex;
@@ -69,13 +86,19 @@
     &:not(:last-child){
       margin: 0 0 30px 0;
     }
+
+    @include max-media(m){
+      flex-direction: column;
+      align-items: center;
+    }
   }
   &__item{
     width: 100%;
     max-width: 350px;
-    // &:not(:last-child){
-    //   margin: 0 70px 0 0;
-    // }
+
+    @include max-media(m){
+      margin: 0 0 20px;
+    }
   }
   &__aside{
     width: 100%;
@@ -85,6 +108,10 @@
 .advantages{
   width: 100%;
   max-width: 291px;
+
+  @include max-media(m){
+    margin: 0;
+  }
   &__title{
     margin: 0 0 24px 0;
   }
@@ -179,7 +206,20 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @include max-media(xs){
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
+
+  &__title-text{
+
+    @include max-media(xs){
+      margin: 0 0 10px 0;
+    }
+  }
+
   &__count{
     line-height: 14px;
     color: $main50;
