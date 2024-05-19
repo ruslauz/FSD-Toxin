@@ -30,7 +30,7 @@
     "favicons-webpack-plugin": "^4.2.0",
     "file-loader": "^6.0.0",
     "find": "^0.3.0",
-    "gh-pages": "^3.1.0",
+    "gh-pages": "^5.0.0",
     "html-webpack-plugin": "^4.3.0",
     "i": "^0.3.6",
     "mini-css-extract-plugin": "^0.9.0",
